@@ -9,33 +9,35 @@ jobs:
   code-agent:
     runs-on: ubuntu-latest
     
-    # ← Bu kısım çok önemli
+    # Tüm izinleri açıkça veriyoruz
     permissions:
       contents: write
       pull-requests: write
       issues: write
+      repository-projects: write
 
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: LostPengu Code Agent Working
         run: |
           echo "========================================"
           echo "🐧 LostPengu Code Agent is Active"
-          echo "Time: $(date)"
+          echo "Time: $(date UTC)"
           echo "========================================"
           
           echo "\n## 🔄 Auto Update - $(date)" >> README.md
           echo "- Maintenance by LostPengu Code Agent" >> README.md
           echo "- Small automatic improvements applied." >> README.md
           
-          echo "Changes made."
+          echo "Changes made successfully."
         shell: bash
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7   # v6 yerine v7 kullanıyoruz
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "🤖 Auto update by LostPengu Code Agent"
@@ -43,3 +45,4 @@ jobs:
           body: "This pull request was automatically created by LostPengu Code Agent."
           branch: lostpengu-auto-update
           delete-branch: true
+          draft: false
