@@ -30,3 +30,4 @@ It is a living, **self-coding AI Agent** built by the colony.
 ---
 
 **"Lost but never alone. Coded by the colony."** ❄️
+[![Star this Project](https://img.shields.io/github/stars/lostpengu0-crypto/lostpengu-ai-agent?style=social)](https://github.com/lostpengu0-crypto/lostpengu-ai-agent)
