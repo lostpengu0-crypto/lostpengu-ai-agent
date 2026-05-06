@@ -8,7 +8,7 @@ An autonomous AI agent that codes itself, generates memes, and manages its commu
 
 ## ✨ Vision
 LostPengu is not just a memecoin.  
-It is a living, self-coding AI Agent built on Solana that evolves with its community.
+It is a living, self coding AI Agent built on Solana that evolves with its community.
 
 ## 🚀 Roadmap
 - [x] Project Concept & Community Building
