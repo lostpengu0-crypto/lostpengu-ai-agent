@@ -1,6 +1,22 @@
 'use client';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [snowflakes, setSnowflakes] = useState([]);
+
+  useEffect(() => {
+    const flakes = Array.from({ length: 100 }).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * -25,
+      duration: Math.random() * 12 + 15,
+      text: Array.from({ length: 18 }).map(() => 
+        String.fromCharCode(33 + Math.floor(Math.random() * 94))
+      ).join('')
+    }));
+    setSnowflakes(flakes);
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#05060f] text-white overflow-hidden relative">
       
@@ -11,10 +27,27 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,#c026d3_20%,transparent_60%)] opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
 
+      {/* Neon Kod Yağmuru - Artık Hydration Hatası Vermez */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-60">
+        {snowflakes.map((flake) => (
+          <div
+            key={flake.id}
+            className="absolute text-purple-400/70 text-xs font-mono tracking-widest animate-fall"
+            style={{
+              left: `${flake.left}%`,
+              top: `-60px`,
+              animationDelay: `${flake.delay}s`,
+              animationDuration: `${flake.duration}s`,
+            }}
+          >
+            {flake.text}
+          </div>
+        ))}
+      </div>
+
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 min-h-screen flex items-center">
         <div className="grid md:grid-cols-2 gap-16 items-center w-full">
           
-          {/* Video */}
           <div className="flex justify-center md:justify-start">
             <div className="relative group">
               <div className="absolute -inset-20 bg-gradient-to-br from-purple-500 via-fuchsia-500 to-cyan-400 rounded-full opacity-25 blur-3xl group-hover:opacity-50 transition-all duration-1000"></div>
@@ -30,7 +63,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Sağ Taraf */}
           <div className="flex flex-col gap-5">
             <h1 className="text-6xl md:text-7xl font-black tracking-tighter mb-2 text-center md:text-left">
               LOST<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-300 to-pink-400">PENGU</span>
@@ -39,7 +71,10 @@ export default function Home() {
             <p className="text-4xl font-light text-cyan-400 mb-10 text-center md:text-left">AI AGENT</p>
 
             <div className="flex flex-col gap-4">
-              <button onClick={() => alert("Meme Generator yakında!")} className="py-7 bg-gradient-to-r from-purple-600 to-violet-600 rounded-3xl text-xl font-semibold hover:scale-105 active:scale-95 transition-all">
+              <button 
+                onClick={() => alert("🎨 Meme Generator Coming Soon!")}
+                className="py-7 bg-gradient-to-r from-purple-600 to-violet-600 rounded-3xl text-xl font-semibold hover:scale-105 active:scale-95 transition-all"
+              >
                 Create Memes with Pengu
               </button>
 
