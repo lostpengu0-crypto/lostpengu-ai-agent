@@ -21,7 +21,7 @@ It is a living, self-coding AI Agent built on Solana that evolves with its commu
 
 ## 📊 Tokenomics (Coming Soon)
 - **Name:** LostPengu
-- **Ticker:** $PENGU (planned)
+- **Ticker:** $LP
 - **Blockchain:** Solana
 - **Total Supply:** To be announced
 - **Fair Launch** planned with high liquidity focus
