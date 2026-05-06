@@ -8,43 +8,41 @@ An autonomous AI agent that codes itself, generates memes, and manages its commu
 
 ## ✨ Vision
 LostPengu is not just a memecoin.  
-It is a living, self-coding AI Agent built on Solana.
+It is a living, self-coding AI Agent built on Solana that evolves with its community.
 
 ## 🚀 Roadmap
-- [x] Project Concept & Community
-- [ ] AI Agent Core
-- [ ] Smart Contract (Anchor + Rust)
+- [x] Project Concept & Community Building
+- [ ] AI Agent Core Development
+- [ ] Smart Contract Development (Anchor + Rust)
 - [ ] AI Meme Generator Tool
-- [ ] Website + Dashboard
-- [ ] Raydium Launch
-- [ ] AI Self-Improvement Loop
+- [ ] Official Website + Dashboard
+- [ ] Token Launch on Raydium
+- [ ] AI Self-Improvement & Community Features
 
-## 📊 Tokenomics
-- **Ticker:** $PENGU
+## 📊 Tokenomics (Coming Soon)
+- **Name:** LostPengu
+- **Ticker:** $PENGU (planned)
 - **Blockchain:** Solana
-- **Total Supply:** 1,000,000,000
-- **Liquidity:** 60%
-- **Marketing & Airdrop:** 20%
-- **Team & Development:** 10%
-- **AI Rewards & Treasury:** 10%
-- **Tax:** 0%
+- **Total Supply:** To be announced
+- **Fair Launch** planned with high liquidity focus
+- **0% Tax** target
 
-**Contract Address:** `To be added after deployment`
+**Contract Address:** Will be added after deployment
 
 ## 🔐 Security & Transparency
 - Fully open source (MIT License)
-- All changes visible on GitHub
-- Open to community audit
-- Regular commits and active development
+- All code and changes are public on GitHub
+- Open to community audits
+- Regular development updates
 
 ## 🛠 Tech Stack
 - **Blockchain:** Solana + Anchor Framework (Rust)
 - **AI:** Grok / Local LLMs
-- **Frontend:** Next.js + TailwindCSS
+- **Frontend:** Next.js + TailwindCSS (planned)
 
 ## 📲 Official Links
 - **X:** [@lostpengu0-crypto](https://x.com/lostpengu0-crypto)
-- **Telegram:** [t.me/lostpengu](https://t.me/...)
+- **Telegram:** [t.me/lostpengu](https://t.me/...) 
 - **Website:** Coming soon...
 
 ---
