@@ -2,27 +2,28 @@
 
 **The First Self-Coding Penguin on Solana**
 
-![LostPengu](https://github.com/lostpengu0-crypto/lostpengu-ai-agent/blob/main/public/lostpengu00.mp4)
+![LostPengu Video](https://github.com/lostpengu0-crypto/lostpengu-ai-agent/blob/main/public/lostpengu00.mp4)
 
 ### Deep in the frozen neon sanctuary...
 
-Bir penguen kolonisi Solana ile tanıştı.  
-Artık kod yazıyor, meme üretiyor, proje geliştiriyor.
+A lost penguin colony discovered the power of Solana and artificial intelligence.
 
-**LostPengu** sadece bir memecoin değil.  
-**Kod yazan, öğrenen ve büyüyen bir AI ajanı.**
+Now they code, create, and evolve together.
 
-### ✨ Özellikler
-- 🎨 **Meme Generator** (Yakında)
+**LostPengu** is not just a memecoin.  
+It is a living, **self-coding AI Agent** built by the colony.
+
+### ✨ Features
+- 🎨 **Meme Generator** (Coming Soon)
 - 🤖 **Self-Coding AI Agent**
-- 🌌 Neon Aurora Tasarım
-- 📹 Animasyonlu Video Hero
-- 🔗 X & Telegram Entegrasyonu
+- 🌌 Neon Aurora Background
+- 📹 Animated Video Hero
+- 🔗 X & Telegram Integration
 
-### 🚀 Hemen Deneyin
-→ **[Siteyi Ziyaret Et](https://lostpengu0-crypto.github.io/lostpengu-ai-agent)**
+### 🚀 Try It Now
+→ **[Visit the Live Website](https://lostpengu0-crypto.github.io/lostpengu-ai-agent)**
 
-### 📬 Bize Katıl
+### 📬 Join the Colony
 - **X**: [@LostPengu0](https://x.com/LostPengu0)
 - **Telegram**: [t.me/LostPengu0](https://t.me/LostPengu0)
 
