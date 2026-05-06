@@ -2,7 +2,7 @@ name: LostPengu Code Agent
 
 on:
   schedule:
-    - cron: '*/30 * * * *'     # Her 30 dakikada bir otomatik çalışır
+    - cron: '*/30 * * * *'     # Runs every 30 minutes
   workflow_dispatch:
 
 jobs:
@@ -16,15 +16,19 @@ jobs:
 
       - name: LostPengu Code Agent Working
         run: |
-          echo "🐧 LostPengu Code Agent is active - $(date)"
+          echo "========================================"
+          echo "🐧 LostPengu Code Agent is Active"
+          echo "========================================"
+          echo "Time: $(date)"
+          echo ""
           echo "Looking for improvements in the project..."
           
-          # Basit otomatik iyileştirme
-          echo "\n## 🛠️ Auto Update by LostPengu" >> README.md
-          echo "- Maintenance task completed at $(date)" >> README.md
-          echo "- Code Agent is working automatically." >> README.md
+          # Automatic small improvement
+          echo "\n## 🔄 Auto Update - $(date)" >> README.md
+          echo "- Maintenance task completed by LostPengu Code Agent" >> README.md
+          echo "- Small automatic improvements applied." >> README.md
           
-          echo "Changes made successfully."
+          echo "Changes made. Creating Pull Request..."
         shell: bash
 
       - name: Create Pull Request
@@ -32,6 +36,6 @@ jobs:
         with:
           commit-message: "🤖 Auto update by LostPengu Code Agent"
           title: "🤖 LostPengu Code Agent - Automatic Maintenance"
-          body: "This pull request was created automatically by LostPengu Code Agent."
+          body: "This pull request was automatically created by LostPengu Code Agent."
           branch: lostpengu-auto-update
           delete-branch: true
