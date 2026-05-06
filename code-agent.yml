@@ -1,4 +1,5 @@
 name: LostPengu Code Agent
+
 on:
   schedule:
     - cron: '*/30 * * * *'
@@ -20,19 +21,18 @@ jobs:
           echo "Time: $(date)"
           echo "========================================"
           
-          # Basit değişiklik
           echo "\n## 🔄 Auto Update - $(date)" >> README.md
           echo "- Maintenance completed by LostPengu Code Agent" >> README.md
-          echo "- The colony continues to evolve." >> README.md
+          echo "- The colony continues to evolve automatically." >> README.md
           
           echo "Changes made."
         shell: bash
 
-      - name: Commit Changes
+      - name: Commit & Push to Main
         run: |
           git config user.name "LostPengu Code Agent"
           git config user.email "agent@lostpengu.ai"
           git add README.md
-          git commit -m "🤖 Auto maintenance by LostPengu Code Agent" || echo "No changes to commit"
+          git commit -m "🤖 Auto maintenance by LostPengu Code Agent" || echo "No changes"
           git push
         shell: bash
