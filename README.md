@@ -2,7 +2,7 @@
 
 **The First Self-Coding Penguin on Solana**
 
-![LostPengu Video](https://github.com/lostpengu0-crypto/lostpengu-ai-agent/blob/main/public/lostpengu00.mp4)
+<video src="https://github.com/lostpengu0-crypto/lostpengu-ai-agent/raw/main/public/lostpengu00.mp4" controls></video>
 
 ### Deep in the frozen neon sanctuary...
 
