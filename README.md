@@ -37,8 +37,10 @@ It is a living, self-coding AI Agent built on Solana that evolves with its commu
 
 ## 🛠 Tech Stack
 - **Blockchain:** Solana + Anchor Framework (Rust)
-- **AI:** Grok / Local LLMs
+- **AI Agent:** Grok (xAI), Claude 3.5/4, GPT-4o, o1-preview
+- **AI Coding Tools:** Cursor, GitHub Copilot, Continue.dev, Aider
 - **Frontend:** Next.js + TailwindCSS (planned)
+- **Meme Generation:** Flux, Ideogram, DALL·E 3 integration
 
 ## 📲 Official Links
 - **X:** [@lostpengu0-crypto](https://x.com/lostpengu0-crypto)
