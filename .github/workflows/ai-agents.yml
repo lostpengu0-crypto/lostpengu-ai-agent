@@ -1,0 +1,19 @@
+name: LostPengu AI Agents
+
+on:
+  issues:
+    types: [opened]
+  schedule:
+    - cron: '0 9 * * *'   # Her gün sabah 09:00 UTC
+
+jobs:
+  lostpengu-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Activate LostPengu AI Agent
+        run: |
+          echo "🐧 LostPengu AI Agent is now active!"
+          echo "Current time: $(date)"
+          echo "Ready to code, create memes, and help the colony."
