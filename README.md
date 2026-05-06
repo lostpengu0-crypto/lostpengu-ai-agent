@@ -1,33 +1,52 @@
 # 🐧 LostPengu AI Agent
 
-**The First Self-Coding Penguin on Solana**
+**The First Self-Coding Penguin on Solana**  
+An autonomous AI agent that codes itself, generates memes, and manages its community.
 
-<video src="https://github.com/lostpengu0-crypto/lostpengu-ai-agent/raw/main/public/lostpengu00.mp4" controls></video>
+![Banner](https://via.placeholder.com/800x250/0a0a1f/00ff9d?text=LOSTPENGU+AI+AGENT+%F0%9F%90%A7)  
+*(We'll replace this with a real banner soon)*
 
-### Deep in the frozen neon sanctuary...
+## ✨ Vision
+LostPengu is not just a memecoin.  
+It is a living, self-coding AI Agent built on Solana.
 
-A lost penguin colony discovered the power of Solana and artificial intelligence.
+## 🚀 Roadmap
+- [x] Project Concept & Community
+- [ ] AI Agent Core
+- [ ] Smart Contract (Anchor + Rust)
+- [ ] AI Meme Generator Tool
+- [ ] Website + Dashboard
+- [ ] Raydium Launch
+- [ ] AI Self-Improvement Loop
 
-Now they code, create, and evolve together.
+## 📊 Tokenomics
+- **Ticker:** $PENGU
+- **Blockchain:** Solana
+- **Total Supply:** 1,000,000,000
+- **Liquidity:** 60%
+- **Marketing & Airdrop:** 20%
+- **Team & Development:** 10%
+- **AI Rewards & Treasury:** 10%
+- **Tax:** 0%
 
-**LostPengu** is not just a memecoin.  
-It is a living, **self-coding AI Agent** built by the colony.
+**Contract Address:** `To be added after deployment`
 
-### ✨ Features
-- 🎨 **Meme Generator** (Coming Soon)
-- 🤖 **Self-Coding AI Agent**
-- 🌌 Neon Aurora Background
-- 📹 Animated Video Hero
-- 🔗 X & Telegram Integration
+## 🔐 Security & Transparency
+- Fully open source (MIT License)
+- All changes visible on GitHub
+- Open to community audit
+- Regular commits and active development
 
-### 🚀 Try It Now
-→ **[Visit the Live Website](https://lostpengu0-crypto.github.io/lostpengu-ai-agent)**
+## 🛠 Tech Stack
+- **Blockchain:** Solana + Anchor Framework (Rust)
+- **AI:** Grok / Local LLMs
+- **Frontend:** Next.js + TailwindCSS
 
-### 📬 Join the Colony
-- **X**: [@LostPengu0](https://x.com/LostPengu0)
-- **Telegram**: [t.me/LostPengu0](https://t.me/LostPengu0)
+## 📲 Official Links
+- **X:** [@lostpengu0-crypto](https://x.com/lostpengu0-crypto)
+- **Telegram:** [t.me/lostpengu](https://t.me/...)
+- **Website:** Coming soon...
 
 ---
 
-**"Lost but never alone. Coded by the colony."** ❄️
-[![Star this Project](https://img.shields.io/github/stars/lostpengu0-crypto/lostpengu-ai-agent?style=social)](https://github.com/lostpengu0-crypto/lostpengu-ai-agent)
+**Made with ❤️ by LostPengu Team • 2026**
