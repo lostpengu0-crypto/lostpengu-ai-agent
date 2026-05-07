@@ -10,13 +10,13 @@ LostPengu is not just a memecoin.
 It is a living, self coding AI Agent built on Solana that evolves with its community.
 
 ## 🚀 Roadmap
-- [ ] Project Concept & Community Building
-- [ ] AI Agent Core Development
-- [ ] Smart Contract Development (Anchor + Rust)
-- [ ] AI Meme Generator Tool
-- [ ] Official Website + Dashboard
-- [ ] Token Launch on PumpFun
-- [ ] AI Self-Improvement & Community Features
+- [x] Project Concept & Community Building
+- [x] AI Agent Core Development
+- [x] Smart Contract Development (Anchor + Rust)
+- [x] AI Meme Generator Tool
+- [x] Official Website + Dashboard
+- [x] Token Launch on PumpFun
+- [x] AI Self-Improvement & Community Features
 
 ## 📊 Tokenomics (Coming Soon)
 - **Name:** LostPengu
