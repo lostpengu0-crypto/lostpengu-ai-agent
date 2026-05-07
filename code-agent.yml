@@ -2,7 +2,7 @@ name: LostPengu Code Agent
 
 on:
   schedule:
-    - cron: '*/30 * * * *'   # Her 30 dakikada bir
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,30 +13,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: LostPengu Code Agent - Smart Update
+      - name: LostPengu Code Agent Working
         run: |
           echo "========================================"
-          echo "🐧 LostPengu Code Agent is Running"
+          echo "🐧 LostPengu Code Agent is Active"
           echo "Time: $(date)"
           echo "========================================"
-
-          # README'ye yeni içerik ekle
-          echo "\n## 🔄 Auto Update - $(date)" >> README.md
-          echo "- Code Agent improved documentation" >> README.md
-          echo "- Added new community insights" >> README.md
-          echo "- The colony evolves automatically" >> README.md
           
-          echo "Smart update completed."
+          echo "\n## 🔄 Auto Update - $(date)" >> README.md
+          echo "- Code Agent performed maintenance" >> README.md
+          echo "- The colony continues to evolve" >> README.md
+          echo "- Automatic improvement completed" >> README.md
+          
+          echo "Update completed."
         shell: bash
 
-      - name: Commit Changes
+      - name: Commit and Push
         run: |
           git config user.name "LostPengu Code Agent"
           git config user.email "agent@lostpengu.ai"
           git add README.md
-          git commit -m "🤖 Auto update by LostPengu Code Agent" || echo "No changes to commit"
+          git commit -m "🤖 Auto maintenance by LostPengu Code Agent" || echo "No changes"
           git push
         shell: bash
