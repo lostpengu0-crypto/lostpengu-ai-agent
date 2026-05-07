@@ -22,7 +22,7 @@ It is a living, self coding AI Agent built on Solana that evolves with its commu
 - **Name:** LostPengu
 - **Ticker:** $LP
 - **Blockchain:** Solana
-- **Total Supply:** 999.999.999
+- **Total Supply:** 999,999,999
 - **Fair Launch** planned with high liquidity focus
 
 **Contract Address:** Will be added after deployment
@@ -37,17 +37,29 @@ It is a living, self coding AI Agent built on Solana that evolves with its commu
 - **Blockchain:** Solana
 - **AI Agent:** Grok (xAI), Claude 3.5/4, GPT-4o, o1-preview
 - **AI Coding Tools:** Cursor, GitHub Copilot, Continue.dev, Aider
-- **Frontend:** Next.js + TailwindCSS (planned)
+- **Frontend:** Next.js + TailwindCSS
 - **Meme Generation:** Flux, Ideogram, DALL·E 3 integration
 
 ## 📲 Official Links
-- **X:** [@lostpengu0-crypto](https://x.com/lostpengu0-crypto)
-- **Telegram:** [t.me/lostpengu](https://t.me/...) 
+- **X:** [@LostPengu0](https://x.com/LostPengu0)
+- **Telegram:** [t.me/LostPengu0](https://t.me/LostPengu0)
+- **GitHub:** [LostPengu AI Agent](https://github.com/lostpengu0-crypto/lostpengu-ai-agent)
 - **Website:** Coming soon...
 
 ---
 
-**Made with ❤️ by LostPengu Team • 2026**\n## 🔄 Auto Update - Thu May  7 00:51:08 UTC 2026
+## 🤖 Autonomous AI Systems
+- 🧠 Self-learning colony runtime
+- 🎨 AI meme generation engine
+- 💾 Autonomous memory layer
+- ⚡ Self-updating agent workflows
+- 🌌 Community driven evolution system
+
+---
+
+**Made with ❤️ by LostPengu Team • 2026**
+
+## 🔄 Auto Update - Thu May 7 00:51:08 UTC 2026
 - 🤖 Code Agent automatically improved the project
 - 📝 Added new colony insights and maintenance notes
 - 🌌 The LostPengu colony continues to evolve
