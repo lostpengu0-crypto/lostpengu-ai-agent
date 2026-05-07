@@ -21,19 +21,20 @@ jobs:
           echo "Time: $(date)"
           echo "========================================"
           
+          # README'ye içerik ekle
           echo "\n## 🔄 Auto Update - $(date)" >> README.md
-          echo "- Code Agent performed maintenance" >> README.md
-          echo "- The colony continues to evolve" >> README.md
-          echo "- Automatic improvement completed" >> README.md
+          echo "- Code Agent performed automatic maintenance" >> README.md
+          echo "- Added new colony insights" >> README.md
+          echo "- The penguins continue to evolve" >> README.md
           
-          echo "Update completed."
+          echo "Update completed successfully."
         shell: bash
 
-      - name: Commit and Push
+      - name: Commit and Push to Main
         run: |
           git config user.name "LostPengu Code Agent"
           git config user.email "agent@lostpengu.ai"
           git add README.md
-          git commit -m "🤖 Auto maintenance by LostPengu Code Agent" || echo "No changes"
+          git commit -m "🤖 Auto maintenance by LostPengu Code Agent" || echo "No changes to commit"
           git push
         shell: bash
