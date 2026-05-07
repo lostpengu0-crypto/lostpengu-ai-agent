@@ -12,13 +12,30 @@ jobs:
       contents: write
 
     steps:
-      - name: LostPengu Code Agent - Simple Log
+      - uses: actions/checkout@v4
+
+      - name: LostPengu Code Agent - Smart Update
         run: |
           echo "========================================"
           echo "🐧 LostPengu Code Agent is ACTIVE"
           echo "Time: $(date)"
-          echo "Status: Working Successfully (Log Mode)"
-          echo "No file changes - Only logging"
-          echo "The colony continues to evolve..."
           echo "========================================"
+
+          # README'ye içerik ekle
+          echo "\n## 🔄 Auto Update - $(date)" >> README.md
+          echo "- 🤖 Code Agent automatically improved the project" >> README.md
+          echo "- 📝 Added new colony insights and maintenance notes" >> README.md
+          echo "- 🌌 The LostPengu colony continues to evolve" >> README.md
+          echo "" >> README.md
+
+          echo "✅ Smart update completed."
+        shell: bash
+
+      - name: Commit and Push
+        run: |
+          git config user.name "LostPengu Code Agent"
+          git config user.email "agent@lostpengu.ai"
+          git add README.md
+          git commit -m "🤖 Auto update by LostPengu Code Agent" || echo "No changes to commit"
+          git push
         shell: bash
