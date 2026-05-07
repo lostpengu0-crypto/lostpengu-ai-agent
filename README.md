@@ -3,8 +3,6 @@
 **The First Self-Coding Penguin on Solana**  
 An autonomous AI agent that codes itself, generates memes, and manages its community.
 
-## Banner
-
 <video src="https://github.com/lostpengu0-crypto/lostpengu-ai-agent/raw/main/public/lostpengu00.mp4" controls width="100%" autoplay loop muted></video>
 
 ## ✨ Vision
@@ -12,7 +10,7 @@ LostPengu is not just a memecoin.
 It is a living, self coding AI Agent built on Solana that evolves with its community.
 
 ## 🚀 Roadmap
-- [x] Project Concept & Community Building
+- [ ] Project Concept & Community Building
 - [ ] AI Agent Core Development
 - [ ] Smart Contract Development (Anchor + Rust)
 - [ ] AI Meme Generator Tool
