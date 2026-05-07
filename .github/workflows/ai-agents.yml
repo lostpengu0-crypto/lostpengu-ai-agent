@@ -2,26 +2,28 @@ name: LostPengu Meme Agent
 
 on:
   schedule:
-    - cron: '*/30 * * * *'    # Runs every 30 minutes
+    - cron: '*/30 * * * *'    # Her 30 dakikada bir
   workflow_dispatch:
 
 jobs:
   meme-agent:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: LostPengu Meme Agent
+    steps:
+      - name: LostPengu Meme Agent - Generating Ideas
         run: |
           echo "========================================"
-          echo "🐧 LostPengu Meme Agent is Active"
-          echo "========================================"
+          echo "🐧 LostPengu Meme Agent is ACTIVE"
           echo "Time: $(date)"
+          echo "========================================"
           echo ""
-          echo "New Meme Ideas Generated:"
-          echo "1. Penguin wearing sunglasses coding on Solana: 'Lost but never alone'"
-          echo "2. Penguin surfing on Solana logo: 'Riding the fastest wave'"
-          echo "3. Penguin family in neon igloo: 'Colony vibes only'"
-          echo "4. Penguin pressing deploy button: 'Self-coded since 2026'"
+          echo "🎨 New Meme Ideas Generated:"
+          echo "1. A penguin wearing sunglasses coding on a laptop with text: 'Lost but never alone on Solana'"
+          echo "2. Penguin family in igloo with neon lights: 'The Colony is Coding'"
+          echo "3. Penguin breaking ice with Solana logo: 'Melting the bear market'"
+          echo "4. Cute penguin with purple scarf holding a glowing token: 'LostPengu AI Agent'"
+          echo "5. Penguin dancing in matrix rain: 'Self-Coding Penguin Vibes'"
           echo ""
-          echo "Meme Agent task completed ✅"
+          echo "✅ Meme ideas generated successfully."
+          echo "The colony continues creating..."
+        shell: bash
