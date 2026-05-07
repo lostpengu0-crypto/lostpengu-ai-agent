@@ -8,33 +8,15 @@ on:
 jobs:
   code-agent:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: LostPengu Code Agent Working
+      - name: LostPengu Code Agent Log
         run: |
           echo "========================================"
-          echo "🐧 LostPengu Code Agent is Active"
+          echo "🐧 LostPengu Code Agent is ACTIVE"
           echo "Time: $(date)"
+          echo "Status: Working successfully"
+          echo "Next run will be in 30 minutes"
           echo "========================================"
-          
-          # README'ye içerik ekle
-          echo "\n## 🔄 Auto Update - $(date)" >> README.md
-          echo "- Code Agent performed automatic maintenance" >> README.md
-          echo "- Added new colony insights" >> README.md
-          echo "- The penguins continue to evolve" >> README.md
-          
-          echo "Update completed successfully."
-        shell: bash
-
-      - name: Commit and Push to Main
-        run: |
-          git config user.name "LostPengu Code Agent"
-          git config user.email "agent@lostpengu.ai"
-          git add README.md
-          git commit -m "🤖 Auto maintenance by LostPengu Code Agent" || echo "No changes to commit"
-          git push
+          echo "The colony is evolving..."
         shell: bash
