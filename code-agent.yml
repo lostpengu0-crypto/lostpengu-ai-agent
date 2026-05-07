@@ -2,7 +2,7 @@ name: LostPengu Code Agent
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/30 * * * *'    # Her 30 dakikada bir
   workflow_dispatch:
 
 jobs:
@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: LostPengu Code Agent Log
+      - name: LostPengu Code Agent - Status Log
         run: |
           echo "========================================"
           echo "🐧 LostPengu Code Agent is ACTIVE"
           echo "Time: $(date)"
-          echo "Status: Working successfully"
-          echo "Next run will be in 30 minutes"
-          echo "========================================"
+          echo "Status: Working Successfully"
+          echo "Action: Logging only (no changes)"
           echo "The colony is evolving..."
+          echo "========================================"
+          echo "Next run scheduled in 30 minutes."
         shell: bash
