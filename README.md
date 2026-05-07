@@ -22,7 +22,7 @@ It is a living, self coding AI Agent built on Solana that evolves with its commu
 - **Name:** LostPengu
 - **Ticker:** $LP
 - **Blockchain:** Solana
-- **Total Supply:** To be announced
+- **Total Supply:** 999.999.999
 - **Fair Launch** planned with high liquidity focus
 
 **Contract Address:** Will be added after deployment
