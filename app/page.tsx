@@ -50,6 +50,16 @@ export default function Home() {
               <button className="py-7 border border-white/30 hover:bg-white/5 rounded-3xl text-xl font-semibold transition-all">
                 Talk to Pengu Agent
               </button>
+              <div className="mt-6 rounded-3xl border border-cyan-400/30 bg-black/40 p-5 shadow-2xl">
+  <p className="text-sm text-cyan-300 mb-3">🐧 LostPengu AI System</p>
+
+  <div className="space-y-2 text-sm text-gray-300">
+    <p>🟢 Code Agent: ONLINE</p>
+    <p>🟢 Meme Engine: ACTIVE</p>
+    <p>🟢 Colony Memory: SYNCED</p>
+    <p>🟢 Autonomous Updates: RUNNING</p>
+  </div>
+</div>
             </div>
 
             <div className="flex gap-4 mt-6">
