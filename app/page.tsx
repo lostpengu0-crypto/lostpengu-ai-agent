@@ -39,8 +39,12 @@ export default function Home() {
             <p className="text-4xl font-light text-cyan-400 mb-10 text-center md:text-left">AI AGENT</p>
 
             <div className="flex flex-col gap-4">
-              <button onClick={() => alert("Meme Generator yakında!")} className="py-7 bg-gradient-to-r from-purple-600 to-violet-600 rounded-3xl text-xl font-semibold hover:scale-105 active:scale-95 transition-all">
-                Create Memes with Pengu
+             <a
+              href="/meme-generator"
+             className="py-7 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-3xl text-xl font-semibold hover:scale-105 transition-all text-center"
+             >
+              Create Memes with Pengu
+             </a>                Create Memes with Pengu
               </button>
 
               <button className="py-7 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-3xl text-xl font-semibold hover:scale-105 active:scale-95 transition-all">
