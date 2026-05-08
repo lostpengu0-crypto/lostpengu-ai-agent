@@ -25,10 +25,11 @@ jobs:
       - name: Run Daily Agent
         run: |
           npx tsx agent/daily-agent.ts
-          - name: Run System Status
-- name: Run System Status
-  run: |
-    npx tsx agent/system-status.ts
+
+      - name: Run System Status
+        run: |
+          npx tsx agent/system-status.ts
+
       - name: Commit Autonomous Updates
         run: |
           git config --global user.name "LostPengu Agent"
