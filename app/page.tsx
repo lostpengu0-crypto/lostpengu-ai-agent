@@ -1,5 +1,4 @@
 'use client';
-import { useState, useEffect } from 'react';
 
 export default function Home() {
   return (
@@ -40,13 +39,12 @@ export default function Home() {
             <p className="text-4xl font-light text-cyan-400 mb-10 text-center md:text-left">AI AGENT</p>
 
             <div className="flex flex-col gap-4">
-             <a
-              href="/meme-generator"
-             className="py-7 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-3xl text-xl font-semibold hover:scale-105 transition-all text-center"
-             >
-              Create Memes with Pengu
-             </a>                Create Memes with Pengu
-              </button>
+              <a
+                href="/meme-generator"
+                className="py-7 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-3xl text-xl font-semibold hover:scale-105 transition-all text-center"
+              >
+                Create Memes with Pengu
+              </a>
 
               <button className="py-7 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-3xl text-xl font-semibold hover:scale-105 active:scale-95 transition-all">
                 LostPengu Token
@@ -55,16 +53,16 @@ export default function Home() {
               <button className="py-7 border border-white/30 hover:bg-white/5 rounded-3xl text-xl font-semibold transition-all">
                 Talk to Pengu Agent
               </button>
-              <div className="mt-6 rounded-3xl border border-cyan-400/30 bg-black/40 p-5 shadow-2xl">
-  <p className="text-sm text-cyan-300 mb-3">🐧 LostPengu AI System</p>
 
-  <div className="space-y-2 text-sm text-gray-300">
-    <p>🟢 Code Agent: ONLINE</p>
-    <p>🟢 Meme Engine: ACTIVE</p>
-    <p>🟢 Colony Memory: SYNCED</p>
-    <p>🟢 Autonomous Updates: RUNNING</p>
-  </div>
-</div>
+              <div className="mt-6 rounded-3xl border border-cyan-400/30 bg-black/40 p-5 shadow-2xl">
+                <p className="text-sm text-cyan-300 mb-3">🐧 LostPengu AI System</p>
+                <div className="space-y-2 text-sm text-gray-300">
+                  <p>🟢 Code Agent: ONLINE</p>
+                  <p>🟢 Meme Engine: ACTIVE</p>
+                  <p>🟢 Colony Memory: SYNCED</p>
+                  <p>🟢 Autonomous Updates: RUNNING</p>
+                </div>
+              </div>
             </div>
 
             <div className="flex gap-4 mt-6">
@@ -83,11 +81,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm text-gray-500 tracking-widest">
-        "Lost but never alone. Coded by the colony."
-      </div>
-             {/* LIVE COMMUNITY STATS */}
-      <div className="mt-20 w-full max-w-5xl mx-auto px-6 py-12 border-t border-white/10">
+      {/* ==================== LIVE COMMUNITY STATS ==================== */}
+      <div className="mt-12 w-full max-w-5xl mx-auto px-6 py-12 border-t border-white/10">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-4 h-4 bg-cyan-500 rounded-full animate-pulse"></div>
           <h2 className="text-3xl font-bold tracking-tight">COLONY GROWTH STATUS</h2>
@@ -95,14 +90,14 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          {/* GitHub Stars */}
+          {/* GitHub */}
           <a href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent" target="_blank" className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 text-center hover:border-cyan-400 transition-all">
             <div className="text-4xl mb-2">🐙</div>
-            <div id="stars" className="text-5xl font-bold text-white">5</div>
+            <div className="text-5xl font-bold text-white">12</div>
             <div className="text-sm text-gray-400">GitHub Stars</div>
           </a>
 
-          {/* X / Twitter */}
+          {/* X */}
           <a href="https://x.com/lostpengu0" target="_blank" className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 text-center hover:border-cyan-400 transition-all">
             <div className="text-4xl mb-2">𝕏</div>
             <div className="text-5xl font-bold text-white">177</div>
@@ -119,16 +114,19 @@ export default function Home() {
           {/* Growth Meter */}
           <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 flex flex-col justify-center">
             <div className="text-sm text-gray-400 mb-3">COLONY GROWTH METER</div>
-            <div id="growth" className="text-6xl font-bold text-cyan-400 mb-4">42</div>
+            <div className="text-6xl font-bold text-cyan-400 mb-4">48</div>
             <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
-              <div id="bar" className="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all w-[42%]"></div>
+              <div className="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 w-[48%]"></div>
             </div>
           </div>
         </div>
 
-        <p className="text-center text-xs text-gray-500 mt-8">Real-time data • Click cards to join</p>
-      </div> 
-      </main>
-   
+        <p className="text-center text-xs text-gray-500 mt-8">Click the cards to join the colony • Real community numbers</p>
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm text-gray-500 tracking-widest">
+        "Lost but never alone. Coded by the colony."
+      </div>
+    </main>
   );
 }
