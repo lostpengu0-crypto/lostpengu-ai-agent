@@ -129,31 +129,6 @@ export default function Home() {
         <p className="text-center text-xs text-gray-500 mt-8">Real-time data • Click cards to join</p>
       </div> 
       </main>
+   
   );
 }
-  // Live GitHub Stats Updater
-  useEffect(() => {
-    const updateGitHubStats = async () => {
-      try {
-        const response = await fetch('https://api.github.com/repos/lostpengu0-crypto/lostpengu-ai-agent');
-        const data = await response.json();
-
-        const starsEl = document.getElementById('stars');
-        if (starsEl) starsEl.textContent = data.stargazers_count || 5;
-
-        const growth = Math.min(25 + (data.stargazers_count || 5) * 2, 100);
-        const growthEl = document.getElementById('growth');
-        const barEl = document.getElementById('bar');
-        
-        if (growthEl) growthEl.textContent = growth;
-        if (barEl) barEl.style.width = `${growth}%`;
-      } catch (error) {
-        console.log("GitHub stats could not be updated");
-      }
-    };
-
-    updateGitHubStats();
-    const interval = setInterval(updateGitHubStats, 60000);
-    return () => clearInterval(interval);
-  }, []);
-    
