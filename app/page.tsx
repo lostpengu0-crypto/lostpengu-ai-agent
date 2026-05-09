@@ -127,10 +127,11 @@ export default function Home() {
         </div>
 
         <p className="text-center text-xs text-gray-500 mt-8">Real-time data • Click cards to join</p>
-      </div>   
-    </main>
+      </div> 
+      </main>
   );
-    // Live GitHub Stats Updater
+}
+  // Live GitHub Stats Updater
   useEffect(() => {
     const updateGitHubStats = async () => {
       try {
@@ -140,7 +141,6 @@ export default function Home() {
         const starsEl = document.getElementById('stars');
         if (starsEl) starsEl.textContent = data.stargazers_count || 5;
 
-        // Growth meter update
         const growth = Math.min(25 + (data.stargazers_count || 5) * 2, 100);
         const growthEl = document.getElementById('growth');
         const barEl = document.getElementById('bar');
@@ -153,7 +153,7 @@ export default function Home() {
     };
 
     updateGitHubStats();
-    const interval = setInterval(updateGitHubStats, 60000); // every 60 seconds
+    const interval = setInterval(updateGitHubStats, 60000);
     return () => clearInterval(interval);
   }, []);
-}
+    
