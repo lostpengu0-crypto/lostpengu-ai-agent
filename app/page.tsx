@@ -4,21 +4,20 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#02040f] text-white overflow-hidden relative font-mono">
       
-      {/* Matrix Rain Background */}
-      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none overflow-hidden">
-        {Array.from({ length: 25 }).map((_, i) => (
+      {/* Matrix Rain */}
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none overflow-hidden">
+        {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="absolute text-emerald-400 text-xs whitespace-nowrap animate-fall"
+            className="absolute text-emerald-400/70 text-xs whitespace-nowrap animate-fall"
             style={{
               left: `${Math.random() * 100}%`,
-              animationDuration: `${Math.random() * 8 + 6}s`,
-              animationDelay: `-${Math.random() * 15}s`,
-              opacity: Math.random() * 0.6 + 0.4,
+              animationDuration: `${Math.random() * 10 + 8}s`,
+              animationDelay: `-${Math.random() * 20}s`,
             }}
           >
-            {Array.from({ length: 30 }).map(() => 
-              String.fromCharCode(33 + Math.floor(Math.random() * 94))
+            {Array.from({ length: 35 }).map(() => 
+              String.fromCharCode(33 + Math.floor(Math.random() * 90))
             ).join('')}
           </div>
         ))}
@@ -26,15 +25,15 @@ export default function Home() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 min-h-screen flex flex-col lg:flex-row items-center gap-16">
         
-        {/* Sol Taraf - Pengu */}
+        {/* Sol Taraf - LostPengu Görseli */}
         <div className="flex-1 flex justify-center lg:justify-end">
           <div className="relative">
-            <div className="absolute -inset-20 bg-gradient-to-br from-cyan-400 via-purple-600 to-fuchsia-500 rounded-full opacity-30 blur-[100px] animate-pulse"></div>
+            <div className="absolute -inset-16 bg-gradient-to-br from-cyan-400 via-purple-600 to-pink-500 rounded-full opacity-30 blur-[120px]"></div>
             
             <img 
-              src="https://picsum.photos/id/1015/600/700" 
+              src="https://i.ibb.co/KqY7Z7s/lostpengu.png" 
               alt="LostPengu"
-              className="w-[380px] lg:w-[480px] rounded-3xl shadow-2xl relative z-10 border border-cyan-400/40 hover:scale-105 transition-transform duration-700"
+              className="w-[380px] lg:w-[500px] rounded-3xl shadow-2xl relative z-10 border border-cyan-400/30"
             />
           </div>
         </div>
@@ -54,31 +53,17 @@ export default function Home() {
           </p>
 
           <div className="space-y-4">
-            <a href="/meme-generator" className="block w-full py-6 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl text-center text-2xl font-semibold hover:scale-105 transition-all active:scale-95">
+            <a href="/meme-generator" className="block w-full py-6 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl text-center text-2xl font-semibold hover:scale-105 transition-all">
               Create Memes with Pengu
             </a>
 
-            <button className="block w-full py-6 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-3xl text-center text-2xl font-semibold hover:scale-105 transition-all active:scale-95">
+            <button className="block w-full py-6 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-3xl text-center text-2xl font-semibold hover:scale-105 transition-all">
               LostPengu Token
             </button>
 
             <button className="block w-full py-6 border-2 border-cyan-400/60 hover:bg-cyan-400/10 rounded-3xl text-center text-2xl font-semibold transition-all">
               Talk to Pengu Agent
             </button>
-          </div>
-
-          {/* Status */}
-          <div className="bg-black/70 border border-cyan-400/30 rounded-3xl p-6">
-            <p className="text-emerald-400 mb-4 flex items-center gap-2">
-              <span className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></span>
-              SYSTEM STATUS
-            </p>
-            <div className="grid grid-cols-2 gap-y-2 text-sm">
-              <p>Code Agent</p><p className="text-emerald-400">ONLINE</p>
-              <p>Meme Engine</p><p className="text-emerald-400">ACTIVE</p>
-              <p>Colony Memory</p><p className="text-emerald-400">SYNCED</p>
-              <p>Autonomous Updates</p><p className="text-emerald-400">RUNNING</p>
-            </div>
           </div>
         </div>
       </div>
