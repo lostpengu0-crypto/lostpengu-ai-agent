@@ -14,7 +14,7 @@ export default function Home() {
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 min-h-screen flex items-center">
         <div className="grid md:grid-cols-2 gap-16 items-center w-full">
           
-          {/* Video */}
+          {/* Video Section */}
           <div className="flex justify-center md:justify-start">
             <div className="relative group">
               <div className="absolute -inset-20 bg-gradient-to-br from-purple-500 via-fuchsia-500 to-cyan-400 rounded-full opacity-25 blur-3xl group-hover:opacity-50 transition-all duration-1000"></div>
@@ -30,7 +30,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Sağ Taraf */}
+          {/* Content */}
           <div className="flex flex-col gap-5">
             <h1 className="text-6xl md:text-7xl font-black tracking-tighter mb-2 text-center md:text-left">
               LOST<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-300 to-pink-400">PENGU</span>
