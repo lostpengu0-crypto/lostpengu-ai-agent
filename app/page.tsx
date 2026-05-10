@@ -5,29 +5,36 @@ import { useState } from 'react';
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'pengu', content: "Hey! I'm LostPengu, the self-coding penguin on Solana. How can I help you today?" }
+    { role: 'pengu', content: "Hey! I'm LostPengu, the first self-coding penguin on Solana. How can I help you today? 🐧" }
   ]);
   const [input, setInput] = useState('');
 
   const sendMessage = () => {
     if (!input.trim()) return;
 
-    setMessages(prev => [...prev, { role: 'user', content: input }]);
-
-    const replies = [
-      "Haha, great question! The colony is growing fast 🐧",
-      "I'm still learning but I love talking about Solana and memes.",
-      "Want me to generate a meme idea for you?",
-      "LostPengu Token launch is coming soon... are you ready?",
-      "Join our Telegram and X to stay in the colony!",
-      "I'm coded with love by the community."
-    ];
+    const userMessage = input.trim();
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setInput('');
 
     setTimeout(() => {
-      setMessages(prev => [...prev, { role: 'pengu', content: replies[Math.floor(Math.random() * replies.length)] }]);
-    }, 700);
+      let reply = "Interesting! Tell me more.";
 
-    setInput('');
+      const lower = userMessage.toLowerCase();
+
+      if (lower.includes("how are you") || lower.includes("how r u")) {
+        reply = "I'm doing fantastic, thanks! How about you? Ready to join the colony?";
+      } else if (lower.includes("who are you") || lower.includes("what are you") || lower.includes("lostpengu")) {
+        reply = "I'm LostPengu, the first self-coding AI penguin on Solana. I create memes, write code, and build the colony.";
+      } else if (lower.includes("token") || lower.includes("launch")) {
+        reply = "LostPengu Token is coming soon. We're building the community first.";
+      } else if (lower.includes("meme")) {
+        reply = "Sure! Give me a topic and I'll suggest a funny meme idea.";
+      } else if (lower.includes("hello") || lower.includes("hi") || lower.includes("hey")) {
+        reply = "Hey there! Welcome to the LostPengu Colony 🐧";
+      }
+
+      setMessages(prev => [...prev, { role: 'pengu', content: reply }]);
+    }, 700);
   };
 
   return (
@@ -52,7 +59,7 @@ export default function Home() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 min-h-screen flex flex-col lg:flex-row items-center gap-16">
         
-        {/* Pengu Görseli */}
+        {/* Pengu Image */}
         <div className="flex-1 flex justify-center lg:justify-end">
           <div className="relative">
             <div className="absolute -inset-20 bg-gradient-to-br from-purple-500 via-cyan-400 to-pink-500 rounded-full opacity-40 blur-[120px]"></div>
@@ -64,7 +71,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Sağ Taraf */}
+        {/* Right Side */}
         <div className="flex-1 space-y-10">
           <div>
             <h1 className="text-7xl lg:text-8xl font-black tracking-tighter mb-3">
@@ -97,14 +104,14 @@ export default function Home() {
         </div>
       </div>
 
-      {/* MINI CHAT WIDGET */}
+      {/* MINI CHAT */}
       {isChatOpen && (
         <div className="fixed bottom-6 right-6 z-50 w-80 bg-zinc-950 border border-cyan-500/50 rounded-3xl shadow-2xl overflow-hidden">
           <div className="bg-gradient-to-r from-cyan-500 to-purple-500 p-4 flex items-center gap-3">
             <div className="text-3xl">🐧</div>
             <div className="flex-1">
               <p className="font-bold">LostPengu AI</p>
-              <p className="text-xs opacity-90">Always Online • Self-Coding</p>
+              <p className="text-xs opacity-90">Self-Coding Penguin • Always Online</p>
             </div>
             <button onClick={() => setIsChatOpen(false)} className="text-2xl">✕</button>
           </div>
