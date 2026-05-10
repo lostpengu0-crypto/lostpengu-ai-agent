@@ -1,10 +1,39 @@
 'use client';
 
+import { useState } from 'react';
+
 export default function Home() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    { role: 'pengu', content: "Hey! I'm LostPengu, the self-coding penguin on Solana. How can I help you today?" }
+  ]);
+  const [input, setInput] = useState('');
+
+  const sendMessage = () => {
+    if (!input.trim()) return;
+
+    setMessages(prev => [...prev, { role: 'user', content: input }]);
+
+    const replies = [
+      "Haha, great question! The colony is growing fast 🐧",
+      "I'm still learning but I love talking about Solana and memes.",
+      "Want me to generate a meme idea for you?",
+      "LostPengu Token launch is coming soon... are you ready?",
+      "Join our Telegram and X to stay in the colony!",
+      "I'm coded with love by the community."
+    ];
+
+    setTimeout(() => {
+      setMessages(prev => [...prev, { role: 'pengu', content: replies[Math.floor(Math.random() * replies.length)] }]);
+    }, 700);
+
+    setInput('');
+  };
+
   return (
     <main className="min-h-screen bg-[#02040f] text-white overflow-hidden relative font-mono">
       
-      {/* Matrix Rain Background */}
+      {/* Matrix Rain */}
       <div className="absolute inset-0 z-0 opacity-30 pointer-events-none overflow-hidden">
         {Array.from({ length: 35 }).map((_, i) => (
           <div
@@ -23,11 +52,10 @@ export default function Home() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 min-h-screen flex flex-col lg:flex-row items-center gap-16">
         
-        {/* LostPengu Görseli */}
+        {/* Pengu Görseli */}
         <div className="flex-1 flex justify-center lg:justify-end">
           <div className="relative">
             <div className="absolute -inset-20 bg-gradient-to-br from-purple-500 via-cyan-400 to-pink-500 rounded-full opacity-40 blur-[120px]"></div>
-            
             <img 
               src="/pengu.jpg" 
               alt="LostPengu" 
@@ -59,12 +87,50 @@ export default function Home() {
               LostPengu Token
             </button>
 
-            <button className="block w-full py-6 border-2 border-cyan-400/60 hover:bg-cyan-400/10 rounded-3xl text-center text-2xl font-semibold transition-all">
+            <button 
+              onClick={() => setIsChatOpen(true)}
+              className="block w-full py-6 border-2 border-cyan-400/60 hover:bg-cyan-400/10 rounded-3xl text-center text-2xl font-semibold transition-all"
+            >
               Talk to Pengu Agent
             </button>
           </div>
         </div>
       </div>
+
+      {/* MINI CHAT WIDGET */}
+      {isChatOpen && (
+        <div className="fixed bottom-6 right-6 z-50 w-80 bg-zinc-950 border border-cyan-500/50 rounded-3xl shadow-2xl overflow-hidden">
+          <div className="bg-gradient-to-r from-cyan-500 to-purple-500 p-4 flex items-center gap-3">
+            <div className="text-3xl">🐧</div>
+            <div className="flex-1">
+              <p className="font-bold">LostPengu AI</p>
+              <p className="text-xs opacity-90">Always Online • Self-Coding</p>
+            </div>
+            <button onClick={() => setIsChatOpen(false)} className="text-2xl">✕</button>
+          </div>
+
+          <div className="h-96 p-4 overflow-y-auto space-y-4 bg-black/60">
+            {messages.map((msg, i) => (
+              <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[80%] px-4 py-3 rounded-2xl ${msg.role === 'user' ? 'bg-cyan-600' : 'bg-zinc-800'}`}>
+                  {msg.content}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-4 border-t border-white/10 flex gap-2">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+              placeholder="Ask me anything..."
+              className="flex-1 bg-zinc-900 border border-white/20 rounded-full px-5 py-3 focus:outline-none focus:border-cyan-400"
+            />
+            <button onClick={sendMessage} className="bg-cyan-500 hover:bg-cyan-600 px-6 rounded-full font-medium">Send</button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
