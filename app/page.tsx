@@ -4,36 +4,34 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#02040f] text-white overflow-hidden relative font-mono">
       
-      {/* Matrix Rain */}
+      {/* Matrix Rain Background */}
       <div className="absolute inset-0 z-0 opacity-30 pointer-events-none overflow-hidden">
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: 35 }).map((_, i) => (
           <div
             key={i}
             className="absolute text-emerald-400/70 text-xs whitespace-nowrap animate-fall"
             style={{
               left: `${Math.random() * 100}%`,
-              animationDuration: `${Math.random() * 10 + 8}s`,
+              animationDuration: `${Math.random() * 12 + 7}s`,
               animationDelay: `-${Math.random() * 20}s`,
             }}
           >
-            {Array.from({ length: 35 }).map(() => 
-              String.fromCharCode(33 + Math.floor(Math.random() * 90))
-            ).join('')}
+            {Array.from({ length: 40 }).map(() => String.fromCharCode(33 + Math.floor(Math.random() * 90))).join('')}
           </div>
         ))}
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 min-h-screen flex flex-col lg:flex-row items-center gap-16">
         
-        {/* Sol Taraf - LostPengu Görseli */}
+        {/* LostPengu Görseli */}
         <div className="flex-1 flex justify-center lg:justify-end">
           <div className="relative">
-            <div className="absolute -inset-16 bg-gradient-to-br from-cyan-400 via-purple-600 to-pink-500 rounded-full opacity-30 blur-[120px]"></div>
+            <div className="absolute -inset-20 bg-gradient-to-br from-purple-500 via-cyan-400 to-pink-500 rounded-full opacity-40 blur-[120px]"></div>
             
             <img 
-              src="https://i.ibb.co/KqY7Z7s/lostpengu.png" 
-              alt="LostPengu"
-              className="w-[380px] lg:w-[500px] rounded-3xl shadow-2xl relative z-10 border border-cyan-400/30"
+              src="/pengu.jpg" 
+              alt="LostPengu" 
+              className="w-[400px] lg:w-[520px] rounded-3xl shadow-2xl relative z-10 border border-cyan-400/30"
             />
           </div>
         </div>
