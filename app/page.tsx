@@ -90,11 +90,19 @@ export default function Home() {
         <div className="flex-1 flex justify-center lg:justify-end">
           <div className="relative">
             <div className="absolute -inset-20 bg-gradient-to-br from-purple-500 via-cyan-400 to-pink-500 rounded-full opacity-40 blur-[120px]"></div>
+
             <img 
               src="/pengu.jpg" 
               alt="LostPengu" 
               className="w-[400px] lg:w-[520px] rounded-3xl shadow-2xl relative z-10 border border-cyan-400/30"
             />
+
+            <a
+              href="/game"
+              className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold shadow-2xl hover:scale-105 transition-all border border-white/20 z-20 whitespace-nowrap"
+            >
+              🎮 Play LostPengu
+            </a>
           </div>
         </div>
 
