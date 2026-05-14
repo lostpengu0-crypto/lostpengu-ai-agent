@@ -1,83 +1,89 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+type Item = {
+  id: number;
+  x: number;
+  y: number;
+  type: 'coin' | 'ice';
+};
 
 export default function GamePage() {
+  const gameRef = useRef<HTMLDivElement | null>(null);
+
   const [playerX, setPlayerX] = useState(180);
-  const [coins, setCoins] = useState([{ x: 100, y: 0 }]);
+  const [items, setItems] = useState<Item[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        setPlayerX((prev) => Math.max(prev - 25, 0));
-      }
+  const movePengu = (clientX: number) => {
+    const game = gameRef.current;
+    if (!game) return;
 
-      if (e.key === 'ArrowRight') {
-        setPlayerX((prev) => Math.min(prev + 25, 360));
-      }
-    };
+    const rect = game.getBoundingClientRect();
+    const x = clientX - rect.left;
 
-    window.addEventListener('keydown', handleKey);
-
-    return () => {
-      window.removeEventListener('keydown', handleKey);
-    };
-  }, []);
+    setPlayerX(Math.max(0, Math.min(x - 28, rect.width - 60)));
+  };
 
   useEffect(() => {
     if (gameOver) return;
 
-    const interval = setInterval(() => {
-      setCoins((prev) =>
-        prev
-          .map((coin) => ({
-            ...coin,
-            y: coin.y + 12,
-          }))
-          .filter((coin) => {
-            const hit =
-              coin.y > 500 &&
-              coin.x > playerX - 40 &&
-              coin.x < playerX + 40;
+    const speed = Math.min(5 + Math.floor(score / 8), 10);
 
-            if (hit) {
+    const interval = setInterval(() => {
+      setItems((prev) => {
+        const movedItems = prev
+          .map((item) => ({
+            ...item,
+            y: item.y + speed,
+          }))
+          .filter((item) => {
+            const isNearPengu =
+              item.y > 500 &&
+              item.y < 590 &&
+              item.x > playerX - 45 &&
+              item.x < playerX + 55;
+
+            if (isNearPengu && item.type === 'coin') {
               setScore((s) => s + 1);
               return false;
             }
 
-            if (coin.y > 620) {
+            if (isNearPengu && item.type === 'ice') {
               setGameOver(true);
+              return false;
             }
 
-            return coin.y < 650;
-          })
-      );
+            return item.y < 650;
+          });
 
-      if (Math.random() > 0.7) {
-        setCoins((prev) => [
-          ...prev,
-          {
+        if (Math.random() > 0.88) {
+          movedItems.push({
+            id: Date.now() + Math.random(),
             x: Math.random() * 360,
-            y: 0,
-          },
-        ]);
-      }
-    }, 120);
+            y: -20,
+            type: Math.random() > 0.28 ? 'coin' : 'ice',
+          });
+        }
+
+        return movedItems;
+      });
+    }, 90);
 
     return () => clearInterval(interval);
-  }, [playerX, gameOver]);
+  }, [playerX, score, gameOver]);
 
   const restartGame = () => {
-    setCoins([{ x: 100, y: 0 }]);
+    setItems([]);
     setScore(0);
     setGameOver(false);
     setPlayerX(180);
   };
 
   return (
-    <main className="min-h-screen bg-[#02040f] text-white flex flex-col items-center justify-center font-mono overflow-hidden">
+    <main className="min-h-screen bg-[#02040f] text-white flex flex-col items-center justify-center font-mono overflow-hidden px-4">
 
       <a
         href="/"
@@ -86,35 +92,38 @@ export default function GamePage() {
         ← Back
       </a>
 
-      <h1 className="text-5xl font-black mb-2">
+      <h1 className="text-4xl sm:text-5xl font-black mb-2 text-center">
         LOST<span className="text-cyan-400">PENGU</span>
       </h1>
 
-      <p className="text-cyan-300 mb-6">
-        Collect Solana coins with Pengu 🐧
+      <p className="text-cyan-300 mb-3 text-center">
+        Collect Solana coins. Avoid ice cubes.
       </p>
 
       <div className="text-2xl mb-4">
         Score: {score}
       </div>
 
-      <div className="relative w-[420px] h-[620px] bg-black border-2 border-cyan-400 rounded-3xl overflow-hidden shadow-2xl">
+      <div
+        ref={gameRef}
+        onMouseMove={(e) => movePengu(e.clientX)}
+        onTouchMove={(e) => movePengu(e.touches[0].clientX)}
+        className="relative w-full max-w-[420px] h-[620px] bg-black border-2 border-cyan-400 rounded-3xl overflow-hidden shadow-2xl touch-none select-none"
+      >
 
-        {/* Falling Coins */}
-        {coins.map((coin, index) => (
+        {items.map((item) => (
           <div
-            key={index}
+            key={item.id}
             className="absolute text-3xl"
             style={{
-              left: `${coin.x}px`,
-              top: `${coin.y}px`,
+              left: `${item.x}px`,
+              top: `${item.y}px`,
             }}
           >
-            🟣
+            {item.type === 'coin' ? '🟣' : '🧊'}
           </div>
         ))}
 
-        {/* Pengu */}
         <div
           className="absolute bottom-4 text-6xl transition-all"
           style={{
@@ -124,9 +133,8 @@ export default function GamePage() {
           🐧
         </div>
 
-        {/* Game Over */}
         {gameOver && (
-          <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center">
+          <div className="absolute inset-0 bg-black/85 flex flex-col items-center justify-center">
             <h2 className="text-5xl font-black text-red-500 mb-4">
               GAME OVER
             </h2>
@@ -145,8 +153,8 @@ export default function GamePage() {
         )}
       </div>
 
-      <p className="mt-6 text-gray-400">
-        Use ← → arrow keys to move
+      <p className="mt-6 text-gray-400 text-center">
+        Move with mouse or swipe with your finger
       </p>
     </main>
   );
