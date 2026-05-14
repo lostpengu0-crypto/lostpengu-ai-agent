@@ -1,181 +1,166 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+
+const examples = [
+  {
+    title: 'Cyberpunk Pengu',
+    prompt: 'LostPengu, a cute penguin wearing a purple scarf, standing in a neon cyberpunk city, Solana vibes, cinematic lighting, ultra detailed, viral meme style'
+  },
+  {
+    title: 'Rich Pengu',
+    prompt: 'LostPengu wearing a purple scarf, sitting like a rich crypto boss near a luxury pool, Solana colors, funny but premium meme style'
+  },
+  {
+    title: 'Hacker Pengu',
+    prompt: 'LostPengu coding on multiple screens, purple scarf, dark room, matrix code background, self-coding AI penguin on Solana'
+  },
+  {
+    title: 'Space Pengu',
+    prompt: 'LostPengu astronaut on Mars, purple scarf floating, Solana logo vibes, cinematic space meme, futuristic colony'
+  },
+  {
+    title: 'CEO Pengu',
+    prompt: 'LostPengu as a powerful CEO penguin, purple scarf, modern office, laptop open, building a Web3 empire'
+  },
+  {
+    title: 'Army Pengu',
+    prompt: 'LostPengu leading a penguin army, purple scarves, icy battlefield, heroic cinematic meme, community power'
+  },
+  {
+    title: 'Trader Pengu',
+    prompt: 'LostPengu trading Solana charts, purple scarf, glowing crypto screens, focused expression, viral trading meme'
+  },
+  {
+    title: 'Pengu Family',
+    prompt: 'LostPengu with a global penguin family, purple scarves, world map background, warm community feeling'
+  },
+  {
+    title: 'Ice Kingdom',
+    prompt: 'LostPengu king of an ice kingdom, purple scarf, glowing throne, cinematic fantasy meme style'
+  },
+  {
+    title: 'Quiet Builder',
+    prompt: 'LostPengu working silently at night, purple scarf, laptop, soft neon light, move in silence, build in public'
+  }
+];
 
 export default function MemeGenerator() {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [idea, setIdea] = useState('');
+  const [finalPrompt, setFinalPrompt] = useState('');
 
-  const [topText, setTopText] = useState('WHEN THE MARKET IS LOST');
-  const [bottomText, setBottomText] = useState('PENGU KEEPS CODING');
+  const createPrompt = () => {
+    if (!idea.trim()) return;
 
-  const captions = [
-    ['WHEN THE MARKET IS LOST', 'PENGU KEEPS CODING'],
-    ['EVERYONE PANICKING', 'THE COLONY IS BUILDING'],
-    ['NO HYPE LEFT?', 'LOSTPENGU STILL ONLINE'],
-    ['MEMECOINS ARE SLEEPING', 'PENGU IS COMPILING'],
-  ];
+    setFinalPrompt(
+      `LostPengu, a cute but powerful penguin wearing a purple scarf, ${idea.trim()}, Solana vibes, cinematic lighting, high quality, viral meme style, clean composition, ultra detailed, Web3 community energy`
+    );
+  };
 
-  function drawMeme(top = topText, bottom = bottomText) {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const image = new Image();
-    image.src = '/pengu.jpg';
-
-    image.onload = () => {
-      canvas.width = 1080;
-      canvas.height = 1080;
-
-      const bg = ctx.createLinearGradient(0, 0, 1080, 1080);
-      bg.addColorStop(0, '#05060f');
-      bg.addColorStop(0.45, '#201044');
-      bg.addColorStop(1, '#061827');
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, 1080, 1080);
-
-      ctx.fillStyle = 'rgba(34, 211, 238, 0.12)';
-      ctx.beginPath();
-      ctx.arc(540, 520, 430, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.shadowColor = '#a855f7';
-      ctx.shadowBlur = 45;
-      ctx.drawImage(image, 180, 210, 720, 620);
-      ctx.shadowBlur = 0;
-
-      ctx.textAlign = 'center';
-      ctx.lineJoin = 'round';
-
-      ctx.font = 'bold 62px Arial';
-      ctx.fillStyle = '#ffffff';
-      ctx.strokeStyle = '#000000';
-      ctx.lineWidth = 12;
-
-      ctx.strokeText(top.toUpperCase(), 540, 115);
-      ctx.fillText(top.toUpperCase(), 540, 115);
-
-      ctx.strokeText(bottom.toUpperCase(), 540, 990);
-      ctx.fillText(bottom.toUpperCase(), 540, 990);
-
-      ctx.font = 'bold 30px Arial';
-      ctx.fillStyle = '#22d3ee';
-      ctx.fillText('$LP • LOSTPENGU AI', 540, 1040);
-    };
-  }
-
-  useEffect(() => {
-    drawMeme();
-  }, []);
-
-  function useCaption(top: string, bottom: string) {
-    setTopText(top);
-    setBottomText(bottom);
-    drawMeme(top, bottom);
-  }
-
-  function downloadMeme() {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const link = document.createElement('a');
-    link.download = 'lostpengu-meme.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  }
+  const copyPrompt = async (text: string) => {
+    await navigator.clipboard.writeText(text);
+    alert('Prompt copied!');
+  };
 
   return (
-    <main className="min-h-screen bg-[#05060f] text-white overflow-hidden relative px-6 py-12">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/40 to-transparent"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#22d3ee_10%,transparent_55%)] opacity-40 animate-pulse"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,#c026d3_20%,transparent_65%)] opacity-30 animate-pulse"></div>
-      </div>
+    <main className="min-h-screen bg-[#02040f] text-white font-mono px-6 py-10">
+      <div className="max-w-6xl mx-auto">
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-10">
-          <p className="text-cyan-300 tracking-[0.4em] text-xs mb-4">
-            LOSTPENGU CREATIVE LAB
-          </p>
+        <a href="/" className="text-cyan-300 hover:text-cyan-200">
+          ← Back to Home
+        </a>
 
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter">
-            MEME <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-300 to-pink-400">STUDIO</span>
+        <section className="text-center mt-10 mb-12">
+          <h1 className="text-5xl lg:text-7xl font-black tracking-tighter">
+            LOST<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400">PENGU</span>
           </h1>
 
-          <p className="text-gray-300 mt-4 max-w-2xl mx-auto">
-            Create LostPengu themed meme visuals for the colony. Write your caption, generate the image, and download it as PNG.
+          <p className="text-3xl text-cyan-400 mt-3">
+            PROMPT GENERATOR
           </p>
-        </div>
 
-        <div className="grid lg:grid-cols-[420px_1fr] gap-8 items-start">
-          <div className="rounded-3xl border border-cyan-400/20 bg-black/45 p-6 shadow-2xl backdrop-blur-xl">
-            <h2 className="text-2xl font-bold mb-2">Create your meme</h2>
-            <p className="text-sm text-gray-400 mb-6">
-              Write anything you want. The studio will place it on the LostPengu visual.
-            </p>
+          <p className="text-gray-300 max-w-2xl mx-auto mt-6 text-lg">
+            Create powerful LostPengu image prompts for free. Copy your prompt and use it in Grok, ChatGPT, Bing Image Creator, Ideogram or any AI image tool.
+          </p>
+        </section>
 
-            <label className="text-sm text-cyan-300">Top text</label>
-            <textarea
-              value={topText}
-              onChange={(e) => setTopText(e.target.value)}
-              className="mt-2 mb-4 w-full min-h-24 rounded-2xl bg-white/10 border border-white/15 p-4 text-white outline-none focus:border-cyan-400"
-              placeholder="Example: When the market is lost..."
-            />
+        <section className="bg-white/5 border border-cyan-400/20 rounded-3xl p-6 lg:p-8 mb-12 shadow-2xl">
+          <label className="block text-cyan-300 mb-3 text-sm tracking-widest">
+            WRITE YOUR IDEA
+          </label>
 
-            <label className="text-sm text-cyan-300">Bottom text</label>
-            <textarea
-              value={bottomText}
-              onChange={(e) => setBottomText(e.target.value)}
-              className="mt-2 mb-5 w-full min-h-24 rounded-2xl bg-white/10 border border-white/15 p-4 text-white outline-none focus:border-cyan-400"
-              placeholder="Example: Pengu keeps coding..."
-            />
+          <textarea
+            value={idea}
+            onChange={(e) => setIdea(e.target.value)}
+            placeholder="Example: driving a cyber truck, building a colony, trading Solana, walking in a neon city..."
+            className="w-full h-36 bg-black/50 border border-white/20 rounded-2xl p-5 text-white focus:outline-none focus:border-cyan-400 resize-none"
+          />
 
-            <button
-              onClick={() => drawMeme()}
-              className="w-full py-5 rounded-2xl bg-gradient-to-r from-purple-600 to-cyan-500 font-bold text-lg hover:scale-105 transition-all"
-            >
-              Generate Meme
-            </button>
+          <button
+            onClick={createPrompt}
+            className="mt-5 w-full py-5 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-2xl text-xl font-bold hover:scale-[1.02] transition-all"
+          >
+            Create LostPengu Prompt
+          </button>
 
-            <button
-              onClick={downloadMeme}
-              className="mt-4 w-full py-5 rounded-2xl border border-cyan-400/40 hover:bg-cyan-400/10 font-bold transition-all"
-            >
-              Download PNG
-            </button>
+          {finalPrompt && (
+            <div className="mt-6 bg-black/50 border border-purple-400/30 rounded-2xl p-5">
+              <p className="text-cyan-300 text-sm mb-3 tracking-widest">
+                YOUR PROMPT
+              </p>
 
-            <div className="mt-7">
-              <p className="text-sm text-gray-400 mb-3">Viral caption presets</p>
+              <p className="text-gray-200 leading-relaxed">
+                {finalPrompt}
+              </p>
 
-              <div className="grid gap-3">
-                {captions.map(([top, bottom], index) => (
-                  <button
-                    key={index}
-                    onClick={() => useCaption(top, bottom)}
-                    className="text-left rounded-2xl border border-white/10 bg-white/5 p-4 hover:border-cyan-400/40 hover:bg-cyan-400/10 transition-all"
-                  >
-                    <p className="text-sm font-bold">{top}</p>
-                    <p className="text-xs text-gray-400">{bottom}</p>
-                  </button>
-                ))}
+              <button
+                onClick={() => copyPrompt(finalPrompt)}
+                className="mt-5 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-full font-bold"
+              >
+                Copy Prompt
+              </button>
+            </div>
+          )}
+        </section>
+
+        <section>
+          <h2 className="text-3xl font-bold mb-6">
+            Example LostPengu Prompts
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {examples.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/5 border border-white/10 rounded-3xl p-5 hover:border-cyan-400/40 transition-all"
+              >
+                <div className="h-36 rounded-2xl bg-gradient-to-br from-purple-600/30 via-cyan-500/20 to-black border border-white/10 flex items-center justify-center text-5xl mb-5">
+                  🐧
+                </div>
+
+                <h3 className="text-xl font-bold text-cyan-300 mb-3">
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-300 text-sm leading-relaxed min-h-[120px]">
+                  {item.prompt}
+                </p>
+
+                <button
+                  onClick={() => {
+                    setIdea(item.title);
+                    setFinalPrompt(item.prompt);
+                    copyPrompt(item.prompt);
+                  }}
+                  className="mt-5 w-full py-3 rounded-full bg-white/10 hover:bg-white/20 transition-all"
+                >
+                  Copy This Prompt
+                </button>
               </div>
-            </div>
+            ))}
           </div>
+        </section>
 
-          <div className="rounded-3xl border border-purple-400/25 bg-black/40 p-5 shadow-2xl">
-            <div className="mb-4 flex items-center justify-between text-sm text-gray-400">
-              <span>Live Preview</span>
-              <span>1080 × 1080 PNG</span>
-            </div>
-
-            <canvas
-              ref={canvasRef}
-              className="w-full rounded-3xl bg-black border border-white/10"
-            />
-          </div>
-        </div>
       </div>
     </main>
   );
