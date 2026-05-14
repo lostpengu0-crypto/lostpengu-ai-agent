@@ -1,65 +1,66 @@
 'use client';
 
-import { useState } from 'react';
-
-const examples = [
-  {
-    title: 'Cyberpunk Pengu',
-    prompt: 'LostPengu, a cute penguin wearing a purple scarf, standing in a neon cyberpunk city, Solana vibes, cinematic lighting, ultra detailed, viral meme style'
-  },
-  {
-    title: 'Rich Pengu',
-    prompt: 'LostPengu wearing a purple scarf, sitting like a rich crypto boss near a luxury pool, Solana colors, funny but premium meme style'
-  },
-  {
-    title: 'Hacker Pengu',
-    prompt: 'LostPengu coding on multiple screens, purple scarf, dark room, matrix code background, self-coding AI penguin on Solana'
-  },
-  {
-    title: 'Space Pengu',
-    prompt: 'LostPengu astronaut on Mars, purple scarf floating, Solana logo vibes, cinematic space meme, futuristic colony'
-  },
-  {
-    title: 'CEO Pengu',
-    prompt: 'LostPengu as a powerful CEO penguin, purple scarf, modern office, laptop open, building a Web3 empire'
-  },
-  {
-    title: 'Army Pengu',
-    prompt: 'LostPengu leading a penguin army, purple scarves, icy battlefield, heroic cinematic meme, community power'
-  },
-  {
-    title: 'Trader Pengu',
-    prompt: 'LostPengu trading Solana charts, purple scarf, glowing crypto screens, focused expression, viral trading meme'
-  },
-  {
-    title: 'Pengu Family',
-    prompt: 'LostPengu with a global penguin family, purple scarves, world map background, warm community feeling'
-  },
-  {
-    title: 'Ice Kingdom',
-    prompt: 'LostPengu king of an ice kingdom, purple scarf, glowing throne, cinematic fantasy meme style'
-  },
-  {
-    title: 'Quiet Builder',
-    prompt: 'LostPengu working silently at night, purple scarf, laptop, soft neon light, move in silence, build in public'
-  }
-];
+import { useEffect, useRef, useState } from 'react';
 
 export default function MemeGenerator() {
-  const [idea, setIdea] = useState('');
-  const [finalPrompt, setFinalPrompt] = useState('');
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  const createPrompt = () => {
-    if (!idea.trim()) return;
+  const [topText, setTopText] = useState('WHEN YOU BUY THE DIP');
+  const [bottomText, setBottomText] = useState('BUT IT KEEPS DIPPING');
 
-    setFinalPrompt(
-      `LostPengu, a cute but powerful penguin wearing a purple scarf, ${idea.trim()}, Solana vibes, cinematic lighting, high quality, viral meme style, clean composition, ultra detailed, Web3 community energy`
-    );
+  useEffect(() => {
+    generateMeme();
+  }, [topText, bottomText]);
+
+  const generateMeme = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const img = new Image();
+    img.src = '/pengu.jpg';
+
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      ctx.drawImage(img, 0, 0);
+
+      ctx.font = 'bold 48px Arial';
+      ctx.fillStyle = 'white';
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 5;
+      ctx.textAlign = 'center';
+
+      // Top Text
+      ctx.strokeText(topText.toUpperCase(), canvas.width / 2, 70);
+      ctx.fillText(topText.toUpperCase(), canvas.width / 2, 70);
+
+      // Bottom Text
+      ctx.strokeText(
+        bottomText.toUpperCase(),
+        canvas.width / 2,
+        canvas.height - 40
+      );
+
+      ctx.fillText(
+        bottomText.toUpperCase(),
+        canvas.width / 2,
+        canvas.height - 40
+      );
+    };
   };
 
-  const copyPrompt = async (text: string) => {
-    await navigator.clipboard.writeText(text);
-    alert('Prompt copied!');
+  const downloadMeme = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const link = document.createElement('a');
+    link.download = 'lostpengu-meme.png';
+    link.href = canvas.toDataURL();
+    link.click();
   };
 
   return (
@@ -70,97 +71,122 @@ export default function MemeGenerator() {
           ← Back to Home
         </a>
 
+        {/* HERO */}
         <section className="text-center mt-10 mb-12">
           <h1 className="text-5xl lg:text-7xl font-black tracking-tighter">
-            LOST<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400">PENGU</span>
+            LOST
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400">
+              PENGU
+            </span>
           </h1>
 
           <p className="text-3xl text-cyan-400 mt-3">
-            PROMPT GENERATOR
+            MEME STUDIO
           </p>
 
           <p className="text-gray-300 max-w-2xl mx-auto mt-6 text-lg">
-            Create powerful LostPengu image prompts for free. Copy your prompt and use it in Grok, ChatGPT, Bing Image Creator, Ideogram or any AI image tool.
+            Create viral LostPengu memes in seconds.
           </p>
         </section>
 
-        <section className="bg-white/5 border border-cyan-400/20 rounded-3xl p-6 lg:p-8 mb-12 shadow-2xl">
-          <label className="block text-cyan-300 mb-3 text-sm tracking-widest">
-            WRITE YOUR IDEA
-          </label>
+        {/* GENERATOR */}
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
 
-          <textarea
-            value={idea}
-            onChange={(e) => setIdea(e.target.value)}
-            placeholder="Example: driving a cyber truck, building a colony, trading Solana, walking in a neon city..."
-            className="w-full h-36 bg-black/50 border border-white/20 rounded-2xl p-5 text-white focus:outline-none focus:border-cyan-400 resize-none"
-          />
+          {/* LEFT PANEL */}
+          <div className="bg-white/5 border border-cyan-400/20 rounded-3xl p-6 shadow-2xl">
 
-          <button
-            onClick={createPrompt}
-            className="mt-5 w-full py-5 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-2xl text-xl font-bold hover:scale-[1.02] transition-all"
-          >
-            Create LostPengu Prompt
-          </button>
+            <label className="block text-cyan-300 mb-3 text-sm tracking-widest">
+              TOP TEXT
+            </label>
 
-          {finalPrompt && (
-            <div className="mt-6 bg-black/50 border border-purple-400/30 rounded-2xl p-5">
-              <p className="text-cyan-300 text-sm mb-3 tracking-widest">
-                YOUR PROMPT
-              </p>
+            <input
+              value={topText}
+              onChange={(e) => setTopText(e.target.value)}
+              className="w-full bg-black/50 border border-white/20 rounded-2xl p-4 mb-6 text-white focus:outline-none focus:border-cyan-400"
+            />
 
-              <p className="text-gray-200 leading-relaxed">
-                {finalPrompt}
-              </p>
+            <label className="block text-cyan-300 mb-3 text-sm tracking-widest">
+              BOTTOM TEXT
+            </label>
 
-              <button
-                onClick={() => copyPrompt(finalPrompt)}
-                className="mt-5 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-full font-bold"
-              >
-                Copy Prompt
-              </button>
-            </div>
-          )}
-        </section>
+            <input
+              value={bottomText}
+              onChange={(e) => setBottomText(e.target.value)}
+              className="w-full bg-black/50 border border-white/20 rounded-2xl p-4 mb-8 text-white focus:outline-none focus:border-cyan-400"
+            />
 
-        <section>
-          <h2 className="text-3xl font-bold mb-6">
-            Example LostPengu Prompts
-          </h2>
+            <button
+              onClick={downloadMeme}
+              className="w-full py-5 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-2xl text-xl font-bold hover:scale-[1.02] transition-all"
+            >
+              Download Meme
+            </button>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {examples.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white/5 border border-white/10 rounded-3xl p-5 hover:border-cyan-400/40 transition-all"
-              >
-                <div className="h-36 rounded-2xl bg-gradient-to-br from-purple-600/30 via-cyan-500/20 to-black border border-white/10 flex items-center justify-center text-5xl mb-5">
-                  🐧
-                </div>
+            {/* EXAMPLES */}
+            <div className="mt-10">
+              <h2 className="text-2xl font-bold mb-5">
+                Meme Ideas
+              </h2>
 
-                <h3 className="text-xl font-bold text-cyan-300 mb-3">
-                  {item.title}
-                </h3>
-
-                <p className="text-gray-300 text-sm leading-relaxed min-h-[120px]">
-                  {item.prompt}
-                </p>
+              <div className="space-y-3">
 
                 <button
                   onClick={() => {
-                    setIdea(item.title);
-                    setFinalPrompt(item.prompt);
-                    copyPrompt(item.prompt);
+                    setTopText('WHEN THE COMMUNITY IS REAL');
+                    setBottomText('AND NOT FULL OF BOTS');
                   }}
-                  className="mt-5 w-full py-3 rounded-full bg-white/10 hover:bg-white/20 transition-all"
+                  className="w-full text-left bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 transition-all"
                 >
-                  Copy This Prompt
+                  Real Community
                 </button>
-              </div>
-            ))}
-          </div>
-        </section>
 
+                <button
+                  onClick={() => {
+                    setTopText('159 COMMITS LATER');
+                    setBottomText('WE ARE STILL BUILDING');
+                  }}
+                  className="w-full text-left bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 transition-all"
+                >
+                  Build In Public
+                </button>
+
+                <button
+                  onClick={() => {
+                    setTopText('WHEN YOU BUY LOSTPENGU EARLY');
+                    setBottomText('AND EVERYONE CALLS YOU CRAZY');
+                  }}
+                  className="w-full text-left bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 transition-all"
+                >
+                  Early Holder
+                </button>
+
+                <button
+                  onClick={() => {
+                    setTopText('MOVE IN SILENCE');
+                    setBottomText('BUILD IN PUBLIC');
+                  }}
+                  className="w-full text-left bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 transition-all"
+                >
+                  Silent Builder
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT PANEL */}
+          <div className="flex justify-center">
+            <div className="relative">
+
+              <div className="absolute -inset-10 bg-gradient-to-br from-purple-500 via-cyan-400 to-pink-500 rounded-full opacity-30 blur-[100px]"></div>
+
+              <canvas
+                ref={canvasRef}
+                className="relative z-10 rounded-3xl border border-cyan-400/30 shadow-2xl max-w-full"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
