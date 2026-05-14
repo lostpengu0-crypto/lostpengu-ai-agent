@@ -1,13 +1,40 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [commitCount, setCommitCount] = useState<number | null>(null);
+
   const [messages, setMessages] = useState([
     { role: 'pengu', content: "Hey! I'm LostPengu, the first self-coding penguin on Solana. How can I help you today? 🐧" }
   ]);
   const [input, setInput] = useState('');
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/lostpengu0-crypto/lostpengu-ai-agent/commits?per_page=1')
+      .then((res) => {
+        const linkHeader = res.headers.get('link');
+
+        if (linkHeader) {
+          const match = linkHeader.match(/&page=(\d+)>; rel="last"/);
+          if (match && match[1]) {
+            setCommitCount(Number(match[1]));
+            return null;
+          }
+        }
+
+        return res.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setCommitCount(data.length);
+        }
+      })
+      .catch(() => {
+        setCommitCount(null);
+      });
+  }, []);
 
   const sendMessage = () => {
     if (!input.trim()) return;
@@ -84,6 +111,21 @@ export default function Home() {
             The first self-coding penguin on Solana.<br />
             Building the colony, one line at a time.
           </p>
+
+          {/* LIVE COMMIT COUNTER */}
+          <div className="inline-block px-6 py-4 rounded-2xl border border-cyan-400/30 bg-cyan-400/5 backdrop-blur-md">
+            <p className="text-cyan-300 text-sm tracking-widest mb-1">
+              LIVE COMMITS
+            </p>
+
+            <p className="text-3xl font-bold text-white">
+              {commitCount !== null ? `${commitCount}+` : 'Loading...'}
+            </p>
+
+            <p className="text-gray-400 text-sm">
+              Autonomous Updates
+            </p>
+          </div>
 
           {/* SOCIAL ICONS */}
           <div className="flex items-center gap-6">
