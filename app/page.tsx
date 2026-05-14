@@ -85,6 +85,50 @@ export default function Home() {
             Building the colony, one line at a time.
           </p>
 
+          {/* SOCIAL ICONS */}
+          <div className="flex items-center gap-6">
+
+            <a
+              href="https://x.com/LostPengu0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-all duration-300"
+            >
+              <img
+                src="https://cdn.simpleicons.org/x/ffffff"
+                alt="X"
+                className="w-11 h-11"
+              />
+            </a>
+
+            <a
+              href="https://t.me/LostPengu0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-all duration-300"
+            >
+              <img
+                src="https://cdn.simpleicons.org/telegram/26A5E4"
+                alt="Telegram"
+                className="w-11 h-11"
+              />
+            </a>
+
+            <a
+              href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-all duration-300"
+            >
+              <img
+                src="https://cdn.simpleicons.org/github/ffffff"
+                alt="GitHub"
+                className="w-11 h-11"
+              />
+            </a>
+
+          </div>
+
           <div className="space-y-4">
             <a href="/meme-generator" className="block w-full py-6 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl text-center text-2xl font-semibold hover:scale-105 transition-all">
               Create Memes with Pengu
@@ -134,7 +178,9 @@ export default function Home() {
               placeholder="Ask me anything..."
               className="flex-1 bg-zinc-900 border border-white/20 rounded-full px-5 py-3 focus:outline-none focus:border-cyan-400"
             />
-            <button onClick={sendMessage} className="bg-cyan-500 hover:bg-cyan-600 px-6 rounded-full font-medium">Send</button>
+            <button onClick={sendMessage} className="bg-cyan-500 hover:bg-cyan-600 px-6 rounded-full font-medium">
+              Send
+            </button>
           </div>
         </div>
       )}
