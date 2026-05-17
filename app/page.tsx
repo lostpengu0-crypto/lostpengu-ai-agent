@@ -20,14 +20,14 @@ export default function LostPengu() {
     { name: "AntarcticAce", score: 1380 },
   ]);
 
-  // MATRIX RAIN - Daha belirgin ve neon
+  // MATRIX RAIN
   useEffect(() => {
     const canvas = document.createElement('canvas');
     canvas.style.position = 'fixed';
     canvas.style.top = '0';
     canvas.style.left = '0';
     canvas.style.zIndex = '-1';
-    canvas.style.opacity = '0.75'; // Daha görünür
+    canvas.style.opacity = '0.65';
     canvas.style.pointerEvents = 'none';
     document.body.appendChild(canvas);
 
@@ -47,14 +47,14 @@ export default function LostPengu() {
     window.addEventListener('resize', resize);
 
     const chars = '01🐧LOSTPENGU AI SELF-CODING PLAY RESCUE SOLANA'.split('');
-    const fontSize = 18;
+    const fontSize = 17;
     const columns = Math.floor(width / fontSize);
     const drops = new Array(columns).fill(1);
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
       ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = '#c026d3'; // Neon Mor
+      ctx.fillStyle = '#c026d3';
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
@@ -66,7 +66,7 @@ export default function LostPengu() {
       }
     };
 
-    const interval = setInterval(draw, 30);
+    const interval = setInterval(draw, 32);
     return () => clearInterval(interval);
   }, []);
 
@@ -85,11 +85,11 @@ export default function LostPengu() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Daha Canlı Aurora */}
-      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#a855f7_30%,#c026d3_55%,#000000_90%)] opacity-75 pointer-events-none animate-pulse"></div>
-      <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ec4899_0%,transparent_65%)] opacity-60 pointer-events-none animate-[pulse_8s_ease-in-out_infinite]"></div>
+      {/* Aurora */}
+      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#a855f7_30%,#c026d3_55%,#000000_90%)] opacity-70 pointer-events-none animate-pulse"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ec4899_0%,transparent_65%)] opacity-55 pointer-events-none animate-[pulse_10s_ease-in-out_infinite]"></div>
 
-      {/* Navbar - Daha Canlı */}
+      {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-purple-500/60">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -106,7 +106,7 @@ export default function LostPengu() {
             <a href="#token" className="hover:text-purple-400 transition">Token</a>
           </div>
 
-          <a href="#token" className="bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 px-6 py-3 rounded-full font-medium hover:scale-105 transition shadow-lg shadow-purple-500/50">
+          <a href="#token" className="bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 px-6 py-3 rounded-full font-medium hover:scale-105 transition">
             Buy $LOSTPENGU
           </a>
         </div>
@@ -139,7 +139,7 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* PLAY SECTION */}
+      {/* PLAY SECTION - İSTEDİĞİN OYUN */}
       <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">Just For Fun</h2>
@@ -158,7 +158,13 @@ export default function LostPengu() {
               <button onClick={() => setShowGame(false)} className="mb-6 text-purple-400 hover:text-white">
                 ← Back to Games
               </button>
-              <PenguinJumpGame score={score} setScore={setScore} setShowSaveForm={setShowSaveForm} />
+              <iframe 
+                src="https://html5games.com/game/penguin-jump" 
+                width="100%" 
+                height="700" 
+                className="rounded-3xl border border-purple-500/30 shadow-2xl"
+                allowFullScreen
+              />
             </div>
           )}
 
@@ -203,7 +209,7 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* SOCIAL MEDIA BUTTONS */}
+      {/* SOCIAL BUTTONS */}
       <footer className="bg-black py-16 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-6">
