@@ -57,7 +57,7 @@ export default function LostPengu() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Aurora */}
+      {/* Aurora Background */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_25%,#8b00ff_50%,#000000_100%)] opacity-50 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_60%)] opacity-40 pointer-events-none animate-[pulse_12s_ease-in-out_infinite]"></div>
 
@@ -84,7 +84,7 @@ export default function LostPengu() {
         </div>
       </nav>
 
-      {/* HERO */}
+      {/* HERO - Eski düzen korunuyor */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <img src="/hero.jpg" alt="LostPengu" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black/90"></div>
@@ -124,23 +124,23 @@ export default function LostPengu() {
                 className="bg-zinc-900 rounded-3xl p-12 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400"
               >
                 <div className="text-8xl mb-6">🐧</div>
-                <h3 className="text-3xl font-bold mb-3">Penguin Jump</h3>
-                <p className="text-gray-400">Jump as high as you can!</p>
+                <h3 className="text-3xl font-bold mb-3">Penguin Skip</h3>
+                <p className="text-gray-400">Jump from ice to ice</p>
               </div>
             </div>
           ) : (
             <div className="max-w-4xl mx-auto">
               <button 
                 onClick={() => setShowGame(false)} 
-                className="mb-8 text-cyan-400 hover:text-white"
+                className="mb-8 text-cyan-400 hover:text-white text-lg"
               >
                 ← Back to Games
               </button>
               <iframe 
-                src="https://html5games.com/game/penguin-jump" 
+                src="https://html5games.com/Game/Penguin-Skip/59da2136-2ff3-43fc-b60b-f3d148872c19" 
                 width="100%" 
-                height="700" 
-                className="rounded-3xl border border-cyan-500/30"
+                height="680" 
+                className="rounded-3xl border border-cyan-500/30 shadow-2xl"
                 allowFullScreen
               />
             </div>
