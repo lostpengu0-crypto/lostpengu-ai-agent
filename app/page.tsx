@@ -2,12 +2,23 @@
 
 import React, { useEffect, useState } from 'react';
 
+interface LeaderboardEntry {
+  name: string;
+  score: number;
+}
+
+interface GameProps {
+  score: number;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
+  setShowSaveForm: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function LostPengu() {
   const [showGame, setShowGame] = useState(false);
   const [score, setScore] = useState(0);
   const [playerName, setPlayerName] = useState('');
   const [showSaveForm, setShowSaveForm] = useState(false);
-  const [leaderboard, setLeaderboard] = useState([
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([
     { name: "PenguKing", score: 2450 },
     { name: "IceMaster", score: 2180 },
     { name: "FlipLord", score: 1970 },
@@ -72,7 +83,7 @@ export default function LostPengu() {
 
   const saveScore = () => {
     if (!playerName.trim()) return;
-    const newEntry = { name: playerName.trim(), score: score };
+    const newEntry: LeaderboardEntry = { name: playerName.trim(), score: score };
     const updated = [...leaderboard, newEntry]
       .sort((a, b) => b.score - a.score)
       .slice(0, 20);
@@ -203,25 +214,21 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* SOCIAL MEDIA BUTTONS - EN ALTA */}
+      {/* SOCIAL BUTTONS - EN ALTA */}
       <footer className="bg-black py-16 border-t border-cyan-500/30">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-6">
             <a href="https://x.com/lostpengusup" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
-              <span className="text-3xl">𝕏</span>
-              <span>X</span>
+              <span className="text-3xl">𝕏</span><span>X</span>
             </a>
             <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
-              <span className="text-3xl">📢</span>
-              <span>Telegram</span>
+              <span className="text-3xl">📢</span><span>Telegram</span>
             </a>
             <a href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
-              <span className="text-3xl">🐙</span>
-              <span>GitHub</span>
+              <span className="text-3xl">🐙</span><span>GitHub</span>
             </a>
             <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
-              <span className="text-3xl">🔴</span>
-              <span>Reddit</span>
+              <span className="text-3xl">🔴</span><span>Reddit</span>
             </a>
           </div>
 
@@ -262,7 +269,7 @@ export default function LostPengu() {
 }
 
 // Penguin Jump Game
-function PenguinJumpGame({ score, setScore, setShowSaveForm }) {
+function PenguinJumpGame({ score, setScore, setShowSaveForm }: GameProps) {
   const [isJumping, setIsJumping] = useState(false);
 
   const jump = () => {
