@@ -57,7 +57,7 @@ export default function LostPengu() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Aurora */}
+      {/* Aurora Background */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_25%,#8b00ff_50%,#000000_100%)] opacity-50 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_60%)] opacity-40 pointer-events-none animate-[pulse_12s_ease-in-out_infinite]"></div>
 
@@ -111,29 +111,40 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* PLAY SECTION */}
+      {/* PLAY SECTION - Penguin Jump Embed */}
       <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">Mini Games</h2>
-          <p className="text-xl text-gray-400 mb-16">Telegram-style mini games • Pure fun</p>
+          <p className="text-xl text-gray-400 mb-12">Play directly on the website</p>
 
           {!showGame ? (
-            <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div className="max-w-md mx-auto">
               <div 
                 onClick={() => setShowGame(true)} 
-                className="bg-zinc-900 rounded-3xl p-10 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400"
+                className="bg-zinc-900 rounded-3xl p-12 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400"
               >
-                <div className="text-7xl mb-6">🏃‍♂️</div>
-                <h3 className="text-2xl font-bold mb-3">Penguin Dash</h3>
-                <p className="text-gray-400">Endless Runner</p>
+                <div className="text-8xl mb-6">🐧</div>
+                <h3 className="text-3xl font-bold mb-3">Penguin Jump</h3>
+                <p className="text-gray-400">Jump as high as you can!</p>
               </div>
             </div>
           ) : (
-            <div>
-              <button onClick={() => setShowGame(false)} className="mb-6 text-cyan-400 hover:text-white">
+            <div className="max-w-4xl mx-auto">
+              <button 
+                onClick={() => setShowGame(false)} 
+                className="mb-6 text-cyan-400 hover:text-white flex items-center gap-2 mx-auto text-lg"
+              >
                 ← Back to Games
               </button>
-              <PenguinDashGame />
+              
+              {/* OYUN EMBED */}
+              <iframe 
+                src="https://html5games.com/game/penguin-jump" 
+                width="100%" 
+                height="680" 
+                className="rounded-3xl border border-cyan-500/30 shadow-2xl"
+                allowFullScreen
+              />
             </div>
           )}
         </div>
@@ -143,76 +154,13 @@ export default function LostPengu() {
       <section id="story" className="py-24 border-t border-purple-500/30">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-5xl font-bold text-center mb-10">LostPengu&apos;s Story</h2>
-          <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-8">
-            <p>LostPengu is not just a memecoin. We are building a new system.</p>
-            <p>We created the world&apos;s first self-coding AI Agent that can write and improve its own code.</p>
-            <p>Our goal is to create a sustainable ecosystem where people have fun and support a long-term project.</p>
-            <p>A portion of the revenue is automatically sent to penguin protection foundations in Antarctica.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* TOKEN */}
-      <section id="token" className="py-24 bg-zinc-950 border-t border-purple-500/30">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-6">$LOSTPENGU</h2>
-          <p className="text-2xl text-gray-300 mb-12">The heart of the self-coding AI ecosystem</p>
-          <div className="bg-zinc-950 border border-cyan-500/40 rounded-3xl p-12 max-w-lg mx-auto">
-            <p className="text-cyan-400 text-sm mb-3">LAUNCHING SOON</p>
-            <div className="text-5xl font-mono mb-8">Pump.fun</div>
-            <a href="#" className="block bg-gradient-to-r from-cyan-400 to-purple-500 text-black py-6 rounded-2xl text-2xl font-bold hover:scale-105 transition">
-              Buy $LOSTPENGU →
-            </a>
-          </div>
+          <p className="text-lg text-gray-300 text-center">The world&apos;s first self-coding AI Penguin Agent.</p>
         </div>
       </section>
 
       <footer className="bg-black py-12 text-center text-gray-500">
         © 2026 $LOSTPENGU • First Self-Coding AI Penguin Agent
       </footer>
-    </div>
-  );
-}
-
-// Penguin Dash - Endless Runner Style Mini Game
-function PenguinDashGame() {
-  const [score, setScore] = useState(0);
-  const [isJumping, setIsJumping] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
-
-  const jump = () => {
-    if (isJumping || gameOver) return;
-    setIsJumping(true);
-    setTimeout(() => setIsJumping(false), 800);
-    setScore(prev => prev + 5);
-  };
-
-  return (
-    <div className="bg-zinc-900 rounded-3xl p-8 max-w-2xl mx-auto text-center">
-      <h3 className="text-3xl font-bold mb-6">🐧 Penguin Dash</h3>
-      
-      <div className="relative h-80 bg-gradient-to-b from-sky-900 to-slate-900 rounded-2xl overflow-hidden mb-8 border border-cyan-500/30">
-        <div className={`absolute bottom-12 left-12 text-8xl transition-all duration-300 ${isJumping ? '-translate-y-40' : ''}`}>
-          🐧
-        </div>
-        <div className="absolute bottom-8 right-20 text-6xl">🧊</div>
-        <div className="absolute bottom-8 right-60 text-6xl">❄️</div>
-      </div>
-
-      <p className="text-4xl mb-6">Score: <span className="text-cyan-400 font-bold">{score}</span></p>
-
-      <button 
-        onClick={jump}
-        className="bg-gradient-to-r from-cyan-500 to-purple-500 px-16 py-6 rounded-3xl text-2xl font-bold hover:scale-110 transition w-full"
-      >
-        JUMP (Space or Click)
-      </button>
-
-      <p className="text-gray-400 mt-6">Press SPACE or Click to jump over obstacles</p>
-
-      {gameOver && (
-        <p className="text-red-400 mt-4">Game Over! Final Score: {score}</p>
-      )}
     </div>
   );
 }
