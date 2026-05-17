@@ -2,23 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 
-interface LeaderboardEntry {
-  name: string;
-  score: number;
-}
-
-interface GameProps {
-  score: number;
-  setScore: React.Dispatch<React.SetStateAction<number>>;
-  setShowSaveForm: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 export default function LostPengu() {
   const [showGame, setShowGame] = useState(false);
   const [score, setScore] = useState(0);
   const [playerName, setPlayerName] = useState('');
   const [showSaveForm, setShowSaveForm] = useState(false);
-  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([
+  const [leaderboard, setLeaderboard] = useState([
     { name: "PenguKing", score: 2450 },
     { name: "IceMaster", score: 2180 },
     { name: "FlipLord", score: 1970 },
@@ -83,7 +72,7 @@ export default function LostPengu() {
 
   const saveScore = () => {
     if (!playerName.trim()) return;
-    const newEntry: LeaderboardEntry = { name: playerName.trim(), score: score };
+    const newEntry = { name: playerName.trim(), score: score };
     const updated = [...leaderboard, newEntry]
       .sort((a, b) => b.score - a.score)
       .slice(0, 20);
@@ -96,7 +85,7 @@ export default function LostPengu() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Aurora */}
+      {/* Aurora Background */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_25%,#8b00ff_50%,#000000_100%)] opacity-50 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_60%)] opacity-40 pointer-events-none animate-[pulse_12s_ease-in-out_infinite]"></div>
 
@@ -214,7 +203,7 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* SOCIAL BUTTONS - EN ALTA */}
+      {/* SOCIAL MEDIA BUTTONS - EN ALTA */}
       <footer className="bg-black py-16 border-t border-cyan-500/30">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-6">
@@ -269,13 +258,13 @@ export default function LostPengu() {
 }
 
 // Penguin Jump Game
-function PenguinJumpGame({ score, setScore, setShowSaveForm }: GameProps) {
+function PenguinJumpGame({ score, setScore, setShowSaveForm }: any) {
   const [isJumping, setIsJumping] = useState(false);
 
   const jump = () => {
     if (isJumping) return;
     setIsJumping(true);
-    setScore(prev => prev + Math.floor(Math.random() * 8) + 5);
+    setScore((prev: number) => prev + Math.floor(Math.random() * 8) + 5);
     setTimeout(() => setIsJumping(false), 650);
   };
 
