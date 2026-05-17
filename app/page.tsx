@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 export default function LostPenguCharity() {
-  // Matrix Rain
+  // MATRIX RAIN - Kayan kod yağmuru (penguen temalı)
   useEffect(() => {
     const canvas = document.createElement('canvas');
     canvas.style.position = 'fixed';
@@ -29,7 +29,7 @@ export default function LostPenguCharity() {
     resize();
     window.addEventListener('resize', resize);
 
-    const chars = '01🐧LOSTPENGU PENGUIN AI AGENT RESCUE COLONY SOLANA'.split('');
+    const chars = '01🐧LOSTPENGU PENGUIN AI AGENT SELF-CODING AUTONOMOUS RESCUE COLONY SOLANA'.split('');
     const fontSize = 16;
     const columns = Math.floor(width / fontSize);
     const drops = new Array(columns).fill(1);
@@ -62,7 +62,7 @@ export default function LostPenguCharity() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Animated Aurora */}
+      {/* Animated Aurora Background */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_30%,#8b00ff_60%,#000000_90%)] opacity-40 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_70%)] opacity-30 pointer-events-none animate-[pulse_8s_ease-in-out_infinite]"></div>
 
@@ -73,19 +73,19 @@ export default function LostPenguCharity() {
             <div className="text-4xl drop-shadow-[0_0_15px_#22f0ff]">🐧</div>
             <div>
               <h1 className="text-2xl font-bold tracking-tighter">LOSTPENGU</h1>
-              <p className="text-cyan-400 text-sm -mt-1">CHARITY AI AGENT</p>
+              <p className="text-cyan-400 text-sm -mt-1">SELF-CODING AI AGENT</p>
             </div>
           </div>
           
           <div className="hidden md:flex items-center gap-8 text-sm">
             <a href="#story" className="hover:text-cyan-400 transition">Story</a>
             <a href="#impact" className="hover:text-cyan-400 transition">Impact</a>
+            <a href="#games" className="hover:text-cyan-400 transition">Play & Earn</a>
             <a href="#donate" className="hover:text-cyan-400 transition">Donate</a>
-            <a href="#howto" className="hover:text-cyan-400 transition">How to Support</a>
           </div>
 
           <button className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 px-6 py-3 rounded-full font-medium hover:scale-105 transition shadow-lg shadow-purple-500/50">
-            Support Penguins
+            Support the Colony
           </button>
         </div>
       </nav>
@@ -94,25 +94,21 @@ export default function LostPenguCharity() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <img 
           src="/hero.jpg" 
-          alt="Penguin Colony with Aurora" 
+          alt="LostPengu AI Agent" 
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90"></div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-black/60 border border-cyan-400/50 rounded-full px-5 py-1.5 text-sm mb-6">
-            🐧 SOLANA CHARITY PROJECT
-          </div>
-          
           <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
-            Save The Penguins.<br />
+            The First Self-Coding<br />
             <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Support The Colony.
+              Penguin AI Agent
             </span>
           </h1>
           
-          <p className="text-xl text-gray-100 max-w-3xl mx-auto">
-            LostPengu AI Agent is the first autonomous charity project fighting for lonely and needy penguins.
+          <p className="text-xl text-gray-100 max-w-2xl mx-auto">
+            We don&apos;t just build charity — we code autonomous AI agents that run forever and automatically donate every earned revenue to real penguin rescue organizations in Antarctica.
           </p>
         </div>
       </section>
@@ -128,47 +124,72 @@ export default function LostPenguCharity() {
         </div>
       </div>
 
-      {/* Story Section */}
+      {/* STORY SECTION - Uzun hikaye */}
       <section id="story" className="py-20 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-5xl font-bold text-center mb-4">LostPengu&apos;s Story</h2>
-          <p className="text-center text-gray-400 mb-16">From rescue to real impact</p>
+          <p className="text-center text-gray-400 mb-16">The world&apos;s first self-coding penguin AI agent</p>
 
-          <div className="space-y-24">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-cyan-400">CHAPTER 1</h3>
-                <h4 className="text-4xl font-bold mt-3">Rescue</h4>
-                <p className="text-gray-300 mt-6">Penguins struggling in the harsh conditions of Antarctica were noticed by LostPengu AI Agent and their rescue journey began.</p>
-              </div>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-purple-500/30">
-                <img src="/pengu.jpg" alt="Penguin Rescue" className="w-full h-full object-cover hover:scale-105 transition duration-700" />
-              </div>
+          <div className="prose prose-invert max-w-none text-gray-300 space-y-8 text-lg leading-relaxed">
+            <p>
+              LostPengu was born when a group of developers decided to create something that had never existed before: 
+              <strong>an AI agent that can code itself, run itself, and sustain itself</strong>.
+            </p>
+            
+            <p>
+              While most crypto projects chase hype and quick profits, we built an autonomous system. 
+              LostPengu AI Agent continuously writes, improves, and deploys new code. It creates new tools, 
+              new mini-games, new donation automations — all by itself.
+            </p>
+
+            <p>
+              Every revenue the agent generates — from token sales, game plays, donations, or future AI services — 
+              is <strong>automatically sent</strong> to verified penguin rescue organizations in Antarctica. 
+              No middleman. No manual transfer. Pure code-to-charity pipeline.
+            </p>
+
+            <p>
+              Our mission is not to make money. Our mission is to make the system sustainable forever. 
+              The more people play, hold, and support, the more penguins get rescued — automatically.
+            </p>
+
+            <div className="bg-zinc-900 border border-cyan-400/30 rounded-3xl p-8 my-12">
+              <p className="italic text-center text-cyan-300">
+                &ldquo;We are not building a charity project.<br />
+                We are building the first living, self-improving AI that exists only to save penguins.&rdquo;
+              </p>
             </div>
+
+            <p className="text-center text-purple-400">
+              This is LostPengu — the first self-coding penguin AI agent in the world.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black border-t border-cyan-500/30 py-16">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
-            <a href="https://x.com/lostpengusup" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
-              <span className="text-3xl">𝕏</span><span>X</span>
-            </a>
-            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
-              <span className="text-3xl">📢</span><span>Telegram</span>
-            </a>
-            <a href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
-              <span className="text-3xl">🐙</span><span>GitHub</span>
-            </a>
-            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
-              <span className="text-3xl">🔴</span><span>Reddit</span>
-            </a>
+      {/* IMPACT SECTION */}
+      <section id="impact" className="py-20 bg-zinc-950 border-t border-purple-500/30">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-12">Why LostPengu Exists</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: "🧬", title: "Self-Coding AI", desc: "LostPengu writes and improves its own code 24/7" },
+              { icon: "⚡", title: "Fully Autonomous", desc: "No team intervention needed after launch" },
+              { icon: "🌍", title: "Automatic Donations", desc: "Every revenue goes straight to Antarctic penguin rescues" },
+              { icon: "♾️", title: "Sustainable Forever", desc: "Built to run and donate without any profit motive" }
+            ].map((item, i) => (
+              <div key={i} className="bg-black/70 border border-cyan-500/30 rounded-3xl p-8 hover:border-cyan-400 transition">
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-2xl font-semibold mb-3">{item.title}</h3>
+                <p className="text-gray-400">{item.desc}</p>
+              </div>
+            ))}
           </div>
-          <p className="text-gray-500">© 2026 LostPengu Charity AI Agent • All Rights Reserved</p>
         </div>
-      </footer>
-    </div>
-  );
-}
+      </section>
+
+      {/* GAMES SECTION - Yeni eklenen bölüm */}
+      <section id="games" className="py-20 border-t border-purple-500/30">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-5xl font-bold text-center mb-4">Play & Earn for Penguins</h2>
+          <p className="text-center text-gray-400
