@@ -1,336 +1,47 @@
-'use client';
+Create a cyberpunk AI terminal website called “LostPengu AI Terminal”.
 
-import React, { useEffect, useState } from 'react';
+Style:
+Full black hacker terminal screen, neon green and purple text, animated code rain, glowing borders, cyberpunk Solana AI vibe. It should feel like a live AI blockchain scanner.
 
-export default function LostPengu() {
-  const [showGame, setShowGame] = useState(false);
-  const [score, setScore] = useState(0);
-  const [playerName, setPlayerName] = useState('');
-  const [showSaveForm, setShowSaveForm] = useState(false);
-  const [leaderboard, setLeaderboard] = useState([
-    { name: "PenguKing", score: 2450 },
-    { name: "IceMaster", score: 2180 },
-    { name: "FlipLord", score: 1970 },
-    { name: "SnowDash", score: 1840 },
-    { name: "ArcticPro", score: 1720 },
-    { name: "ChillPengu", score: 1650 },
-    { name: "FrostByte", score: 1580 },
-    { name: "GlacierGod", score: 1490 },
-    { name: "PolarFlip", score: 1420 },
-    { name: "AntarcticAce", score: 1380 },
-  ]);
+Main title:
+LOSTPENGU AI TERMINAL
 
-  // MATRIX RAIN
-  useEffect(() => {
-    const canvas = document.createElement('canvas');
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.zIndex = '-1';
-    canvas.style.opacity = '0.55';
-    canvas.style.pointerEvents = 'none';
-    document.body.appendChild(canvas);
+Subtitle:
+Solana wallet and token intelligence system
 
-    const ctx = canvas.getContext('2d', { alpha: true });
-    if (!ctx) return;
+Main feature:
+A large terminal input where users can paste a Solana wallet address or token contract address.
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
+When the user presses Enter or clicks “Scan”, show an animated scanning sequence:
+- Initializing LostPengu AI...
+- Connecting to Solana network...
+- Reading wallet behavior...
+- Detecting FOMO damage...
+- Calculating Pengu Score...
+- Generating AI verdict...
 
-    const resize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    };
-    resize();
-    window.addEventListener('resize', resize);
+After loading, display a funny AI generated style report with randomized values:
+- Wallet Age
+- Degenerate Level
+- FOMO Risk
+- Rug Survival Rate
+- Psychological Stability
+- Pengu Score
+- Final AI Verdict
 
-    const chars = '01🐧LOSTPENGU AI SELF-CODING PLAY RESCUE SOLANA'.split('');
-    const fontSize = 17;
-    const columns = Math.floor(width / fontSize);
-    const drops = new Array(columns).fill(1);
+The tone should be funny, sarcastic, smart, crypto native, and slightly savage but not offensive.
 
-    const draw = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-      ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = '#a855f7';
-      ctx.font = `${fontSize}px monospace`;
+Example verdict:
+“This wallet did not trade. It emotionally donated liquidity to strangers. LostPengu AI recommends touching snow.”
 
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+Add buttons:
+- Scan Again
+- Copy Result
+- Share on X
 
-        if (drops[i] * fontSize > height && Math.random() > 0.96) drops[i] = 0;
-        drops[i]++;
-      }
-    };
+Add footer:
+Built by LostPengu AI
+Not financial advice. Entertainment based AI terminal demo.
 
-    const interval = setInterval(draw, 35);
-    return () => clearInterval(interval);
-  }, []);
-
-  const saveScore = () => {
-    if (!playerName.trim()) return;
-    const newEntry = { name: playerName.trim(), score: score };
-    const updated = [...leaderboard, newEntry]
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 20);
-    
-    setLeaderboard(updated);
-    setShowSaveForm(false);
-    setPlayerName('');
-    alert(`Score saved!`);
-  };
-
-  return (
-    <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Aurora */}
-      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#6b21a8_40%,#000000_80%)] opacity-60 pointer-events-none"></div>
-
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-purple-500/40">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="text-4xl">🐧</div>
-            <div>
-              <h1 className="text-2xl font-bold tracking-tighter">$LOSTPENGU</h1>
-              <p className="text-purple-400 text-sm -mt-1">SELF-CODING AI AGENT</p>
-            </div>
-          </div>
-          
-          <div className="hidden md:flex items-center gap-8 text-sm">
-            <a href="#story" className="hover:text-purple-400 transition">Story</a>
-            <a href="#play" className="hover:text-purple-400 transition">Play</a>
-            <a href="#token" className="hover:text-purple-400 transition">Token</a>
-          </div>
-
-          <a href="#token" className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 rounded-full font-medium hover:scale-105 transition">
-            Buy $LOSTPENGU
-          </a>
-        </div>
-      </nav>
-
-      {/* HERO */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <img src="/hero.jpg" alt="LostPengu" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90"></div>
-
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
-            The First Self-Coding<br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              AI Penguin Agent
-            </span>
-          </h1>
-          <p className="text-2xl text-gray-100 max-w-3xl mx-auto mb-10">
-            The world&apos;s first AI agent that codes itself, creates fun, and helps protect penguins in Antarctica.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <a href="#token" className="bg-gradient-to-r from-purple-600 to-pink-600 px-10 py-5 rounded-3xl text-xl font-bold hover:scale-105 transition">
-              Buy $LOSTPENGU
-            </a>
-            <a href="#play" className="border-2 border-purple-400 px-10 py-5 rounded-3xl text-xl font-bold hover:bg-white/10 transition">
-              Play Mini Games
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* PLAY SECTION */}
-      <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-6">Just For Fun</h2>
-          <p className="text-xl text-gray-400 mb-12">Penguin Jump</p>
-
-          {!showGame ? (
-            <div className="max-w-md mx-auto">
-              <div onClick={() => setShowGame(true)} className="bg-zinc-900 rounded-3xl p-12 hover:scale-105 cursor-pointer transition border border-transparent hover:border-purple-400">
-                <div className="text-8xl mb-6">🐧</div>
-                <h3 className="text-3xl font-bold mb-3">Penguin Jump</h3>
-                <p className="text-gray-400">Jump as high as you can!</p>
-              </div>
-            </div>
-          ) : (
-            <div className="max-w-4xl mx-auto">
-              <button onClick={() => setShowGame(false)} className="mb-6 text-purple-400 hover:text-white">
-                ← Back to Games
-              </button>
-              <iframe 
-                src="https://www.crazygames.com/game/penguin-jump" 
-                width="100%" 
-                height="700" 
-                className="rounded-3xl border border-purple-500/30"
-                allowFullScreen
-              />
-            </div>
-          )}
-
-          {/* LEADERBOARD */}
-          <div className="mt-16">
-            <h3 className="text-3xl font-bold mb-6">🏆 Global Leaderboard</h3>
-            <div className="bg-zinc-900 rounded-3xl p-8 max-w-2xl mx-auto">
-              {leaderboard.map((entry, index) => (
-                <div key={index} className="flex justify-between items-center py-3 border-b border-gray-700 last:border-0">
-                  <div className="flex items-center gap-4">
-                    <span className="text-purple-400 font-mono w-8">{index + 1}</span>
-                    <span>{entry.name}</span>
-                  </div>
-                  <span className="font-bold text-purple-300">{entry.score}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* STORY - UZUN HALİ */}
-      <section id="story" className="py-24 border-t border-purple-500/30">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-5xl font-bold text-center mb-10">LostPengu&apos;s Story</h2>
-          
-          <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-8">
-            <p>
-              LostPengu is not just a memecoin. We are building a new system.
-            </p>
-            <p>
-              We created the world&apos;s first <strong>self-coding AI Agent</strong>. 
-              This agent can write and improve its own code, develop new features, and grow continuously.
-            </p>
-            <p>
-              Our goal is not temporary hype. We want to build a <strong>sustainable, long-term and community-driven ecosystem</strong>.
-            </p>
-            <p>
-              $LOSTPENGU is the heart of this ecosystem. People can have fun, be part of the community, and support a real project with long-term vision.
-            </p>
-            <p>
-              The games on the site are completely free and made purely for entertainment. Our aim is to give people joyful moments and keep the community active.
-            </p>
-            <p>
-              A portion of the system&apos;s revenue is <strong>automatically sent</strong> to penguin protection foundations in Antarctica. 
-              Pump.fun rewards and other income streams allow LostPengu AI Agent to create real-world impact in the background.
-            </p>
-
-            <div className="bg-gradient-to-br from-purple-900/70 to-cyan-900/70 border border-purple-500/30 rounded-3xl p-10 my-12 text-center">
-              <p className="italic text-2xl leading-relaxed text-purple-200">
-                Our vision is to offer people both entertainment and earning opportunities,<br />
-                while also contributing to the world by protecting penguins.
-              </p>
-            </div>
-
-            <p className="text-center text-xl text-purple-300">
-              This is just the beginning. LostPengu will continue to evolve, grow its community, and protect penguins — forever.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* TOKEN */}
-      <section id="token" className="py-24 border-t border-purple-500/30">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-6">$LOSTPENGU</h2>
-          <p className="text-2xl text-gray-300 mb-12">The heart of the self-coding AI ecosystem</p>
-          <div className="bg-zinc-950 border border-purple-500/40 rounded-3xl p-12 max-w-lg mx-auto">
-            <p className="text-purple-400 text-sm mb-3">LAUNCHING SOON</p>
-            <div className="text-5xl font-mono mb-8">Pump.fun</div>
-            <a href="#" className="block bg-gradient-to-r from-purple-500 to-pink-500 text-black py-6 rounded-2xl text-2xl font-bold hover:scale-105 transition">
-              Buy $LOSTPENGU →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* SOCIAL BUTTONS */}
-      <footer className="bg-black py-16 border-t border-purple-500/30">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-6">
-            <a href="https://x.com/lostpengu0" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-purple-500/30 hover:border-purple-400 transition">
-              <span className="text-3xl">𝕏</span><span>X</span>
-            </a>
-            <a href="https://t.me/LostPengu0" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-purple-500/30 hover:border-purple-400 transition">
-              <span className="text-3xl">📢</span><span>Telegram</span>
-            </a>
-            <a href="https://github.com/lostpengu0-crypto" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-purple-500/30 hover:border-purple-400 transition">
-              <span className="text-3xl">🐙</span><span>GitHub</span>
-            </a>
-            <a href="https://www.reddit.com/u/lostpengu01/s/piPat6VW8Z" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-purple-500/30 hover:border-purple-400 transition">
-              <span className="text-3xl">🔴</span><span>Reddit</span>
-            </a>
-          </div>
-
-          <p className="text-center text-gray-500 mt-10">
-            © 2026 $LOSTPENGU • First Self-Coding AI Penguin Agent
-          </p>
-        </div>
-      </footer>
-
-      {/* Save Score Modal */}
-      {showSaveForm && (
-        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-          <div className="bg-zinc-900 rounded-3xl p-10 max-w-md w-full mx-4">
-            <h3 className="text-3xl font-bold mb-6 text-center">Save Your Score</h3>
-            <p className="text-center mb-6">Final Score: <span className="text-purple-400 font-bold text-2xl">{score}</span></p>
-            
-            <input
-              type="text"
-              placeholder="Enter your name"
-              value={playerName}
-              onChange={(e) => setPlayerName(e.target.value)}
-              className="w-full bg-black border border-purple-500 rounded-2xl px-6 py-4 text-center text-xl mb-6 outline-none"
-            />
-            
-            <div className="flex gap-4">
-              <button onClick={() => setShowSaveForm(false)} className="flex-1 py-4 rounded-2xl border border-gray-600">
-                Cancel
-              </button>
-              <button onClick={saveScore} className="flex-1 py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 font-bold">
-                Save Score
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Penguin Jump Game
-function PenguinJumpGame({ score, setScore, setShowSaveForm }: any) {
-  const [isJumping, setIsJumping] = useState(false);
-
-  const jump = () => {
-    if (isJumping) return;
-    setIsJumping(true);
-    setScore((prev: number) => prev + Math.floor(Math.random() * 8) + 5);
-    setTimeout(() => setIsJumping(false), 650);
-  };
-
-  return (
-    <div className="bg-zinc-900 rounded-3xl p-12 text-center">
-      <h3 className="text-3xl font-bold mb-8">🐧 Penguin Jump</h3>
-      
-      <div className="relative h-80 bg-gradient-to-b from-sky-950 to-slate-900 rounded-2xl overflow-hidden mb-8 border border-purple-500/30 flex items-center justify-center">
-        <div className={`text-8xl transition-all duration-700 ${isJumping ? '-translate-y-52' : 'translate-y-0'}`}>
-          🐧
-        </div>
-      </div>
-
-      <p className="text-4xl mb-8">Score: <span className="text-purple-400 font-bold">{score}</span></p>
-
-      <button 
-        onClick={jump}
-        className="bg-gradient-to-r from-purple-500 to-pink-500 px-16 py-6 rounded-3xl text-2xl font-bold hover:scale-110 transition w-full"
-      >
-        JUMP
-      </button>
-
-      <button 
-        onClick={() => setShowSaveForm(true)}
-        className="mt-6 text-purple-400 hover:text-white underline"
-      >
-        Save My Score
-      </button>
-    </div>
-  );
-}
+Make it mobile responsive, visually impressive, and ready to publish.
+  
