@@ -10,43 +10,49 @@ export default function LostPenguCharity() {
     canvas.style.top = '0';
     canvas.style.left = '0';
     canvas.style.zIndex = '-1';
-    canvas.style.opacity = '0.25';
+    canvas.style.opacity = '0.35';
     canvas.style.pointerEvents = 'none';
     document.body.appendChild(canvas);
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
     const resize = () => {
-      canvas.height = window.innerHeight;
-      canvas.width = window.innerWidth;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
     };
     resize();
     window.addEventListener('resize', resize);
 
-    const chars = '01🐧LOSTPENGU PENGUIN AI RESCUE COLONY'.split('');
-    const fontSize = 15;
-    const columns = canvas.width / fontSize;
-    const drops: number[] = new Array(Math.floor(columns)).fill(1);
+    const chars = '01🐧LOSTPENGU PENGUIN AI AGENT RESCUE COLONY SOLANA'.split('');
+    const fontSize = 16;
+    const columns = Math.floor(width / fontSize);
+    const drops = new Array(columns).fill(1);
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#22f0ff';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = '#67e8f9';
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        if (drops[i] * fontSize > height && Math.random() > 0.975) {
           drops[i] = 0;
         }
         drops[i]++;
       }
     };
 
-    const interval = setInterval(draw, 35);
+    const interval = setInterval(draw, 40);
+
     return () => {
       clearInterval(interval);
       window.removeEventListener('resize', resize);
@@ -56,7 +62,7 @@ export default function LostPenguCharity() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Animated Aurora Background */}
+      {/* Animated Aurora */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_30%,#8b00ff_60%,#000000_90%)] opacity-40 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_70%)] opacity-30 pointer-events-none animate-[pulse_8s_ease-in-out_infinite]"></div>
 
@@ -66,7 +72,7 @@ export default function LostPenguCharity() {
           <div className="flex items-center gap-3">
             <div className="text-4xl drop-shadow-[0_0_15px_#22f0ff]">🐧</div>
             <div>
-              <h1 className="text-2xl font-bold tracking-tighter text-white">LOSTPENGU</h1>
+              <h1 className="text-2xl font-bold tracking-tighter">LOSTPENGU</h1>
               <p className="text-cyan-400 text-sm -mt-1">CHARITY AI AGENT</p>
             </div>
           </div>
@@ -84,20 +90,29 @@ export default function LostPenguCharity() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 relative text-center">
-        <div className="max-w-5xl mx-auto px-6">
+      {/* HERO SECTION */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <img 
+          src="/hero.jpg" 
+          alt="Penguin Colony with Aurora" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90"></div>
+
+        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-black/60 border border-cyan-400/50 rounded-full px-5 py-1.5 text-sm mb-6">
             🐧 SOLANA CHARITY PROJECT
           </div>
+          
           <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
             Save The Penguins.<br />
             <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Support The Colony.
             </span>
           </h1>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            LostPengu AI Agent, yalnız ve yardıma muhtaç penguenler için mücadele eden ilk otonom charity projesidir.
+          
+          <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+            LostPengu AI Agent is the first autonomous charity project fighting for lonely and needy penguins.
           </p>
         </div>
       </section>
@@ -119,90 +134,17 @@ export default function LostPenguCharity() {
           <h2 className="text-5xl font-bold text-center mb-4">LostPengu&apos;s Story</h2>
           <p className="text-center text-gray-400 mb-16">From rescue to real impact</p>
 
-          <div className="space-y-20">
+          <div className="space-y-24">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-cyan-400">CHAPTER 1</h3>
                 <h4 className="text-4xl font-bold mt-3">Rescue</h4>
-                <p className="text-gray-300 mt-6">Antarktika&apos;nın zorlu koşullarında yalnız kalan penguenler, LostPengu AI Agent tarafından fark edildi.</p>
+                <p className="text-gray-300 mt-6">Penguins struggling in the harsh conditions of Antarctica were noticed by LostPengu AI Agent and their rescue journey began.</p>
               </div>
-              <div className="bg-zinc-900 rounded-3xl aspect-video flex items-center justify-center text-7xl border border-cyan-500/30">🐧</div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="bg-zinc-900 rounded-3xl aspect-video flex items-center justify-center text-7xl border border-cyan-500/30">❄️</div>
-              <div>
-                <h3 className="text-cyan-400">CHAPTER 2</h3>
-                <h4 className="text-4xl font-bold mt-3">Hope</h4>
-                <p className="text-gray-300 mt-6">Her penguenin ikinci bir şansı hak ettiğine inanıyoruz.</p>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-purple-500/30">
+                <img src="/pengu.jpg" alt="Penguin Rescue" className="w-full h-full object-cover hover:scale-105 transition duration-700" />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why LostPengu */}
-      <section id="impact" className="py-20 bg-zinc-950 border-t border-purple-500/30">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-4">Why LostPengu Exists</h2>
-          <p className="text-center text-gray-400 mb-12">Built for purpose, not hype</p>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: "❤️", title: "Real Impact", desc: "Bağışlar doğrudan penguen kurtarma ve koruma çalışmalarına gidiyor." },
-              { icon: "🔍", title: "Transparent Giving", desc: "Tüm işlemler ve bağışlar şeffaf şekilde takip edilebiliyor." },
-              { icon: "👥", title: "Community Powered", desc: "Topluluk olarak penguen kolonisini birlikte kurtarıyoruz." },
-              { icon: "🌟", title: "Charity Innovation", desc: "Dünyanın ilk otonom AI Charity penguen projesi." }
-            ].map((item, i) => (
-              <div key={i} className="bg-zinc-900 border border-cyan-500/30 rounded-3xl p-8 hover:border-cyan-400 transition">
-                <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-gray-400">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Live Charity Tracking */}
-      <section id="donate" className="py-20 border-t border-purple-500/30">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-6">Live Charity Tracking</h2>
-          <p className="text-gray-400 mb-12">Her bağış şeffaf bir şekilde takip ediliyor</p>
-          
-          <div className="bg-zinc-950 border border-cyan-500/40 rounded-3xl p-10 max-w-2xl mx-auto">
-            <div className="text-left mb-8">
-              <p className="text-cyan-400">FUNDING GOAL</p>
-              <div className="h-4 bg-zinc-800 rounded-full mt-4 overflow-hidden">
-                <div className="h-full w-[65%] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"></div>
-              </div>
-            </div>
-            <button className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 text-white text-xl px-12 py-6 rounded-3xl font-semibold w-full hover:scale-105 transition shadow-lg shadow-cyan-500/50">
-              Donate Now 🐧
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* How to Support */}
-      <section id="howto" className="py-20 bg-zinc-950 border-t border-purple-500/30">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-5xl font-bold text-center mb-4">How to Support Penguins</h2>
-          <p className="text-center text-gray-400 mb-16">4 basit adımda penguenlere yardım et</p>
-          
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { num: "01", title: "Phantom Wallet", desc: "Solana cüzdanı indir ve kur" },
-              { num: "02", title: "SOL Al", desc: "Cüzdanına SOL yükle" },
-              { num: "03", title: "Token Al", desc: "LostPengu tokenını al" },
-              { num: "04", title: "Hold & Support", desc: "Tut ve penguen kolonisini destekle" }
-            ].map((step, i) => (
-              <div key={i} className="bg-zinc-900 rounded-3xl p-8 text-center border border-cyan-500/30 hover:border-cyan-400 transition">
-                <div className="text-cyan-400 text-3xl font-mono mb-4">{step.num}</div>
-                <h3 className="font-semibold text-xl mb-3">{step.title}</h3>
-                <p className="text-gray-400">{step.desc}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
