@@ -6,246 +6,369 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("");
 
-  const scan = () => {
+  const handleScan = () => {
     setLoading(true);
     setResult("");
 
     setTimeout(() => {
-      setResult(`TECHNICAL ANALYSIS
-Wallet Age: 187 days
+      setResult(`
+WALLET ANALYSIS COMPLETE
+
+Wallet Age: 214 days
 Whale Exposure: MEDIUM
-Liquidity Status: WATCHING
-Dev Activity: DETECTED
-
-SOCIAL ANALYSIS
-X Signal: ACTIVE
+Dev Wallet Activity: DETECTED
+Social Signal: ACTIVE
 Community Heat: HIGH
-Meme Exposure: CRITICAL
+Rug Probability: LOW
 
-PSYCHOLOGICAL ANALYSIS
-FOMO Damage: EXTREME
-Patience Level: LOW
-Diamond Hands Probability: 24%
+AI VERDICT
 
-LOSTPENGU VERDICT
-"This wallet has survived red candles, bad entries and emotional damage. LostPengu recommends patience, snow and fewer panic sells."`);
+"This wallet survived emotional damage,
+panic selling and meme warfare.
+
+LostPengu recommends patience."
+      `);
+
       setLoading(false);
     }, 2500);
   };
 
   return (
-    <main className="min-h-screen bg-black text-white overflow-hidden">
-      <nav className="fixed top-0 z-50 w-full border-b border-purple-500/20 bg-black/50 backdrop-blur-xl">
+    <main className="bg-black text-white overflow-hidden">
+      {/* NAVBAR */}
+
+      <nav className="fixed top-0 left-0 z-50 w-full border-b border-purple-500/20 bg-black/40 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div>
-            <div className="text-xl font-black">🐧 LOSTPENGU</div>
-            <div className="text-xs text-purple-300">
+            <h1 className="text-2xl font-black">🐧 LOSTPENGU</h1>
+            <p className="text-xs text-purple-300">
               AI Agent on Solana
-            </div>
+            </p>
           </div>
 
-          <div className="hidden gap-6 text-sm text-gray-300 md:flex">
-            <a href="#story">Story</a>
-            <a href="#terminal">AI Terminal</a>
-            <a href="#chart">Chart</a>
-            <a href="#tokenomics">Tokenomics</a>
-            <a href="#community">Community</a>
+          <div className="hidden gap-8 text-sm md:flex">
+            <a href="#story" className="hover:text-purple-300">
+              Story
+            </a>
+
+            <a href="#about" className="hover:text-purple-300">
+              About
+            </a>
+
+            <a href="#terminal" className="hover:text-purple-300">
+              AI Terminal
+            </a>
+
+            <a href="#tokenomics" className="hover:text-purple-300">
+              Tokenomics
+            </a>
+
+            <a href="#community" className="hover:text-purple-300">
+              Community
+            </a>
           </div>
 
           <a
-            className="rounded-full bg-purple-600 px-5 py-2 text-sm font-bold"
             href="#"
+            className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-6 py-3 text-sm font-bold shadow-[0_0_30px_rgba(168,85,247,.5)]"
           >
             Coming Soon
           </a>
         </div>
       </nav>
 
-      <section className="relative flex min-h-screen items-center px-6 pt-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-950/50 to-black" />
+      {/* HERO */}
 
-        <div className="absolute inset-0 opacity-20">
-          <div className="animate-[rain_18s_linear_infinite] font-mono text-xs leading-6 text-purple-300">
-            {Array.from({ length: 120 }).map((_, i) => (
+      <section className="relative flex min-h-screen items-center overflow-hidden px-6">
+        {/* BACKGROUND */}
+
+        <div className="absolute inset-0">
+          <img
+            src="/pengu-colony.jpg"
+            alt="Penguin Colony"
+            className="h-full w-full object-cover opacity-30"
+          />
+        </div>
+
+        {/* DARK OVERLAY */}
+
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-purple-950/40 to-black" />
+
+        {/* BIG PENGU LOGO */}
+
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.05]">
+          <img
+            src="/pengu-logo.png"
+            alt="logo"
+            className="w-[700px]"
+          />
+        </div>
+
+        {/* LIGHT CODE FLOW */}
+
+        <div className="absolute inset-0 opacity-[0.04]">
+          <div className="animate-[float_20s_linear_infinite] font-mono text-xs leading-7 text-purple-200">
+            {Array.from({ length: 70 }).map((_, i) => (
               <p key={i}>
-                0101 LOSTPENGU_AI SOLANA_TERMINAL WALLET_SCAN
-                COMMUNITY_SIGNAL 0101
+                🐧 LOSTPENGU SOLANA AI TERMINAL COMMUNITY SIGNAL
               </p>
             ))}
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
-          <div>
-            <div className="mb-6 inline-block rounded-full border border-purple-400/40 bg-white/5 px-5 py-2 text-sm text-purple-200">
-              🐧 SELF CODING AI AGENT ON SOLANA
-            </div>
+        {/* CONTENT */}
 
-            <h1 className="text-6xl font-black tracking-tight md:text-8xl">
-              LOSTPENGU
-            </h1>
-
-            <h2 className="mt-4 bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-3xl font-bold text-transparent md:text-5xl">
-              The First Self Coding AI Penguin on Solana
-            </h2>
-
-            <p className="mt-6 max-w-xl text-lg text-gray-300">
-              An experimental AI driven project combining Solana culture,
-              autonomous intelligence and community powered tools.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#"
-                className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-4 font-bold shadow-[0_0_30px_rgba(168,85,247,.6)]"
-              >
-                Buy on Pump.fun
-              </a>
-
-              <a
-                href="#terminal"
-                className="rounded-full border border-purple-400 px-8 py-4 font-bold"
-              >
-                Launch AI Terminal
-              </a>
-            </div>
-
-            <div className="mt-8 rounded-2xl border border-purple-500/30 bg-black/50 p-4 font-mono text-sm text-purple-200">
-              &gt; LostPengu AI initialized...
-              <br />
-              &gt; Monitoring Solana network...
-              <br />
-              &gt; Community signal detected...
-            </div>
+        <div className="relative z-10 mx-auto max-w-5xl text-center">
+          <div className="mb-6 inline-block rounded-full border border-purple-400/30 bg-white/5 px-6 py-3 text-sm text-purple-200 backdrop-blur-md">
+            SELF CODING AI PENGUIN ON SOLANA
           </div>
 
-          <div className="flex justify-center">
-            <div className="rounded-[2rem] border border-purple-500/30 bg-purple-950/20 p-4 shadow-[0_0_60px_rgba(168,85,247,.4)]">
-              <img
-                src="/pengu-main.png"
-                alt="LostPengu"
-                className="max-h-[520px] rounded-[1.5rem] object-cover"
-              />
-            </div>
+          <h1 className="text-7xl font-black tracking-tight md:text-9xl">
+            LOSTPENGU
+          </h1>
+
+          <h2 className="mt-6 bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-3xl font-black text-transparent md:text-6xl">
+            The First Self Coding AI Penguin
+          </h2>
+
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-300 md:text-xl">
+            A cinematic Solana AI project combining autonomous systems,
+            storytelling, meme culture and community powered tools.
+          </p>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-5">
+            <a
+              href="#"
+              className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-10 py-5 font-bold shadow-[0_0_40px_rgba(168,85,247,.5)] transition hover:scale-105"
+            >
+              Buy on Pump.fun
+            </a>
+
+            <a
+              href="#terminal"
+              className="rounded-full border border-purple-400/40 bg-white/5 px-10 py-5 font-bold backdrop-blur-md transition hover:bg-purple-500/10"
+            >
+              Launch AI Terminal
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="story" className="px-6 py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2">
-          <div className="rounded-3xl border border-purple-500/30 bg-white/5 p-6">
-            <div className="flex h-80 items-center justify-center rounded-2xl border border-purple-500/20 bg-black/60 text-gray-400">
-              Story video will be here
+      {/* STORY */}
+
+      <section
+        id="story"
+        className="relative px-6 py-32"
+      >
+        <div className="mx-auto grid max-w-7xl items-center gap-16 md:grid-cols-2">
+          <div className="rounded-[2rem] border border-purple-500/20 bg-white/5 p-5 backdrop-blur-xl">
+            <div className="flex h-[400px] items-center justify-center rounded-[1.5rem] border border-purple-500/20 bg-black/60 text-gray-400">
+              Story Video Here
             </div>
           </div>
 
           <div>
-            <h2 className="text-4xl font-black">
+            <h2 className="text-5xl font-black">
               The Rise of LostPengu
             </h2>
 
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              Most tokens appear overnight. Nobody knows where they came from.
+            <p className="mt-8 text-lg leading-9 text-gray-300">
+              Most tokens appear overnight.
+              Nobody knows where they came from.
               Nobody knows why they exist.
               <br />
               <br />
               But LostPengu chose to tell its story.
               <br />
               <br />
-              This is what makes it different.
+              Before becoming part of Solana culture,
+              the penguin had a beginning.
               <br />
               <br />
-              Before becoming part of Solana culture, LostPengu had a beginning.
-              <br />
-              <br />
-              If you want to discover how the penguin entered this world, watch
-              the origin story.
+              If you want to discover how LostPengu entered
+              this world, watch the origin story.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="px-6 py-24 bg-purple-950/20">
-        <div className="mx-auto max-w-5xl text-center">
-          <h2 className="text-4xl font-black">The AI System</h2>
+      {/* ABOUT */}
 
-          <p className="mt-6 text-lg text-gray-300">
-            After entering the Solana ecosystem, LostPengu began developing
-            experimental AI systems designed to observe blockchain activity,
-            wallet behavior and meme culture. One of these systems became the
-            LostPengu AI Terminal.
-          </p>
+      <section
+        id="about"
+        className="relative overflow-hidden bg-purple-950/20 px-6 py-32"
+      >
+        <div className="absolute right-0 top-0 opacity-[0.03]">
+          <img
+            src="/pengu-logo.png"
+            alt=""
+            className="w-[600px]"
+          />
+        </div>
+
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 md:grid-cols-2">
+            <div>
+              <p className="mb-4 text-sm uppercase tracking-[0.4em] text-purple-300">
+                ABOUT THE AI SYSTEM
+              </p>
+
+              <h2 className="text-5xl font-black leading-tight">
+                Why LostPengu Built The Terminal
+              </h2>
+
+              <p className="mt-8 text-lg leading-9 text-gray-300">
+                After entering the Solana ecosystem,
+                LostPengu began studying wallet behavior,
+                meme culture and blockchain psychology.
+                <br />
+                <br />
+                Instead of creating another meaningless token,
+                the penguin started building experimental AI systems
+                focused on interaction, transparency and community tools.
+                <br />
+                <br />
+                The LostPengu AI Terminal became the first step
+                of this evolving vision.
+              </p>
+            </div>
+
+            <div className="rounded-[2rem] border border-purple-500/20 bg-black/40 p-10 backdrop-blur-xl">
+              <div className="text-6xl text-purple-400">“</div>
+
+              <p className="mt-6 text-3xl font-bold leading-relaxed">
+                Most projects launched silently.
+                <br />
+                LostPengu chose to build openly.
+              </p>
+
+              <p className="mt-8 text-gray-400">
+                LostPengu AI System
+              </p>
+            </div>
+          </div>
+
+          {/* CARDS */}
+
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            <div className="rounded-3xl border border-purple-500/20 bg-black/40 p-8">
+              <h3 className="text-2xl font-bold text-purple-300">
+                AI Driven
+              </h3>
+
+              <p className="mt-4 text-gray-300">
+                Experimental Solana AI systems designed for interaction,
+                analysis and evolution.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-purple-500/20 bg-black/40 p-8">
+              <h3 className="text-2xl font-bold text-pink-300">
+                Community Powered
+              </h3>
+
+              <p className="mt-4 text-gray-300">
+                Built together with the colony through open development
+                and growing community culture.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-purple-500/20 bg-black/40 p-8">
+              <h3 className="text-2xl font-bold text-blue-300">
+                Transparency First
+              </h3>
+
+              <p className="mt-4 text-gray-300">
+                Story driven identity, public systems and evolving
+                experimental infrastructure.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="terminal" className="px-6 py-24">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-4xl font-black">
+      {/* TERMINAL */}
+
+      <section
+        id="terminal"
+        className="relative overflow-hidden px-6 py-32"
+      >
+        {/* MATRIX */}
+
+        <div className="absolute inset-0 opacity-[0.05]">
+          <div className="animate-[float_15s_linear_infinite] font-mono text-xs leading-7 text-green-300">
+            {Array.from({ length: 100 }).map((_, i) => (
+              <p key={i}>
+                010101 LOSTPENGU TERMINAL WALLET SCAN AI SIGNAL 🐧
+              </p>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-5xl">
+          <h2 className="text-center text-6xl font-black">
             LostPengu AI Terminal
           </h2>
 
-          <p className="mt-4 text-center text-gray-400">
-            Paste a wallet or token CA and let the penguin analyze it.
+          <p className="mx-auto mt-6 max-w-3xl text-center text-lg leading-8 text-gray-300">
+            Analyze wallets, detect social exposure,
+            study meme psychology and explore the experimental
+            LostPengu AI system.
           </p>
 
-          <div className="mt-10 rounded-3xl border border-purple-500 bg-black/80 p-6 font-mono shadow-[0_0_50px_rgba(168,85,247,.5)]">
+          <div className="mt-14 rounded-[2rem] border border-purple-500/30 bg-black/80 p-8 shadow-[0_0_60px_rgba(168,85,247,.4)] backdrop-blur-xl">
             <input
-              className="w-full rounded-xl border border-purple-500 bg-black p-4 text-purple-200 outline-none"
               placeholder="Paste Solana wallet or token CA..."
+              className="w-full rounded-2xl border border-purple-500/30 bg-black p-5 text-purple-200 outline-none"
             />
 
             <button
-              onClick={scan}
-              className="mt-4 w-full rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 py-4 font-bold text-white"
+              onClick={handleScan}
+              className="mt-5 w-full rounded-2xl bg-gradient-to-r from-purple-600 to-pink-500 py-5 text-lg font-black transition hover:scale-[1.01]"
             >
               SCAN NOW
             </button>
 
-            <pre className="mt-6 min-h-[300px] whitespace-pre-wrap text-sm text-purple-200">
+            <pre className="mt-8 min-h-[280px] whitespace-pre-wrap rounded-2xl border border-purple-500/20 bg-black/60 p-6 font-mono text-sm text-purple-200">
               {loading
-                ? `> initializing lostpengu ai...
-> scanning chain activity...
-> detecting social exposure...
-> analyzing emotional damage...
-> generating verdict...`
+                ? `> Initializing LostPengu AI...
+> Connecting to Solana...
+> Analyzing social exposure...
+> Detecting whale activity...
+> Generating verdict...`
                 : result}
             </pre>
           </div>
         </div>
       </section>
 
-      <section id="chart" className="px-6 py-24 bg-purple-950/20">
+      {/* TOKENOMICS */}
+
+      <section
+        id="tokenomics"
+        className="bg-purple-950/20 px-6 py-32"
+      >
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-4xl font-black">Live Market Data</h2>
+          <h2 className="text-5xl font-black">
+            Tokenomics
+          </h2>
 
-          <div className="mt-8 rounded-3xl border border-purple-500/30 bg-black/70 p-6">
-            <div className="flex h-96 items-center justify-center text-gray-400">
-              Dexscreener chart will be embedded here
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="tokenomics" className="px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-4xl font-black">Tokenomics</h2>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
             {[
               ["Supply", "1,000,000,000"],
               ["Network", "Solana"],
               ["Tax", "0%"],
-              ["LP Status", "Community Focused"],
-              ["Launch Type", "Pump.fun"],
-              ["AI Status", "Experiment Active"],
+              ["Launch", "Pump.fun"],
+              ["AI Status", "Active"],
+              ["Community", "Growing"],
             ].map(([a, b]) => (
               <div
                 key={a}
-                className="rounded-2xl border border-purple-500/30 bg-white/5 p-6"
+                className="rounded-3xl border border-purple-500/20 bg-black/40 p-8"
               >
                 <p className="text-gray-400">{a}</p>
 
-                <h3 className="mt-2 text-2xl font-bold text-purple-300">
+                <h3 className="mt-4 text-3xl font-black text-purple-300">
                   {b}
                 </h3>
               </div>
@@ -254,95 +377,26 @@ LOSTPENGU VERDICT
         </div>
       </section>
 
-      <section className="px-6 py-24 bg-purple-950/20">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-4xl font-black">
-            How to Join the Colony
-          </h2>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              [
-                "1. Create a Wallet",
-                "Download Phantom Wallet and create your Solana wallet securely.",
-              ],
-              [
-                "2. Get SOL",
-                "Buy or transfer SOL to your wallet to prepare for trading.",
-              ],
-              [
-                "3. Buy LostPengu",
-                "Connect your wallet and join the LostPengu ecosystem through Pump.fun or supported Solana markets.",
-              ],
-            ].map(([a, b]) => (
-              <div
-                key={a}
-                className="rounded-2xl border border-purple-500/30 bg-black/50 p-6"
-              >
-                <h3 className="text-2xl font-bold text-purple-300">
-                  {a}
-                </h3>
-
-                <p className="mt-3 text-gray-300">{b}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-4xl font-black">
-            Evolution Roadmap
-          </h2>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              [
-                "Phase 1",
-                "Website launch, AI Terminal, community formation and Solana presence.",
-              ],
-              [
-                "Phase 2",
-                "Real wallet analytics, meme intelligence system, AI upgrades and community tools.",
-              ],
-              [
-                "Phase 3",
-                "Self improving AI systems, ecosystem expansion and unknown experiments.",
-              ],
-            ].map(([a, b]) => (
-              <div
-                key={a}
-                className="rounded-2xl border border-purple-500/30 bg-white/5 p-6"
-              >
-                <h3 className="text-2xl font-bold text-pink-300">
-                  {a}
-                </h3>
-
-                <p className="mt-3 text-gray-300">{b}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* COMMUNITY */}
 
       <section
         id="community"
-        className="px-6 py-24 bg-purple-950/20 text-center"
+        className="px-6 py-32 text-center"
       >
-        <h2 className="text-4xl font-black">
-          Join the LostPengu Community
+        <h2 className="text-5xl font-black">
+          Join The Colony
         </h2>
 
-        <p className="mt-4 text-gray-300">
-          A growing Solana colony powered by AI and community.
+        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300">
+          A growing digital penguin colony powered by Solana,
+          AI systems and community culture.
         </p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
+        <div className="mt-12 flex flex-wrap justify-center gap-5">
           <a
             href="https://x.com/LostPengu0"
             target="_blank"
-            className="rounded-full border border-purple-400 px-8 py-3 hover:bg-purple-700/30"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4 backdrop-blur-md"
           >
             X / Twitter
           </a>
@@ -350,7 +404,7 @@ LOSTPENGU VERDICT
           <a
             href="https://x.com/lostpengu0?s=21"
             target="_blank"
-            className="rounded-full border border-purple-400 px-8 py-3 hover:bg-purple-700/30"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4 backdrop-blur-md"
           >
             X Community
           </a>
@@ -358,7 +412,7 @@ LOSTPENGU VERDICT
           <a
             href="https://t.me/LostPengu0"
             target="_blank"
-            className="rounded-full border border-purple-400 px-8 py-3 hover:bg-purple-700/30"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4 backdrop-blur-md"
           >
             Telegram
           </a>
@@ -366,7 +420,7 @@ LOSTPENGU VERDICT
           <a
             href="https://www.reddit.com/u/lostpengu01"
             target="_blank"
-            className="rounded-full border border-purple-400 px-8 py-3 hover:bg-purple-700/30"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4 backdrop-blur-md"
           >
             Reddit
           </a>
@@ -374,14 +428,16 @@ LOSTPENGU VERDICT
           <a
             href="https://github.com/lostpengu0-crypto"
             target="_blank"
-            className="rounded-full border border-purple-400 px-8 py-3 hover:bg-purple-700/30"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4 backdrop-blur-md"
           >
             GitHub
           </a>
         </div>
       </section>
 
-      <footer className="border-t border-purple-900 bg-black px-6 py-8 text-center text-gray-500">
+      {/* FOOTER */}
+
+      <footer className="border-t border-purple-500/20 px-6 py-10 text-center text-gray-500">
         Contract Address: Coming Soon
         <br />
         Made with 🐧 on Solana
@@ -389,13 +445,16 @@ LOSTPENGU VERDICT
         maybe we were never lost.
       </footer>
 
+      {/* ANIMATION */}
+
       <style jsx global>{`
-        @keyframes rain {
+        @keyframes float {
           0% {
-            transform: translateY(-30%);
+            transform: translateY(-10%);
           }
+
           100% {
-            transform: translateY(20%);
+            transform: translateY(10%);
           }
         }
       `}</style>
