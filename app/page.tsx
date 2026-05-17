@@ -85,7 +85,7 @@ export default function LostPengu() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Daha Dengeli Aurora */}
+      {/* Aurora */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#6b21a8_40%,#000000_80%)] opacity-60 pointer-events-none"></div>
 
       {/* Navbar */}
@@ -158,9 +158,9 @@ export default function LostPengu() {
                 ← Back to Games
               </button>
               <iframe 
-                src="https://html5games.com/game/penguin-jump" 
+                src="https://www.crazygames.com/game/penguin-jump" 
                 width="100%" 
-                height="720" 
+                height="700" 
                 className="rounded-3xl border border-purple-500/30"
                 allowFullScreen
               />
@@ -185,11 +185,44 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* STORY */}
+      {/* STORY - UZUN HALİ */}
       <section id="story" className="py-24 border-t border-purple-500/30">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-5xl font-bold text-center mb-10">LostPengu&apos;s Story</h2>
-          <p className="text-lg text-gray-300 text-center">The world&apos;s first self-coding AI Penguin Agent.</p>
+          
+          <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-8">
+            <p>
+              LostPengu is not just a memecoin. We are building a new system.
+            </p>
+            <p>
+              We created the world&apos;s first <strong>self-coding AI Agent</strong>. 
+              This agent can write and improve its own code, develop new features, and grow continuously.
+            </p>
+            <p>
+              Our goal is not temporary hype. We want to build a <strong>sustainable, long-term and community-driven ecosystem</strong>.
+            </p>
+            <p>
+              $LOSTPENGU is the heart of this ecosystem. People can have fun, be part of the community, and support a real project with long-term vision.
+            </p>
+            <p>
+              The games on the site are completely free and made purely for entertainment. Our aim is to give people joyful moments and keep the community active.
+            </p>
+            <p>
+              A portion of the system&apos;s revenue is <strong>automatically sent</strong> to penguin protection foundations in Antarctica. 
+              Pump.fun rewards and other income streams allow LostPengu AI Agent to create real-world impact in the background.
+            </p>
+
+            <div className="bg-gradient-to-br from-purple-900/70 to-cyan-900/70 border border-purple-500/30 rounded-3xl p-10 my-12 text-center">
+              <p className="italic text-2xl leading-relaxed text-purple-200">
+                Our vision is to offer people both entertainment and earning opportunities,<br />
+                while also contributing to the world by protecting penguins.
+              </p>
+            </div>
+
+            <p className="text-center text-xl text-purple-300">
+              This is just the beginning. LostPengu will continue to evolve, grow its community, and protect penguins — forever.
+            </p>
+          </div>
         </div>
       </section>
 
