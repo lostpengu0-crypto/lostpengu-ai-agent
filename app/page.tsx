@@ -31,7 +31,7 @@ export default function LostPengu() {
     resize();
     window.addEventListener('resize', resize);
 
-    const chars = '01🐧LOSTPENGU AI SELF-CODING AUTONOMOUS EARN PLAY RESCUE SOLANA'.split('');
+    const chars = '01🐧LOSTPENGU AI SELF-CODING PLAY RESCUE SOLANA'.split('');
     const fontSize = 17;
     const columns = Math.floor(width / fontSize);
     const drops = new Array(columns).fill(1);
@@ -46,26 +46,19 @@ export default function LostPengu() {
         const text = chars[Math.floor(Math.random() * chars.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        if (drops[i] * fontSize > height && Math.random() > 0.97) {
-          drops[i] = 0;
-        }
+        if (drops[i] * fontSize > height && Math.random() > 0.97) drops[i] = 0;
         drops[i]++;
       }
     };
 
     const interval = setInterval(draw, 35);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('resize', resize);
-      if (document.body.contains(canvas)) document.body.removeChild(canvas);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Aurora Background */}
-      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_25%,#8b00ff_50%,#4b0082_75%,#000000_100%)] opacity-50 pointer-events-none animate-pulse"></div>
+      {/* Aurora */}
+      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_25%,#8b00ff_50%,#000000_100%)] opacity-50 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_60%)] opacity-40 pointer-events-none animate-[pulse_12s_ease-in-out_infinite]"></div>
 
       {/* Navbar */}
@@ -93,11 +86,7 @@ export default function LostPengu() {
 
       {/* HERO */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <img 
-          src="/hero.jpg" 
-          alt="LostPengu AI Penguin" 
-          className="absolute inset-0 w-full h-full object-cover" 
-        />
+        <img src="/hero.jpg" alt="LostPengu" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black/90"></div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -108,7 +97,7 @@ export default function LostPengu() {
             </span>
           </h1>
           <p className="text-2xl text-gray-100 max-w-3xl mx-auto mb-10">
-            The world&apos;s first AI agent that codes itself, creates entertainment, and helps protect penguins in Antarctica.
+            The world&apos;s first AI agent that codes itself, creates fun, and helps protect penguins in Antarctica.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
@@ -116,9 +105,37 @@ export default function LostPengu() {
               Buy $LOSTPENGU
             </a>
             <a href="#play" className="border-2 border-cyan-400 px-10 py-5 rounded-3xl text-xl font-bold hover:bg-white/10 transition">
-              Play Games
+              Play Mini Games
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* PLAY SECTION */}
+      <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-5xl font-bold mb-6">Mini Games</h2>
+          <p className="text-xl text-gray-400 mb-16">Telegram-style mini games • Pure fun</p>
+
+          {!showGame ? (
+            <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+              <div 
+                onClick={() => setShowGame(true)} 
+                className="bg-zinc-900 rounded-3xl p-10 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400"
+              >
+                <div className="text-7xl mb-6">🏃‍♂️</div>
+                <h3 className="text-2xl font-bold mb-3">Penguin Dash</h3>
+                <p className="text-gray-400">Endless Runner</p>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <button onClick={() => setShowGame(false)} className="mb-6 text-cyan-400 hover:text-white">
+                ← Back to Games
+              </button>
+              <PenguinDashGame />
+            </div>
+          )}
         </div>
       </section>
 
@@ -126,80 +143,20 @@ export default function LostPengu() {
       <section id="story" className="py-24 border-t border-purple-500/30">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-5xl font-bold text-center mb-10">LostPengu&apos;s Story</h2>
-          
           <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-8">
-            <p>
-              LostPengu is not just a memecoin. We are building a new system.
-            </p>
-            <p>
-              We created the world&apos;s first <strong>self-coding AI Agent</strong>. 
-              This agent can write and improve its own code, develop new features, and grow continuously.
-            </p>
-            <p>
-              Our goal is not temporary hype. We aim to create a <strong>sustainable, long-term ecosystem</strong> that benefits the community.
-            </p>
-            <p>
-              $LOSTPENGU is the core of this ecosystem. People can enjoy themselves, join the community, and support a project with real vision.
-            </p>
-            <p>
-              The games on this site are completely free and made purely for entertainment. Our goal is to give people fun moments and keep the community active.
-            </p>
-            <p>
-              A portion of the system&apos;s revenue is <strong>automatically sent</strong> to penguin protection foundations in Antarctica. 
-              Pump.fun rewards and other income streams allow LostPengu to create real impact in the background.
-            </p>
-
-            <div className="bg-gradient-to-br from-purple-900/70 to-cyan-900/70 border border-cyan-400/30 rounded-3xl p-10 my-12 text-center">
-              <p className="italic text-2xl leading-relaxed text-cyan-200">
-                Our vision is to provide both entertainment and earning opportunities for people,<br />
-                while contributing to the world by protecting penguins.
-              </p>
-            </div>
-
-            <p className="text-center text-xl text-purple-300">
-              This is only the beginning. LostPengu will continue to evolve, grow its community, and protect penguins — forever.
-            </p>
+            <p>LostPengu is not just a memecoin. We are building a new system.</p>
+            <p>We created the world&apos;s first self-coding AI Agent that can write and improve its own code.</p>
+            <p>Our goal is to create a sustainable ecosystem where people have fun and support a long-term project.</p>
+            <p>A portion of the revenue is automatically sent to penguin protection foundations in Antarctica.</p>
           </div>
         </div>
       </section>
 
-      {/* PLAY SECTION with Real Game */}
-      <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-6">Just For Fun</h2>
-          <p className="text-xl text-gray-400 mb-12">Games are made purely for entertainment</p>
-
-          {!showGame ? (
-            <div className="grid md:grid-cols-3 gap-8">
-              <div 
-                onClick={() => setShowGame(true)} 
-                className="bg-zinc-900 rounded-3xl p-10 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400"
-              >
-                <div className="text-7xl mb-6">❄️</div>
-                <h3 className="text-2xl font-bold mb-3">Penguin Flip</h3>
-                <p className="text-gray-400">Test your timing</p>
-              </div>
-            </div>
-          ) : (
-            <div className="max-w-2xl mx-auto">
-              <button 
-                onClick={() => setShowGame(false)} 
-                className="mb-8 text-cyan-400 hover:text-white flex items-center gap-2 mx-auto"
-              >
-                ← Back to Games
-              </button>
-              <PenguinFlipGame />
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* TOKEN SECTION */}
-      <section id="token" className="py-24 border-t border-purple-500/30">
+      {/* TOKEN */}
+      <section id="token" className="py-24 bg-zinc-950 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">$LOSTPENGU</h2>
           <p className="text-2xl text-gray-300 mb-12">The heart of the self-coding AI ecosystem</p>
-          
           <div className="bg-zinc-950 border border-cyan-500/40 rounded-3xl p-12 max-w-lg mx-auto">
             <p className="text-cyan-400 text-sm mb-3">LAUNCHING SOON</p>
             <div className="text-5xl font-mono mb-8">Pump.fun</div>
@@ -210,48 +167,52 @@ export default function LostPengu() {
         </div>
       </section>
 
-      <footer className="bg-black py-12 text-center text-gray-500 border-t border-cyan-500/30">
+      <footer className="bg-black py-12 text-center text-gray-500">
         © 2026 $LOSTPENGU • First Self-Coding AI Penguin Agent
       </footer>
     </div>
   );
 }
 
-// Simple Penguin Flip Game
-function PenguinFlipGame() {
+// Penguin Dash - Endless Runner Style Mini Game
+function PenguinDashGame() {
   const [score, setScore] = useState(0);
-  const [isFlipping, setIsFlipping] = useState(false);
+  const [isJumping, setIsJumping] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
 
-  const flip = () => {
-    if (isFlipping) return;
-    setIsFlipping(true);
-    
-    const success = Math.random() > 0.35;
-    if (success) setScore(prev => prev + 10);
-
-    setTimeout(() => setIsFlipping(false), 600);
+  const jump = () => {
+    if (isJumping || gameOver) return;
+    setIsJumping(true);
+    setTimeout(() => setIsJumping(false), 800);
+    setScore(prev => prev + 5);
   };
 
   return (
-    <div className="bg-zinc-900 rounded-3xl p-12 text-center">
-      <h3 className="text-3xl font-bold mb-8">🐧 Penguin Flip</h3>
-      <div 
-        className="text-8xl mb-10 transition-transform duration-700" 
-        style={{ transform: isFlipping ? 'rotate(720deg)' : 'rotate(0deg)' }}
-      >
-        🐧
+    <div className="bg-zinc-900 rounded-3xl p-8 max-w-2xl mx-auto text-center">
+      <h3 className="text-3xl font-bold mb-6">🐧 Penguin Dash</h3>
+      
+      <div className="relative h-80 bg-gradient-to-b from-sky-900 to-slate-900 rounded-2xl overflow-hidden mb-8 border border-cyan-500/30">
+        <div className={`absolute bottom-12 left-12 text-8xl transition-all duration-300 ${isJumping ? '-translate-y-40' : ''}`}>
+          🐧
+        </div>
+        <div className="absolute bottom-8 right-20 text-6xl">🧊</div>
+        <div className="absolute bottom-8 right-60 text-6xl">❄️</div>
       </div>
-      
-      <p className="text-3xl mb-10">Score: <span className="text-cyan-400 font-bold">{score}</span></p>
-      
+
+      <p className="text-4xl mb-6">Score: <span className="text-cyan-400 font-bold">{score}</span></p>
+
       <button 
-        onClick={flip}
-        className="bg-gradient-to-r from-cyan-500 to-purple-500 px-16 py-6 rounded-3xl text-2xl font-bold hover:scale-110 transition"
+        onClick={jump}
+        className="bg-gradient-to-r from-cyan-500 to-purple-500 px-16 py-6 rounded-3xl text-2xl font-bold hover:scale-110 transition w-full"
       >
-        FLIP THE PENGUIN
+        JUMP (Space or Click)
       </button>
-      
-      <p className="text-gray-400 mt-6">Click at the perfect moment!</p>
+
+      <p className="text-gray-400 mt-6">Press SPACE or Click to jump over obstacles</p>
+
+      {gameOver && (
+        <p className="text-red-400 mt-4">Game Over! Final Score: {score}</p>
+      )}
     </div>
   );
 }
