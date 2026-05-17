@@ -31,7 +31,7 @@ export default function LostPengu() {
     resize();
     window.addEventListener('resize', resize);
 
-    const chars = '01🐧LOSTPENGU AI SELF-CODING PLAY RESCUE'.split('');
+    const chars = '01🐧LOSTPENGU AI SELF-CODING PLAY RESCUE SOLANA'.split('');
     const fontSize = 17;
     const columns = Math.floor(width / fontSize);
     const drops = new Array(columns).fill(1);
@@ -111,11 +111,11 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* PLAY SECTION - IFRAME OYUN */}
+      {/* PLAY SECTION */}
       <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-6">Mini Games</h2>
-          <p className="text-xl text-gray-400 mb-12">Play directly on the site • Mobile friendly</p>
+          <h2 className="text-5xl font-bold mb-6">Just For Fun</h2>
+          <p className="text-xl text-gray-400 mb-12">Mobile friendly mini games</p>
 
           {!showGame ? (
             <div className="max-w-md mx-auto">
@@ -124,24 +124,22 @@ export default function LostPengu() {
                 className="bg-zinc-900 rounded-3xl p-12 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400"
               >
                 <div className="text-8xl mb-6">🐧</div>
-                <h3 className="text-3xl font-bold mb-3">Flappy Penguin</h3>
-                <p className="text-gray-400">Classic Flappy Bird style - Tap / Click to fly</p>
+                <h3 className="text-3xl font-bold mb-3">Penguin Jump</h3>
+                <p className="text-gray-400">Jump as high as you can!</p>
               </div>
             </div>
           ) : (
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-4xl mx-auto">
               <button 
                 onClick={() => setShowGame(false)} 
-                className="mb-6 text-cyan-400 hover:text-white flex items-center gap-2 mx-auto"
+                className="mb-8 text-cyan-400 hover:text-white"
               >
                 ← Back to Games
               </button>
-              
-              {/* Gerçek Oyun Embed */}
               <iframe 
-                src="https://twobitcode.itch.io/flappy-penguin" 
+                src="https://html5games.com/game/penguin-jump" 
                 width="100%" 
-                height="620" 
+                height="700" 
                 className="rounded-3xl border border-cyan-500/30"
                 allowFullScreen
               />
@@ -150,15 +148,30 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* Diğer bölümler */}
+      {/* STORY */}
       <section id="story" className="py-24 border-t border-purple-500/30">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-10">LostPengu&apos;s Story</h2>
-          <p className="text-lg text-gray-300">The world&apos;s first self-coding AI Penguin Agent.</p>
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-5xl font-bold text-center mb-10">LostPengu&apos;s Story</h2>
+          <p className="text-lg text-gray-300 text-center">The world&apos;s first self-coding AI Penguin Agent.</p>
         </div>
       </section>
 
-      <footer className="bg-black py-12 text-center text-gray-500">
+      {/* TOKEN */}
+      <section id="token" className="py-24 border-t border-purple-500/30">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-5xl font-bold mb-6">$LOSTPENGU</h2>
+          <p className="text-2xl text-gray-300 mb-12">The heart of the self-coding AI ecosystem</p>
+          <div className="bg-zinc-950 border border-cyan-500/40 rounded-3xl p-12 max-w-lg mx-auto">
+            <p className="text-cyan-400 text-sm mb-3">LAUNCHING SOON</p>
+            <div className="text-5xl font-mono mb-8">Pump.fun</div>
+            <a href="#" className="block bg-gradient-to-r from-cyan-400 to-purple-500 text-black py-6 rounded-2xl text-2xl font-bold hover:scale-105 transition">
+              Buy $LOSTPENGU →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-black py-12 text-center text-gray-500 border-t border-cyan-500/30">
         © 2026 $LOSTPENGU • First Self-Coding AI Penguin Agent
       </footer>
     </div>
