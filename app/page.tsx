@@ -50,23 +50,32 @@ Diamond Hands Probability: 24%
             <a href="#community">Community</a>
           </div>
 
-          <a href="#" className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-7 py-3 font-bold shadow-[0_0_35px_rgba(217,70,239,.55)]">
+          <a
+            href="#"
+            className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-7 py-3 font-bold shadow-[0_0_35px_rgba(217,70,239,.55)]"
+          >
             Coming Soon
           </a>
         </div>
       </nav>
 
-      <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 text-center">
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 text-center overflow-hidden">
         <img
           src="/pengu-colony.png"
           alt="LostPengu Colony"
-          className="absolute inset-0 h-full w-full object-cover opacity-80"
+          className="absolute inset-0 h-full w-full object-cover opacity-95"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-[#030007]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-black/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-[#030007]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
 
         <div className="relative z-10 mx-auto max-w-6xl">
+          <img
+            src="/pengu-logo.png"
+            alt="LostPengu Logo"
+            className="mx-auto mb-6 w-28 drop-shadow-[0_0_25px_rgba(217,70,239,.7)]"
+          />
+
           <div className="mb-6 inline-block rounded-full border border-purple-300/40 bg-black/35 px-6 py-3 text-sm text-purple-100 backdrop-blur-md">
             SELF CODING AI PENGUIN ON SOLANA
           </div>
@@ -81,11 +90,17 @@ Diamond Hands Probability: 24%
           </p>
 
           <div className="mt-9 flex flex-wrap justify-center gap-5">
-            <a href="#" className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-9 py-4 font-bold shadow-[0_0_35px_rgba(217,70,239,.55)]">
+            <a
+              href="#"
+              className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-9 py-4 font-bold shadow-[0_0_35px_rgba(217,70,239,.55)]"
+            >
               Buy on Pump.fun
             </a>
 
-            <a href="#terminal" className="rounded-full border border-purple-200/40 bg-black/35 px-9 py-4 font-bold backdrop-blur-md">
+            <a
+              href="#terminal"
+              className="rounded-full border border-purple-200/40 bg-black/35 px-9 py-4 font-bold backdrop-blur-md"
+            >
               Launch AI Terminal
             </a>
           </div>
@@ -100,7 +115,9 @@ Diamond Hands Probability: 24%
               <span className="h-3 w-3 rounded-full bg-green-400" />
               <div>
                 <p className="font-bold text-green-400">Solana Verified</p>
-                <p className="text-sm text-gray-400">CA will be added after launch</p>
+                <p className="text-sm text-gray-400">
+                  CA will be added after launch
+                </p>
               </div>
             </div>
           </div>
@@ -129,21 +146,31 @@ Diamond Hands Probability: 24%
             <p className="mt-7 max-w-3xl text-lg leading-8 text-gray-300">
               Most tokens appear overnight. Nobody knows where they came from.
               Nobody knows why they exist.
-              <br /><br />
+              <br />
+              <br />
               LostPengu chose a different path.
-              <br /><br />
-              Before becoming part of Solana culture, the penguin had a beginning.
-              Its story explains how LostPengu entered this world, why it started
-              observing blockchain behavior, and how it evolved into a self coding AI agent.
-              <br /><br />
+              <br />
+              <br />
+              Before becoming part of Solana culture, the penguin had a
+              beginning. Its story explains how LostPengu entered this world, why
+              it started observing blockchain behavior, and how it evolved into
+              a self coding AI agent.
+              <br />
+              <br />
               From that origin, the first system was born:
-              <span className="font-bold text-purple-300"> the LostPengu AI Terminal.</span>
+              <span className="font-bold text-purple-300">
+                {" "}
+                the LostPengu AI Terminal.
+              </span>
             </p>
           </div>
         </div>
       </section>
 
-      <section id="about" className="relative border-y border-purple-500/10 bg-purple-950/15 px-6 py-28">
+      <section
+        id="about"
+        className="relative border-y border-purple-500/10 bg-purple-950/15 px-6 py-28"
+      >
         <div className="pointer-events-none absolute right-12 top-12 text-[230px] opacity-[0.035]">
           🐧
         </div>
@@ -165,11 +192,23 @@ Diamond Hands Probability: 24%
 
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              ["AI Driven", "Experimental Solana AI systems designed for interaction, analysis and evolution."],
-              ["Community Powered", "Built together with the colony through open development and growing community culture."],
-              ["Transparency First", "Story driven identity, public systems and evolving experimental infrastructure."],
+              [
+                "AI Driven",
+                "Experimental Solana AI systems designed for interaction, analysis and evolution.",
+              ],
+              [
+                "Community Powered",
+                "Built together with the colony through open development and growing community culture.",
+              ],
+              [
+                "Transparency First",
+                "Story driven identity, public systems and evolving experimental infrastructure.",
+              ],
             ].map(([title, text]) => (
-              <div key={title} className="rounded-3xl border border-purple-500/20 bg-black/45 p-7 backdrop-blur-md">
+              <div
+                key={title}
+                className="rounded-3xl border border-purple-500/20 bg-black/45 p-7 backdrop-blur-md"
+              >
                 <h3 className="text-xl font-bold text-purple-300">{title}</h3>
                 <p className="mt-4 text-sm leading-6 text-gray-300">{text}</p>
               </div>
@@ -206,7 +245,10 @@ Diamond Hands Probability: 24%
                 className="w-full rounded-xl border border-purple-500/30 bg-black p-4 text-purple-200 outline-none"
               />
 
-              <button onClick={scan} className="rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 px-7 font-bold whitespace-nowrap">
+              <button
+                onClick={scan}
+                className="rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 px-7 font-bold whitespace-nowrap"
+              >
                 Scan Now
               </button>
             </div>
@@ -224,7 +266,10 @@ Diamond Hands Probability: 24%
         </div>
       </section>
 
-      <section id="tokenomics" className="relative bg-purple-950/15 px-6 py-28">
+      <section
+        id="tokenomics"
+        className="relative bg-purple-950/15 px-6 py-28"
+      >
         <div className="mx-auto max-w-7xl">
           <h2 className="text-5xl font-black">Tokenomics</h2>
 
@@ -237,9 +282,14 @@ Diamond Hands Probability: 24%
               ["AI Status", "Active"],
               ["Community", "Growing"],
             ].map(([a, b]) => (
-              <div key={a} className="rounded-3xl border border-purple-500/20 bg-black/45 p-8">
+              <div
+                key={a}
+                className="rounded-3xl border border-purple-500/20 bg-black/45 p-8"
+              >
                 <p className="text-gray-400">{a}</p>
-                <h3 className="mt-4 text-3xl font-black text-purple-300">{b}</h3>
+                <h3 className="mt-4 text-3xl font-black text-purple-300">
+                  {b}
+                </h3>
               </div>
             ))}
           </div>
@@ -252,11 +302,23 @@ Diamond Hands Probability: 24%
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[
-              ["1. Create a Wallet", "Download Phantom Wallet and create your Solana wallet securely."],
-              ["2. Get SOL", "Buy or transfer SOL to your wallet to prepare for trading."],
-              ["3. Buy LostPengu", "Connect your wallet and join the LostPengu ecosystem through Pump.fun or supported Solana markets."],
+              [
+                "1. Create a Wallet",
+                "Download Phantom Wallet and create your Solana wallet securely.",
+              ],
+              [
+                "2. Get SOL",
+                "Buy or transfer SOL to your wallet to prepare for trading.",
+              ],
+              [
+                "3. Buy LostPengu",
+                "Connect your wallet and join the LostPengu ecosystem through Pump.fun or supported Solana markets.",
+              ],
             ].map(([title, text]) => (
-              <div key={title} className="rounded-3xl border border-purple-500/20 bg-black/45 p-8">
+              <div
+                key={title}
+                className="rounded-3xl border border-purple-500/20 bg-black/45 p-8"
+              >
                 <h3 className="text-2xl font-bold text-purple-300">{title}</h3>
                 <p className="mt-4 text-gray-300">{text}</p>
               </div>
@@ -265,7 +327,10 @@ Diamond Hands Probability: 24%
         </div>
       </section>
 
-      <section id="community" className="relative bg-purple-950/15 px-6 py-28 text-center">
+      <section
+        id="community"
+        className="relative bg-purple-950/15 px-6 py-28 text-center"
+      >
         <div className="pointer-events-none absolute right-10 top-8 text-[230px] opacity-[0.035]">
           🐧
         </div>
@@ -273,15 +338,46 @@ Diamond Hands Probability: 24%
         <h2 className="text-5xl font-black">Join The Colony</h2>
 
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300">
-          A growing digital penguin colony powered by Solana, AI systems and community culture.
+          A growing digital penguin colony powered by Solana, AI systems and
+          community culture.
         </p>
 
         <div className="mt-10 flex flex-wrap justify-center gap-5">
-          <a href="https://x.com/LostPengu0" target="_blank" className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4">X / Twitter</a>
-          <a href="https://x.com/lostpengu0?s=21" target="_blank" className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4">X Community</a>
-          <a href="https://t.me/LostPengu0" target="_blank" className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4">Telegram</a>
-          <a href="https://www.reddit.com/u/lostpengu01" target="_blank" className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4">Reddit</a>
-          <a href="https://github.com/lostpengu0-crypto" target="_blank" className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4">GitHub</a>
+          <a
+            href="https://x.com/LostPengu0"
+            target="_blank"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4"
+          >
+            X / Twitter
+          </a>
+          <a
+            href="https://x.com/lostpengu0?s=21"
+            target="_blank"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4"
+          >
+            X Community
+          </a>
+          <a
+            href="https://t.me/LostPengu0"
+            target="_blank"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4"
+          >
+            Telegram
+          </a>
+          <a
+            href="https://www.reddit.com/u/lostpengu01"
+            target="_blank"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4"
+          >
+            Reddit
+          </a>
+          <a
+            href="https://github.com/lostpengu0-crypto"
+            target="_blank"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4"
+          >
+            GitHub
+          </a>
         </div>
       </section>
 
