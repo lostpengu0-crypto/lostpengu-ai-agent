@@ -4,6 +4,21 @@ import React, { useEffect, useState } from 'react';
 
 export default function LostPengu() {
   const [showGame, setShowGame] = useState(false);
+  const [score, setScore] = useState(0);
+  const [playerName, setPlayerName] = useState('');
+  const [showSaveForm, setShowSaveForm] = useState(false);
+  const [leaderboard, setLeaderboard] = useState([
+    { name: "PenguKing", score: 2450 },
+    { name: "IceMaster", score: 2180 },
+    { name: "FlipLord", score: 1970 },
+    { name: "SnowDash", score: 1840 },
+    { name: "ArcticPro", score: 1720 },
+    { name: "ChillPengu", score: 1650 },
+    { name: "FrostByte", score: 1580 },
+    { name: "GlacierGod", score: 1490 },
+    { name: "PolarFlip", score: 1420 },
+    { name: "AntarcticAce", score: 1380 },
+  ]);
 
   // MATRIX RAIN
   useEffect(() => {
@@ -55,9 +70,22 @@ export default function LostPengu() {
     return () => clearInterval(interval);
   }, []);
 
+  const saveScore = () => {
+    if (!playerName.trim()) return;
+    const newEntry = { name: playerName.trim(), score: score };
+    const updated = [...leaderboard, newEntry]
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 20);
+    
+    setLeaderboard(updated);
+    setShowSaveForm(false);
+    setPlayerName('');
+    alert(`Score saved! You are now on the leaderboard.`);
+  };
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Aurora Background */}
+      {/* Aurora */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_25%,#8b00ff_50%,#000000_100%)] opacity-50 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_60%)] opacity-40 pointer-events-none animate-[pulse_12s_ease-in-out_infinite]"></div>
 
@@ -84,7 +112,7 @@ export default function LostPengu() {
         </div>
       </nav>
 
-      {/* HERO - Eski düzen korunuyor */}
+      {/* HERO */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <img src="/hero.jpg" alt="LostPengu" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black/90"></div>
@@ -115,36 +143,40 @@ export default function LostPengu() {
       <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">Just For Fun</h2>
-          <p className="text-xl text-gray-400 mb-12">Mobile friendly mini games</p>
+          <p className="text-xl text-gray-400 mb-12">Penguin Jump</p>
 
           {!showGame ? (
             <div className="max-w-md mx-auto">
-              <div 
-                onClick={() => setShowGame(true)} 
-                className="bg-zinc-900 rounded-3xl p-12 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400"
-              >
+              <div onClick={() => setShowGame(true)} className="bg-zinc-900 rounded-3xl p-12 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400">
                 <div className="text-8xl mb-6">🐧</div>
-                <h3 className="text-3xl font-bold mb-3">Penguin Skip</h3>
-                <p className="text-gray-400">Jump from ice to ice</p>
+                <h3 className="text-3xl font-bold mb-3">Penguin Jump</h3>
+                <p className="text-gray-400">Jump as high as you can!</p>
               </div>
             </div>
           ) : (
             <div className="max-w-4xl mx-auto">
-              <button 
-                onClick={() => setShowGame(false)} 
-                className="mb-8 text-cyan-400 hover:text-white text-lg"
-              >
+              <button onClick={() => setShowGame(false)} className="mb-6 text-cyan-400 hover:text-white">
                 ← Back to Games
               </button>
-              <iframe 
-                src="https://html5games.com/Game/Penguin-Skip/59da2136-2ff3-43fc-b60b-f3d148872c19" 
-                width="100%" 
-                height="680" 
-                className="rounded-3xl border border-cyan-500/30 shadow-2xl"
-                allowFullScreen
-              />
+              <PenguinJumpGame score={score} setScore={setScore} setShowSaveForm={setShowSaveForm} />
             </div>
           )}
+
+          {/* LEADERBOARD */}
+          <div className="mt-16">
+            <h3 className="text-3xl font-bold mb-6">🏆 Global Leaderboard</h3>
+            <div className="bg-zinc-900 rounded-3xl p-8 max-w-2xl mx-auto">
+              {leaderboard.map((entry, index) => (
+                <div key={index} className="flex justify-between items-center py-3 border-b border-gray-700 last:border-0">
+                  <div className="flex items-center gap-4">
+                    <span className="text-cyan-400 font-mono w-8">{index + 1}</span>
+                    <span>{entry.name}</span>
+                  </div>
+                  <span className="font-bold text-cyan-300">{entry.score}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -171,9 +203,100 @@ export default function LostPengu() {
         </div>
       </section>
 
-      <footer className="bg-black py-12 text-center text-gray-500 border-t border-cyan-500/30">
-        © 2026 $LOSTPENGU • First Self-Coding AI Penguin Agent
+      {/* SOCIAL MEDIA BUTTONS - EN ALTA */}
+      <footer className="bg-black py-16 border-t border-cyan-500/30">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="flex flex-wrap justify-center gap-6">
+            <a href="https://x.com/lostpengusup" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+              <span className="text-3xl">𝕏</span>
+              <span>X</span>
+            </a>
+            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+              <span className="text-3xl">📢</span>
+              <span>Telegram</span>
+            </a>
+            <a href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+              <span className="text-3xl">🐙</span>
+              <span>GitHub</span>
+            </a>
+            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+              <span className="text-3xl">🔴</span>
+              <span>Reddit</span>
+            </a>
+          </div>
+
+          <p className="text-center text-gray-500 mt-10">
+            © 2026 $LOSTPENGU • First Self-Coding AI Penguin Agent
+          </p>
+        </div>
       </footer>
+
+      {/* Save Score Modal */}
+      {showSaveForm && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+          <div className="bg-zinc-900 rounded-3xl p-10 max-w-md w-full mx-4">
+            <h3 className="text-3xl font-bold mb-6 text-center">Save Your Score</h3>
+            <p className="text-center mb-6">Final Score: <span className="text-cyan-400 font-bold text-2xl">{score}</span></p>
+            
+            <input
+              type="text"
+              placeholder="Enter your name"
+              value={playerName}
+              onChange={(e) => setPlayerName(e.target.value)}
+              className="w-full bg-black border border-cyan-500 rounded-2xl px-6 py-4 text-center text-xl mb-6 outline-none"
+            />
+            
+            <div className="flex gap-4">
+              <button onClick={() => setShowSaveForm(false)} className="flex-1 py-4 rounded-2xl border border-gray-600">
+                Cancel
+              </button>
+              <button onClick={saveScore} className="flex-1 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-500 font-bold">
+                Save Score
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Penguin Jump Game
+function PenguinJumpGame({ score, setScore, setShowSaveForm }) {
+  const [isJumping, setIsJumping] = useState(false);
+
+  const jump = () => {
+    if (isJumping) return;
+    setIsJumping(true);
+    setScore(prev => prev + Math.floor(Math.random() * 8) + 5);
+    setTimeout(() => setIsJumping(false), 650);
+  };
+
+  return (
+    <div className="bg-zinc-900 rounded-3xl p-12 text-center">
+      <h3 className="text-3xl font-bold mb-8">🐧 Penguin Jump</h3>
+      
+      <div className="relative h-80 bg-gradient-to-b from-sky-950 to-slate-900 rounded-2xl overflow-hidden mb-8 border border-cyan-500/30 flex items-center justify-center">
+        <div className={`text-8xl transition-all duration-700 ${isJumping ? '-translate-y-52' : 'translate-y-0'}`}>
+          🐧
+        </div>
+      </div>
+
+      <p className="text-4xl mb-8">Score: <span className="text-cyan-400 font-bold">{score}</span></p>
+
+      <button 
+        onClick={jump}
+        className="bg-gradient-to-r from-cyan-500 to-purple-500 px-16 py-6 rounded-3xl text-2xl font-bold hover:scale-110 transition w-full"
+      >
+        JUMP
+      </button>
+
+      <button 
+        onClick={() => setShowSaveForm(true)}
+        className="mt-6 text-cyan-400 hover:text-white underline"
+      >
+        Save My Score
+      </button>
     </div>
   );
 }
