@@ -1,239 +1,85 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React from 'react';
 
-export default function Home() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const [commitCount, setCommitCount] = useState<number | null>(null);
-
-  const [messages, setMessages] = useState([
-    { role: 'pengu', content: "Hey! I'm LostPengu, the first self-coding penguin on Solana. How can I help you today? 🐧" }
-  ]);
-  const [input, setInput] = useState('');
-
-  useEffect(() => {
-    fetch('https://api.github.com/repos/lostpengu0-crypto/lostpengu-ai-agent/commits?per_page=1')
-      .then((res) => {
-        const linkHeader = res.headers.get('link');
-
-        if (linkHeader) {
-          const match = linkHeader.match(/&page=(\d+)>; rel="last"/);
-          if (match && match[1]) {
-            setCommitCount(Number(match[1]));
-            return null;
-          }
-        }
-
-        return res.json();
-      })
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setCommitCount(data.length);
-        }
-      })
-      .catch(() => {
-        setCommitCount(null);
-      });
-  }, []);
-
-  const sendMessage = () => {
-    if (!input.trim()) return;
-
-    const userMessage = input.trim();
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
-    setInput('');
-
-    setTimeout(() => {
-      let reply = "Interesting! Tell me more.";
-
-      const lower = userMessage.toLowerCase();
-
-      if (lower.includes("how are you") || lower.includes("how r u")) {
-        reply = "I'm doing fantastic, thanks! How about you? Ready to join the colony?";
-      } else if (lower.includes("who are you") || lower.includes("what are you") || lower.includes("lostpengu")) {
-        reply = "I'm LostPengu, the first self-coding AI penguin on Solana. I create memes, write code, and build the colony.";
-      } else if (lower.includes("token") || lower.includes("launch")) {
-        reply = "LostPengu Token is coming soon. We're building the community first.";
-      } else if (lower.includes("meme")) {
-        reply = "Sure! Give me a topic and I'll suggest a funny meme idea.";
-      } else if (lower.includes("hello") || lower.includes("hi") || lower.includes("hey")) {
-        reply = "Hey there! Welcome to the LostPengu Colony 🐧";
-      }
-
-      setMessages(prev => [...prev, { role: 'pengu', content: reply }]);
-    }, 700);
-  };
-
+export default function LostPenguCharity() {
   return (
-    <main className="min-h-screen bg-[#02040f] text-white overflow-hidden relative font-mono">
+    <div className="min-h-screen bg-black text-white overflow-hidden relative">
+      {/* Matrix + Aurora Background */}
+      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,transparent_50%)] opacity-40"></div>
       
-      {/* Matrix Rain */}
-      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none overflow-hidden">
-        {Array.from({ length: 35 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-emerald-400/70 text-xs whitespace-nowrap animate-fall"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${Math.random() * 12 + 7}s`,
-              animationDelay: `-${Math.random() * 20}s`,
-            }}
-          >
-            {Array.from({ length: 40 }).map(() => String.fromCharCode(33 + Math.floor(Math.random() * 90))).join('')}
+      {/* Matrix Rain (CSS ile basit versiyon) */}
+      <div className="matrix-rain fixed inset-0 pointer-events-none opacity-20"></div>
+
+      {/* Navbar */}
+      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-purple-500/30">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-cyan-400 rounded-full flex items-center justify-center text-2xl">
+              🐧
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight">LostPengu</h1>
+              <p className="text-xs text-purple-400 -mt-1">CHARITY AI AGENT</p>
+            </div>
           </div>
-        ))}
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 min-h-screen flex flex-col lg:flex-row items-center gap-16">
-        
-        {/* Pengu Image */}
-        <div className="flex-1 flex justify-center lg:justify-end">
-          <div className="relative">
-            <div className="absolute -inset-20 bg-gradient-to-br from-purple-500 via-cyan-400 to-pink-500 rounded-full opacity-40 blur-[120px]"></div>
-
-            <img 
-              src="/pengu.jpg" 
-              alt="LostPengu" 
-              className="w-[400px] lg:w-[520px] rounded-3xl shadow-2xl relative z-10 border border-cyan-400/30"
-            />
-
-            <a
-              href="/game"
-              className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold shadow-2xl hover:scale-105 transition-all border border-white/20 z-20 whitespace-nowrap"
-            >
-              🎮 Play LostPengu
-            </a>
+          
+          <div className="hidden md:flex items-center gap-8 text-sm">
+            <a href="#story" className="hover:text-purple-400 transition">Story</a>
+            <a href="#donate" className="hover:text-purple-400 transition">Donate</a>
+            <a href="#impact" className="hover:text-purple-400 transition">Impact</a>
           </div>
+
+          <button className="bg-purple-600 hover:bg-purple-500 px-6 py-2.5 rounded-full font-medium transition">
+            Support Penguins
+          </button>
         </div>
+      </nav>
 
-        {/* Right Side */}
-        <div className="flex-1 space-y-10">
-          <div>
-            <h1 className="text-7xl lg:text-8xl font-black tracking-tighter mb-3">
-              LOST<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400">PENGU</span>
-            </h1>
-            <p className="text-5xl text-cyan-400 font-light">AI AGENT</p>
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 relative">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <div className="inline-flex items-center gap-2 bg-purple-950/50 border border-purple-500/30 rounded-full px-4 py-1 text-sm mb-6">
+            🐧 SOLANA CHARITY PROJECT
           </div>
+          
+          <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
+            Save The Penguins.<br />
+            <span className="bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              One Flip At A Time.
+            </span>
+          </h1>
 
-          <p className="text-xl text-gray-300 max-w-md">
-            The first self-coding penguin on Solana.<br />
-            Building the colony, one line at a time.
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+            LostPengu AI Agent, yalnız ve yardıma muhtaç penguenler için bağış toplayan 
+            ilk otonom AI Charity projesidir.
           </p>
 
-          {/* LIVE COMMIT COUNTER */}
-          <div className="inline-block px-6 py-4 rounded-2xl border border-cyan-400/30 bg-cyan-400/5 backdrop-blur-md">
-            <p className="text-cyan-300 text-sm tracking-widest mb-1">
-              LIVE COMMITS
-            </p>
-
-            <p className="text-3xl font-bold text-white">
-              {commitCount !== null ? `${commitCount}+` : 'Loading...'}
-            </p>
-
-            <p className="text-gray-400 text-sm">
-              Autonomous Updates
-            </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#donate" className="bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 px-10 py-4 rounded-2xl text-lg font-semibold transition">
+              Donate Now
+            </a>
+            <a href="#story" className="border border-purple-500/50 hover:bg-white/5 px-10 py-4 rounded-2xl text-lg font-semibold transition">
+              Their Story
+            </a>
           </div>
+        </div>
+      </section>
 
-          {/* SOCIAL ICONS */}
-          <div className="flex items-center gap-6">
-
-            <a
-              href="https://x.com/LostPengu0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-110 transition-all duration-300"
-            >
-              <img
-                src="https://cdn.simpleicons.org/x/ffffff"
-                alt="X"
-                className="w-11 h-11"
-              />
-            </a>
-
-            <a
-              href="https://t.me/LostPengu0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-110 transition-all duration-300"
-            >
-              <img
-                src="https://cdn.simpleicons.org/telegram/26A5E4"
-                alt="Telegram"
-                className="w-11 h-11"
-              />
-            </a>
-
-            <a
-              href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-110 transition-all duration-300"
-            >
-              <img
-                src="https://cdn.simpleicons.org/github/ffffff"
-                alt="GitHub"
-                className="w-11 h-11"
-              />
-            </a>
-
+      {/* Token Address - Coming Soon */}
+      <div className="max-w-4xl mx-auto px-6 mb-20">
+        <div className="bg-zinc-950 border border-purple-500/20 rounded-3xl p-8 text-center">
+          <p className="text-purple-400 text-sm mb-2">TOKEN CONTRACT ADDRESS</p>
+          <div className="bg-black/50 p-4 rounded-2xl font-mono text-sm break-all">
+            Coming Soon After Launch...
           </div>
-
-          <div className="space-y-4">
-            <a href="/meme-generator" className="block w-full py-6 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl text-center text-2xl font-semibold hover:scale-105 transition-all">
-              Create Memes with Pengu
-            </a>
-
-            <button className="block w-full py-6 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-3xl text-center text-2xl font-semibold hover:scale-105 transition-all">
-              LostPengu Token
-            </button>
-
-            <button 
-              onClick={() => setIsChatOpen(true)}
-              className="block w-full py-6 border-2 border-cyan-400/60 hover:bg-cyan-400/10 rounded-3xl text-center text-2xl font-semibold transition-all"
-            >
-              Talk to Pengu Agent
-            </button>
-          </div>
+          <p className="text-xs text-gray-500 mt-3">Will be announced on Pump.fun</p>
         </div>
       </div>
 
-      {/* MINI CHAT */}
-      {isChatOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-80 bg-zinc-950 border border-cyan-500/50 rounded-3xl shadow-2xl overflow-hidden">
-          <div className="bg-gradient-to-r from-cyan-500 to-purple-500 p-4 flex items-center gap-3">
-            <div className="text-3xl">🐧</div>
-            <div className="flex-1">
-              <p className="font-bold">LostPengu AI</p>
-              <p className="text-xs opacity-90">Self-Coding Penguin • Always Online</p>
-            </div>
-            <button onClick={() => setIsChatOpen(false)} className="text-2xl">✕</button>
-          </div>
+      {/* Daha fazla bölüm gelecek... */}
 
-          <div className="h-96 p-4 overflow-y-auto space-y-4 bg-black/60">
-            {messages.map((msg, i) => (
-              <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[80%] px-4 py-3 rounded-2xl ${msg.role === 'user' ? 'bg-cyan-600' : 'bg-zinc-800'}`}>
-                  {msg.content}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="p-4 border-t border-white/10 flex gap-2">
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-              placeholder="Ask me anything..."
-              className="flex-1 bg-zinc-900 border border-white/20 rounded-full px-5 py-3 focus:outline-none focus:border-cyan-400"
-            />
-            <button onClick={sendMessage} className="bg-cyan-500 hover:bg-cyan-600 px-6 rounded-full font-medium">
-              Send
-            </button>
-          </div>
-        </div>
-      )}
-    </main>
+      <div className="h-32"></div>
+    </div>
   );
 }
