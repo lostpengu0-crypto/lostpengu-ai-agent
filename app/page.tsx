@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 
+const CONTRACT_ADDRESS = "3hp7FfaNwp74QT2h82XVjaEW2f8SwBG9cxPCSV5tpump";
+const DEXSCREENER_URL =
+  "https://dexscreener.com/solana/5vym5pasbe2okbyyihth2wny959wfe2yhywbbv3qzxmg";
+const PUMPFUN_URL = "https://pump.fun";
+
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("");
@@ -36,6 +41,11 @@ LostPengu recommends patience."`);
     }, 2200);
   };
 
+  const copyCA = async () => {
+    await navigator.clipboard.writeText(CONTRACT_ADDRESS);
+    alert("Contract address copied!");
+  };
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#030007] text-white">
       <nav className="fixed top-0 z-50 w-full border-b border-purple-500/20 bg-black/55 backdrop-blur-xl">
@@ -63,10 +73,11 @@ LostPengu recommends patience."`);
           </div>
 
           <a
-            href="#"
+            href={PUMPFUN_URL}
+            target="_blank"
             className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-7 py-3 font-bold shadow-[0_0_35px_rgba(217,70,239,.55)]"
           >
-            Coming Soon
+            Buy Now
           </a>
         </div>
       </nav>
@@ -97,7 +108,8 @@ LostPengu recommends patience."`);
 
           <div className="mt-10 flex flex-wrap justify-center gap-5">
             <a
-              href="#"
+              href={PUMPFUN_URL}
+              target="_blank"
               className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-10 py-4 font-bold shadow-[0_0_30px_rgba(217,70,239,.55)]"
             >
               Buy on Pump.fun
@@ -111,23 +123,57 @@ LostPengu recommends patience."`);
             </a>
           </div>
 
-          <div className="mx-auto mt-10 grid max-w-3xl gap-4 rounded-3xl border border-purple-500/20 bg-black/40 p-6 text-left backdrop-blur-xl md:grid-cols-2">
+          <div className="mx-auto mt-10 grid max-w-4xl gap-6 rounded-3xl border border-purple-500/20 bg-black/40 p-6 text-left backdrop-blur-xl md:grid-cols-2">
             <div>
-              <p className="text-sm text-gray-400">Contract Address</p>
-              <p className="mt-2 font-mono text-2xl font-black">
-                Coming Soon
+              <p className="text-sm uppercase tracking-[0.25em] text-gray-400">
+                Contract Address
               </p>
-            </div>
 
-            <div className="flex items-center justify-start gap-3 md:justify-end">
-              <div className="h-3 w-3 rounded-full bg-green-400" />
-
-              <div>
-                <p className="font-bold text-green-400">Solana Verified</p>
-                <p className="text-sm text-gray-400">
-                  CA will be added after launch
+              <div className="mt-4 rounded-2xl border border-purple-500/20 bg-black/60 p-5 shadow-[0_0_25px_rgba(168,85,247,.15)]">
+                <p className="break-all font-mono text-sm leading-7 text-purple-200">
+                  {CONTRACT_ADDRESS}
                 </p>
               </div>
+
+              <div className="mt-5 flex flex-wrap gap-3">
+                <button
+                  onClick={copyCA}
+                  className="rounded-full border border-purple-400/30 bg-black/40 px-6 py-3 text-sm font-bold backdrop-blur-md"
+                >
+                  Copy CA
+                </button>
+
+                <a
+                  href={PUMPFUN_URL}
+                  target="_blank"
+                  className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-6 py-3 text-sm font-bold shadow-[0_0_30px_rgba(217,70,239,.45)]"
+                >
+                  Buy on Pump.fun
+                </a>
+
+                <a
+                  href={DEXSCREENER_URL}
+                  target="_blank"
+                  className="rounded-full border border-purple-400/30 bg-black/40 px-6 py-3 text-sm font-bold backdrop-blur-md"
+                >
+                  View DexScreener
+                </a>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-start justify-center gap-3 md:items-end">
+              <div className="flex items-center gap-3">
+                <div className="h-3 w-3 rounded-full bg-green-400 shadow-[0_0_15px_rgba(74,222,128,.9)]" />
+
+                <p className="font-bold text-green-400">
+                  Token Successfully Launched
+                </p>
+              </div>
+
+              <p className="max-w-sm text-sm leading-7 text-gray-400 md:text-right">
+                LostPengu is now officially live on Solana. Community, AI
+                systems and the terminal ecosystem are now active.
+              </p>
             </div>
           </div>
         </div>
@@ -289,8 +335,11 @@ LostPengu recommends patience."`);
 
           <h2 className="text-5xl font-black">Live Chart</h2>
 
-          <div className="mt-12 flex h-[520px] items-center justify-center rounded-[2rem] border border-purple-500/20 bg-black/45 text-gray-400 backdrop-blur-xl">
-            Dexscreener chart will be embedded after launch
+          <div className="mt-12 overflow-hidden rounded-[2rem] border border-purple-500/20 bg-black/45 backdrop-blur-xl">
+            <iframe
+              src="https://dexscreener.com/solana/5vym5pasbe2okbyyihth2wny959wfe2yhywbbv3qzxmg?embed=1&theme=dark"
+              className="h-[520px] w-full"
+            />
           </div>
         </div>
       </section>
@@ -458,11 +507,23 @@ LostPengu recommends patience."`);
           >
             GitHub
           </a>
+
+          <a
+            href={DEXSCREENER_URL}
+            target="_blank"
+            className="rounded-full border border-purple-400/30 bg-white/5 px-8 py-4 backdrop-blur-md"
+          >
+            DexScreener
+          </a>
         </div>
       </section>
 
       <footer className="border-t border-purple-500/20 px-6 py-10 text-center text-gray-500">
-        Contract Address: Coming Soon
+        Contract Address:
+        <br />
+        <span className="break-all font-mono text-purple-300">
+          {CONTRACT_ADDRESS}
+        </span>
         <br />
         Made with 🐧 on Solana
         <br />
