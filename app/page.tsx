@@ -31,7 +31,7 @@ export default function LostPengu() {
     resize();
     window.addEventListener('resize', resize);
 
-    const chars = '01🐧LOSTPENGU AI SELF-CODING PLAY RESCUE SOLANA'.split('');
+    const chars = '01🐧LOSTPENGU AI SELF-CODING PLAY RESCUE'.split('');
     const fontSize = 17;
     const columns = Math.floor(width / fontSize);
     const drops = new Array(columns).fill(1);
@@ -57,7 +57,7 @@ export default function LostPengu() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Aurora Background */}
+      {/* Aurora */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_25%,#8b00ff_50%,#000000_100%)] opacity-50 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_60%)] opacity-40 pointer-events-none animate-[pulse_12s_ease-in-out_infinite]"></div>
 
@@ -111,11 +111,11 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* PLAY SECTION - Penguin Jump Embed */}
+      {/* PLAY SECTION - IFRAME OYUN */}
       <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">Mini Games</h2>
-          <p className="text-xl text-gray-400 mb-12">Play directly on the website</p>
+          <p className="text-xl text-gray-400 mb-12">Play directly on the site • Mobile friendly</p>
 
           {!showGame ? (
             <div className="max-w-md mx-auto">
@@ -124,25 +124,25 @@ export default function LostPengu() {
                 className="bg-zinc-900 rounded-3xl p-12 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400"
               >
                 <div className="text-8xl mb-6">🐧</div>
-                <h3 className="text-3xl font-bold mb-3">Penguin Jump</h3>
-                <p className="text-gray-400">Jump as high as you can!</p>
+                <h3 className="text-3xl font-bold mb-3">Flappy Penguin</h3>
+                <p className="text-gray-400">Classic Flappy Bird style - Tap / Click to fly</p>
               </div>
             </div>
           ) : (
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-2xl mx-auto">
               <button 
                 onClick={() => setShowGame(false)} 
-                className="mb-6 text-cyan-400 hover:text-white flex items-center gap-2 mx-auto text-lg"
+                className="mb-6 text-cyan-400 hover:text-white flex items-center gap-2 mx-auto"
               >
                 ← Back to Games
               </button>
               
-              {/* OYUN EMBED */}
+              {/* Gerçek Oyun Embed */}
               <iframe 
-                src="https://html5games.com/game/penguin-jump" 
+                src="https://twobitcode.itch.io/flappy-penguin" 
                 width="100%" 
-                height="680" 
-                className="rounded-3xl border border-cyan-500/30 shadow-2xl"
+                height="620" 
+                className="rounded-3xl border border-cyan-500/30"
                 allowFullScreen
               />
             </div>
@@ -150,11 +150,11 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* STORY */}
+      {/* Diğer bölümler */}
       <section id="story" className="py-24 border-t border-purple-500/30">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-5xl font-bold text-center mb-10">LostPengu&apos;s Story</h2>
-          <p className="text-lg text-gray-300 text-center">The world&apos;s first self-coding AI Penguin Agent.</p>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-5xl font-bold mb-10">LostPengu&apos;s Story</h2>
+          <p className="text-lg text-gray-300">The world&apos;s first self-coding AI Penguin Agent.</p>
         </div>
       </section>
 
