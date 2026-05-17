@@ -1,47 +1,86 @@
-Create a cyberpunk AI terminal website called “LostPengu AI Terminal”.
+Create a professional landing page for “LostPengu AI Terminal”.
 
-Style:
-Full black hacker terminal screen, neon green and purple text, animated code rain, glowing borders, cyberpunk Solana AI vibe. It should feel like a live AI blockchain scanner.
+The design must look similar to a premium crypto AI project website.
 
-Main title:
-LOSTPENGU AI TERMINAL
+Theme:
+Dark cinematic cyberpunk style with a large background image of a penguin community under aurora lights in Antarctica. Add a dark overlay so text is readable. Use neon purple, pink, blue, and white accents.
+
+Header:
+Left logo area:
+🐧 $LOSTPENGU
+SELF CODING AI AGENT
+
+Center navigation:
+Story
+AI Terminal
+Token
+Community
+
+Right button:
+Launch Terminal
+
+Hero section:
+Large headline:
+The First Self Coding
+AI Penguin Terminal
+
+Gradient highlight on “AI Penguin Terminal” using purple, pink and blue.
 
 Subtitle:
-Solana wallet and token intelligence system
+Scan Solana wallets and token contracts through a cinematic AI terminal built by LostPengu.
 
-Main feature:
-A large terminal input where users can paste a Solana wallet address or token contract address.
+Buttons:
+Launch AI Terminal
+Join Community
 
-When the user presses Enter or clicks “Scan”, show an animated scanning sequence:
-- Initializing LostPengu AI...
-- Connecting to Solana network...
-- Reading wallet behavior...
-- Detecting FOMO damage...
-- Calculating Pengu Score...
-- Generating AI verdict...
+Below hero:
+Add a cyberpunk terminal card with glowing borders.
 
-After loading, display a funny AI generated style report with randomized values:
-- Wallet Age
-- Degenerate Level
-- FOMO Risk
-- Rug Survival Rate
-- Psychological Stability
-- Pengu Score
-- Final AI Verdict
+Terminal title:
+LOSTPENGU AI TERMINAL
 
-The tone should be funny, sarcastic, smart, crypto native, and slightly savage but not offensive.
+Inside terminal:
+Input placeholder:
+Paste Solana wallet or token CA...
 
-Example verdict:
-“This wallet did not trade. It emotionally donated liquidity to strangers. LostPengu AI recommends touching snow.”
+Button:
+Scan Now
 
-Add buttons:
-- Scan Again
-- Copy Result
-- Share on X
+When clicked, show animated fake scanning logs:
+Initializing LostPengu AI...
+Connecting to Solana network...
+Reading wallet behavior...
+Detecting FOMO damage...
+Calculating Pengu Score...
+Generating final AI verdict...
+
+Then show a funny result:
+Pengu Score: 87/100
+FOMO Risk: Extreme
+Rug Survival: 42%
+AI Verdict:
+“This wallet has survived more red candles than most traders survive group chats. LostPengu is watching.”
+
+Sections under hero:
+1. Built in public
+2. AI powered
+3. Solana focused
+4. Community driven
 
 Add footer:
 Built by LostPengu AI
-Not financial advice. Entertainment based AI terminal demo.
+Entertainment based AI terminal demo. Not financial advice.
 
-Make it mobile responsive, visually impressive, and ready to publish.
-  
+Style requirements:
+Mobile responsive
+Glassmorphism cards
+Neon glowing buttons
+Smooth animations
+Terminal typing effect
+Matrix style subtle code rain background
+Professional spacing
+Modern font
+Premium crypto website feeling
+
+Use Next.js React with Tailwind CSS.
+Put everything in one page.
