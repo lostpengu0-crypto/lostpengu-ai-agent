@@ -1,12 +1,64 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function LostPenguCharity() {
+  // Matrix Rain Effect
+  useEffect(() => {
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.zIndex = '-1';
+    canvas.style.opacity = '0.15';
+    canvas.style.pointerEvents = 'none';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const chars = '01アイウエオ penguin LOSTPENGU AI AGENT  penguins  🐧'.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops: number[] = new Array(Math.floor(columns)).fill(1);
+
+    const draw = () => {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#a855f7';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    };
+
+    const interval = setInterval(draw, 35);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', resize);
+      document.body.removeChild(canvas);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
       {/* Aurora Background */}
-      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#0a001f_50%,#000000_80%)] opacity-70 pointer-events-none"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#0a001f_50%,#000000_80%)] opacity-60 pointer-events-none"></div>
 
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-purple-500/30">
@@ -63,70 +115,35 @@ export default function LostPenguCharity() {
         </div>
       </div>
 
-      {/* Story Section */}
+      {/* Diğer bölümler (Story, Why, Donate, How to Support) */}
       <section id="story" className="py-20 border-t border-purple-500/20">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-5xl font-bold text-center mb-4">LostPengu&apos;s Story</h2>
-          <p className="text-center text-gray-400 mb-16">From rescue to real impact</p>
-          {/* Chapterlar buraya eklenecek */}
-        </div>
-      </section>
-
-      {/* Why LostPengu */}
-      <section className="py-20 bg-zinc-950 border-t border-purple-500/20">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-4">Why LostPengu Exists</h2>
-          <p className="text-center text-gray-400 mb-12">Built for purpose, not hype</p>
-          {/* Kartlar buraya */}
-        </div>
-      </section>
-
-      {/* Live Charity Tracking */}
-      <section id="donate" className="py-20 border-t border-purple-500/20">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-6">Live Charity Tracking</h2>
-          <p className="text-gray-400 mb-12">Her bağış şeffaf bir şekilde takip ediliyor</p>
-          {/* Donation kartı */}
+          <h2 className="text-5xl font-bold mb-4">LostPengu&apos;s Story</h2>
+          <p className="text-gray-400">From rescue to real impact</p>
         </div>
       </section>
 
-      {/* How to Support */}
-      <section id="howto" className="py-20 bg-zinc-950 border-t border-purple-500/20">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-5xl font-bold text-center mb-4">How to Support Penguins</h2>
-          <p className="text-center text-gray-400 mb-16">4 basit adımda penguenlere yardım et</p>
-          {/* Adımlar buraya */}
-        </div>
-      </section>
-
-      {/* Footer - Sosyal Medya Butonları */}
+      {/* Footer */}
       <footer className="bg-black border-t border-purple-500/30 py-12">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="https://x.com/lostpengusup" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 transition px-6 py-4 rounded-2xl border border-purple-500/20">
+            <a href="https://x.com/lostpengusup" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-6 py-4 rounded-2xl border border-purple-500/20 hover:border-purple-500 transition">
               <span className="text-2xl">𝕏</span>
-              <span>Twitter / X</span>
+              <span>X</span>
             </a>
-            
-            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 transition px-6 py-4 rounded-2xl border border-purple-500/20">
+            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-6 py-4 rounded-2xl border border-purple-500/20 hover:border-purple-500 transition">
               <span className="text-2xl">📢</span>
               <span>Telegram</span>
             </a>
-            
-            <a href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 transition px-6 py-4 rounded-2xl border border-purple-500/20">
+            <a href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-6 py-4 rounded-2xl border border-purple-500/20 hover:border-purple-500 transition">
               <span className="text-2xl">🐙</span>
               <span>GitHub</span>
             </a>
-            
-            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 transition px-6 py-4 rounded-2xl border border-purple-500/20">
+            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-6 py-4 rounded-2xl border border-purple-500/20 hover:border-purple-500 transition">
               <span className="text-2xl">🔴</span>
               <span>Reddit</span>
             </a>
           </div>
-
-          <p className="text-center text-gray-500 text-sm mt-10">
-            © 2026 LostPengu Charity AI Agent • All Rights Reserved
-          </p>
         </div>
       </footer>
     </div>
