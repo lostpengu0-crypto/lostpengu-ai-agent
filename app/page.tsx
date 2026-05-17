@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 export default function LostPenguCharity() {
-  // MATRIX RAIN - Kayan kod yağmuru (penguen temalı)
+  // MATRIX RAIN (Kayan kod yağmuru)
   useEffect(() => {
     const canvas = document.createElement('canvas');
     canvas.style.position = 'fixed';
@@ -62,7 +62,7 @@ export default function LostPenguCharity() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Animated Aurora Background */}
+      {/* Aurora Background */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_30%,#8b00ff_60%,#000000_90%)] opacity-40 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_70%)] opacity-30 pointer-events-none animate-[pulse_8s_ease-in-out_infinite]"></div>
 
@@ -90,7 +90,7 @@ export default function LostPenguCharity() {
         </div>
       </nav>
 
-      {/* HERO SECTION */}
+      {/* HERO */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <img 
           src="/hero.jpg" 
@@ -106,7 +106,6 @@ export default function LostPenguCharity() {
               Penguin AI Agent
             </span>
           </h1>
-          
           <p className="text-xl text-gray-100 max-w-2xl mx-auto">
             We don&apos;t just build charity — we code autonomous AI agents that run forever and automatically donate every earned revenue to real penguin rescue organizations in Antarctica.
           </p>
@@ -124,7 +123,7 @@ export default function LostPenguCharity() {
         </div>
       </div>
 
-      {/* STORY SECTION - Uzun hikaye */}
+      {/* STORY */}
       <section id="story" className="py-20 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-5xl font-bold text-center mb-4">LostPengu&apos;s Story</h2>
@@ -135,39 +134,22 @@ export default function LostPenguCharity() {
               LostPengu was born when a group of developers decided to create something that had never existed before: 
               <strong>an AI agent that can code itself, run itself, and sustain itself</strong>.
             </p>
-            
             <p>
               While most crypto projects chase hype and quick profits, we built an autonomous system. 
-              LostPengu AI Agent continuously writes, improves, and deploys new code. It creates new tools, 
-              new mini-games, new donation automations — all by itself.
+              LostPengu AI Agent continuously writes, improves, and deploys new code.
             </p>
-
             <p>
-              Every revenue the agent generates — from token sales, game plays, donations, or future AI services — 
-              is <strong>automatically sent</strong> to verified penguin rescue organizations in Antarctica. 
-              No middleman. No manual transfer. Pure code-to-charity pipeline.
+              Every revenue the agent generates is <strong>automatically sent</strong> to verified penguin rescue organizations in Antarctica. 
+              No middleman. Pure code-to-charity pipeline.
             </p>
-
             <p>
-              Our mission is not to make money. Our mission is to make the system sustainable forever. 
-              The more people play, hold, and support, the more penguins get rescued — automatically.
-            </p>
-
-            <div className="bg-zinc-900 border border-cyan-400/30 rounded-3xl p-8 my-12">
-              <p className="italic text-center text-cyan-300">
-                &ldquo;We are not building a charity project.<br />
-                We are building the first living, self-improving AI that exists only to save penguins.&rdquo;
-              </p>
-            </div>
-
-            <p className="text-center text-purple-400">
-              This is LostPengu — the first self-coding penguin AI agent in the world.
+              Our mission is not to make money. Our mission is to make the system sustainable forever.
             </p>
           </div>
         </div>
       </section>
 
-      {/* IMPACT SECTION */}
+      {/* IMPACT */}
       <section id="impact" className="py-20 bg-zinc-950 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-12">Why LostPengu Exists</h2>
@@ -188,8 +170,72 @@ export default function LostPenguCharity() {
         </div>
       </section>
 
-      {/* GAMES SECTION - Yeni eklenen bölüm */}
+      {/* GAMES */}
       <section id="games" className="py-20 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-5xl font-bold text-center mb-4">Play & Earn for Penguins</h2>
-          <p className="text-center text-gray-400
+          <h2 className="text-5xl font-bold text-center mb-4">Play &amp; Earn for Penguins</h2>
+          <p className="text-center text-gray-400 mb-16">
+            Mini games that actually help penguins. Every point you score = more automatic donations.
+          </p>
+
+          <div className="bg-zinc-900 border border-cyan-500/30 rounded-3xl p-8 mb-12">
+            <h3 className="text-2xl font-semibold mb-6 text-center">🏆 Global Leaderboard (Live)</h3>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center bg-black/50 px-6 py-4 rounded-2xl">
+                <div className="flex items-center gap-4"><span className="text-cyan-400 font-mono">01</span><span>PenguMaster42</span></div>
+                <span className="text-cyan-300 font-bold">12,450 pts</span>
+              </div>
+              <div className="flex justify-between items-center bg-black/50 px-6 py-4 rounded-2xl">
+                <div className="flex items-center gap-4"><span className="text-cyan-400 font-mono">02</span><span>IceFlipKing</span></div>
+                <span className="text-cyan-300 font-bold">9,820 pts</span>
+              </div>
+              <div className="flex justify-between items-center bg-black/50 px-6 py-4 rounded-2xl">
+                <div className="flex items-center gap-4"><span className="text-cyan-400 font-mono">03</span><span>AntarcticHero</span></div>
+                <span className="text-cyan-300 font-bold">8,710 pts</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <button className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 px-10 py-5 rounded-3xl font-semibold text-xl hover:scale-105 transition">
+              Play Mini Games Now 🐧
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* DONATE */}
+      <section id="donate" className="py-20 bg-zinc-950 border-t border-purple-500/30">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-5xl font-bold mb-6">Direct Support</h2>
+          <p className="text-gray-400 mb-12">Your donation goes straight into the autonomous system</p>
+          
+          <button className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 text-white text-xl px-12 py-6 rounded-3xl font-semibold hover:scale-105 transition">
+            Donate Now 🐧
+          </button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black border-t border-cyan-500/30 py-16">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <div className="flex flex-wrap justify-center gap-6 mb-12">
+            <a href="https://x.com/lostpengusup" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+              <span className="text-3xl">𝕏</span><span>X</span>
+            </a>
+            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+              <span className="text-3xl">📢</span><span>Telegram</span>
+            </a>
+            <a href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+              <span className="text-3xl">🐙</span><span>GitHub</span>
+            </a>
+            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+              <span className="text-3xl">🔴</span><span>Reddit</span>
+            </a>
+          </div>
+          <p className="text-gray-500">© 2026 LostPengu • First Self-Coding Penguin AI Agent</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
