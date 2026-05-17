@@ -27,7 +27,7 @@ export default function LostPengu() {
     canvas.style.top = '0';
     canvas.style.left = '0';
     canvas.style.zIndex = '-1';
-    canvas.style.opacity = '0.65';
+    canvas.style.opacity = '0.55';
     canvas.style.pointerEvents = 'none';
     document.body.appendChild(canvas);
 
@@ -54,7 +54,7 @@ export default function LostPengu() {
     const draw = () => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
       ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = '#c026d3';
+      ctx.fillStyle = '#a855f7';
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
@@ -66,7 +66,7 @@ export default function LostPengu() {
       }
     };
 
-    const interval = setInterval(draw, 32);
+    const interval = setInterval(draw, 35);
     return () => clearInterval(interval);
   }, []);
 
@@ -80,20 +80,19 @@ export default function LostPengu() {
     setLeaderboard(updated);
     setShowSaveForm(false);
     setPlayerName('');
-    alert(`Score saved! You are now on the leaderboard.`);
+    alert(`Score saved!`);
   };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Aurora */}
-      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#a855f7_30%,#c026d3_55%,#000000_90%)] opacity-70 pointer-events-none animate-pulse"></div>
-      <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ec4899_0%,transparent_65%)] opacity-55 pointer-events-none animate-[pulse_10s_ease-in-out_infinite]"></div>
+      {/* Daha Dengeli Aurora */}
+      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#6b21a8_40%,#000000_80%)] opacity-60 pointer-events-none"></div>
 
       {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-purple-500/60">
+      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-purple-500/40">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="text-4xl drop-shadow-[0_0_25px_#c026d3]">🐧</div>
+            <div className="text-4xl">🐧</div>
             <div>
               <h1 className="text-2xl font-bold tracking-tighter">$LOSTPENGU</h1>
               <p className="text-purple-400 text-sm -mt-1">SELF-CODING AI AGENT</p>
@@ -106,7 +105,7 @@ export default function LostPengu() {
             <a href="#token" className="hover:text-purple-400 transition">Token</a>
           </div>
 
-          <a href="#token" className="bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 px-6 py-3 rounded-full font-medium hover:scale-105 transition">
+          <a href="#token" className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 rounded-full font-medium hover:scale-105 transition">
             Buy $LOSTPENGU
           </a>
         </div>
@@ -120,7 +119,7 @@ export default function LostPengu() {
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
             The First Self-Coding<br />
-            <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
               AI Penguin Agent
             </span>
           </h1>
@@ -129,7 +128,7 @@ export default function LostPengu() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <a href="#token" className="bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 px-10 py-5 rounded-3xl text-xl font-bold hover:scale-105 transition">
+            <a href="#token" className="bg-gradient-to-r from-purple-600 to-pink-600 px-10 py-5 rounded-3xl text-xl font-bold hover:scale-105 transition">
               Buy $LOSTPENGU
             </a>
             <a href="#play" className="border-2 border-purple-400 px-10 py-5 rounded-3xl text-xl font-bold hover:bg-white/10 transition">
@@ -139,7 +138,7 @@ export default function LostPengu() {
         </div>
       </section>
 
-      {/* PLAY SECTION - İSTEDİĞİN OYUN */}
+      {/* PLAY SECTION */}
       <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">Just For Fun</h2>
@@ -161,8 +160,8 @@ export default function LostPengu() {
               <iframe 
                 src="https://html5games.com/game/penguin-jump" 
                 width="100%" 
-                height="700" 
-                className="rounded-3xl border border-purple-500/30 shadow-2xl"
+                height="720" 
+                className="rounded-3xl border border-purple-500/30"
                 allowFullScreen
               />
             </div>
