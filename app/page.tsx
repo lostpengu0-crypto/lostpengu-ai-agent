@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function LostPengu() {
-  // MATRIX RAIN - Strong & Visible
+  const [showGame, setShowGame] = useState(false);
+
+  // MATRIX RAIN
   useEffect(() => {
     const canvas = document.createElement('canvas');
     canvas.style.position = 'fixed';
@@ -29,7 +31,7 @@ export default function LostPengu() {
     resize();
     window.addEventListener('resize', resize);
 
-    const chars = '01🐧LOSTPENGU AI SELF-CODING AUTONOMOUS EARN PLAY RESCUE SOLANA PENGUIN'.split('');
+    const chars = '01🐧LOSTPENGU AI SELF-CODING AUTONOMOUS EARN PLAY RESCUE SOLANA'.split('');
     const fontSize = 17;
     const columns = Math.floor(width / fontSize);
     const drops = new Array(columns).fill(1);
@@ -62,10 +64,9 @@ export default function LostPengu() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Enhanced Aurora Lights */}
+      {/* Aurora Background */}
       <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_25%,#8b00ff_50%,#4b0082_75%,#000000_100%)] opacity-50 pointer-events-none animate-pulse"></div>
       <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_60%)] opacity-40 pointer-events-none animate-[pulse_12s_ease-in-out_infinite]"></div>
-      <div className="fixed inset-0 bg-[radial-gradient(at_30%_20%,#00ffff_0%,transparent_50%)] opacity-30 pointer-events-none animate-[pulse_15s_ease-in-out_infinite]"></div>
 
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-cyan-500/40">
@@ -84,7 +85,7 @@ export default function LostPengu() {
             <a href="#token" className="hover:text-cyan-400 transition">Token</a>
           </div>
 
-          <a href="#token" className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 px-6 py-3 rounded-full font-medium hover:scale-105 transition shadow-lg shadow-cyan-500/50">
+          <a href="#token" className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 px-6 py-3 rounded-full font-medium hover:scale-105 transition">
             Buy $LOSTPENGU
           </a>
         </div>
@@ -95,7 +96,7 @@ export default function LostPengu() {
         <img 
           src="/hero.jpg" 
           alt="LostPengu AI Penguin" 
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover" 
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black/90"></div>
 
@@ -107,7 +108,7 @@ export default function LostPengu() {
             </span>
           </h1>
           <p className="text-2xl text-gray-100 max-w-3xl mx-auto mb-10">
-            The world&apos;s first AI agent that codes itself, creates fun, and protects penguins in Antarctica.
+            The world&apos;s first AI agent that codes itself, creates entertainment, and helps protect penguins in Antarctica.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
@@ -115,76 +116,81 @@ export default function LostPengu() {
               Buy $LOSTPENGU
             </a>
             <a href="#play" className="border-2 border-cyan-400 px-10 py-5 rounded-3xl text-xl font-bold hover:bg-white/10 transition">
-              Play Fun Games
+              Play Games
             </a>
           </div>
         </div>
       </section>
 
-      {/* STORY - Long & Powerful English Version */}
+      {/* STORY */}
       <section id="story" className="py-24 border-t border-purple-500/30">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-5xl font-bold text-center mb-10">LostPengu&apos;s Story</h2>
           
           <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-8">
             <p>
-              LostPengu is not just another memecoin. We are building <strong>a new system</strong>.
+              LostPengu is not just a memecoin. We are building a new system.
             </p>
             <p>
               We created the world&apos;s first <strong>self-coding AI Agent</strong>. 
               This agent can write and improve its own code, develop new features, and grow continuously.
             </p>
             <p>
-              Our goal is not to create temporary hype. We want to build a <strong>sustainable, long-term and community-driven ecosystem</strong>.
+              Our goal is not temporary hype. We aim to create a <strong>sustainable, long-term ecosystem</strong> that benefits the community.
             </p>
             <p>
-              $LOSTPENGU is the heart of this ecosystem. People can have fun, be part of the community, and support a real project with long-term vision.
+              $LOSTPENGU is the core of this ecosystem. People can enjoy themselves, join the community, and support a project with real vision.
             </p>
             <p>
-              The games on the site are completely free and made purely for entertainment. Our aim is to give people joyful moments, keep the community alive and active.
+              The games on this site are completely free and made purely for entertainment. Our goal is to give people fun moments and keep the community active.
             </p>
             <p>
-              A portion of the revenue generated by the system is <strong>automatically transferred</strong> to penguin protection foundations in Antarctica. 
-              Pump.fun rewards and other income streams allow LostPengu AI Agent to create real-world impact in the background.
+              A portion of the system&apos;s revenue is <strong>automatically sent</strong> to penguin protection foundations in Antarctica. 
+              Pump.fun rewards and other income streams allow LostPengu to create real impact in the background.
             </p>
 
             <div className="bg-gradient-to-br from-purple-900/70 to-cyan-900/70 border border-cyan-400/30 rounded-3xl p-10 my-12 text-center">
               <p className="italic text-2xl leading-relaxed text-cyan-200">
-                Our vision is to offer people both entertainment and earning opportunities,<br />
-                while also contributing to the world by protecting penguins.
+                Our vision is to provide both entertainment and earning opportunities for people,<br />
+                while contributing to the world by protecting penguins.
               </p>
             </div>
 
             <p className="text-center text-xl text-purple-300">
-              This is just the beginning. LostPengu will continue to evolve, grow its community, and protect penguins — forever.
+              This is only the beginning. LostPengu will continue to evolve, grow its community, and protect penguins — forever.
             </p>
           </div>
         </div>
       </section>
 
-      {/* PLAY SECTION */}
+      {/* PLAY SECTION with Real Game */}
       <section id="play" className="py-24 bg-zinc-950 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">Just For Fun</h2>
-          <p className="text-xl text-gray-400 mb-16">The games are made purely for entertainment. Have fun!</p>
+          <p className="text-xl text-gray-400 mb-12">Games are made purely for entertainment</p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-zinc-900 rounded-3xl p-10 hover:scale-105 transition border border-transparent hover:border-cyan-400">
-              <div className="text-7xl mb-6">❄️</div>
-              <h3 className="text-2xl font-bold mb-3">Penguin Flip</h3>
-              <p className="text-gray-400">Timing & Reflex Game</p>
+          {!showGame ? (
+            <div className="grid md:grid-cols-3 gap-8">
+              <div 
+                onClick={() => setShowGame(true)} 
+                className="bg-zinc-900 rounded-3xl p-10 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400"
+              >
+                <div className="text-7xl mb-6">❄️</div>
+                <h3 className="text-2xl font-bold mb-3">Penguin Flip</h3>
+                <p className="text-gray-400">Test your timing</p>
+              </div>
             </div>
-            <div className="bg-zinc-900 rounded-3xl p-10 hover:scale-105 transition border border-transparent hover:border-cyan-400">
-              <div className="text-7xl mb-6">🏔️</div>
-              <h3 className="text-2xl font-bold mb-3">Ice Slide</h3>
-              <p className="text-gray-400">Exciting Sliding Race</p>
+          ) : (
+            <div className="max-w-2xl mx-auto">
+              <button 
+                onClick={() => setShowGame(false)} 
+                className="mb-8 text-cyan-400 hover:text-white flex items-center gap-2 mx-auto"
+              >
+                ← Back to Games
+              </button>
+              <PenguinFlipGame />
             </div>
-            <div className="bg-zinc-900 rounded-3xl p-10 hover:scale-105 transition border border-transparent hover:border-cyan-400">
-              <div className="text-7xl mb-6">🧊</div>
-              <h3 className="text-2xl font-bold mb-3">Colony Match</h3>
-              <p className="text-gray-400">Matching & Strategy Game</p>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -207,6 +213,45 @@ export default function LostPengu() {
       <footer className="bg-black py-12 text-center text-gray-500 border-t border-cyan-500/30">
         © 2026 $LOSTPENGU • First Self-Coding AI Penguin Agent
       </footer>
+    </div>
+  );
+}
+
+// Simple Penguin Flip Game
+function PenguinFlipGame() {
+  const [score, setScore] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
+
+  const flip = () => {
+    if (isFlipping) return;
+    setIsFlipping(true);
+    
+    const success = Math.random() > 0.35;
+    if (success) setScore(prev => prev + 10);
+
+    setTimeout(() => setIsFlipping(false), 600);
+  };
+
+  return (
+    <div className="bg-zinc-900 rounded-3xl p-12 text-center">
+      <h3 className="text-3xl font-bold mb-8">🐧 Penguin Flip</h3>
+      <div 
+        className="text-8xl mb-10 transition-transform duration-700" 
+        style={{ transform: isFlipping ? 'rotate(720deg)' : 'rotate(0deg)' }}
+      >
+        🐧
+      </div>
+      
+      <p className="text-3xl mb-10">Score: <span className="text-cyan-400 font-bold">{score}</span></p>
+      
+      <button 
+        onClick={flip}
+        className="bg-gradient-to-r from-cyan-500 to-purple-500 px-16 py-6 rounded-3xl text-2xl font-bold hover:scale-110 transition"
+      >
+        FLIP THE PENGUIN
+      </button>
+      
+      <p className="text-gray-400 mt-6">Click at the perfect moment!</p>
     </div>
   );
 }
