@@ -20,14 +20,14 @@ export default function LostPengu() {
     { name: "AntarcticAce", score: 1380 },
   ]);
 
-  // MATRIX RAIN
+  // MATRIX RAIN - Daha belirgin ve neon
   useEffect(() => {
     const canvas = document.createElement('canvas');
     canvas.style.position = 'fixed';
     canvas.style.top = '0';
     canvas.style.left = '0';
     canvas.style.zIndex = '-1';
-    canvas.style.opacity = '0.45';
+    canvas.style.opacity = '0.75'; // Daha görünür
     canvas.style.pointerEvents = 'none';
     document.body.appendChild(canvas);
 
@@ -47,26 +47,26 @@ export default function LostPengu() {
     window.addEventListener('resize', resize);
 
     const chars = '01🐧LOSTPENGU AI SELF-CODING PLAY RESCUE SOLANA'.split('');
-    const fontSize = 17;
+    const fontSize = 18;
     const columns = Math.floor(width / fontSize);
     const drops = new Array(columns).fill(1);
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
       ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = '#67e8f9';
+      ctx.fillStyle = '#c026d3'; // Neon Mor
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        if (drops[i] * fontSize > height && Math.random() > 0.97) drops[i] = 0;
+        if (drops[i] * fontSize > height && Math.random() > 0.96) drops[i] = 0;
         drops[i]++;
       }
     };
 
-    const interval = setInterval(draw, 35);
+    const interval = setInterval(draw, 30);
     return () => clearInterval(interval);
   }, []);
 
@@ -85,28 +85,28 @@ export default function LostPengu() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Aurora Background */}
-      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#00f0ff_25%,#8b00ff_50%,#000000_100%)] opacity-50 pointer-events-none animate-pulse"></div>
-      <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ff00ff_0%,transparent_60%)] opacity-40 pointer-events-none animate-[pulse_12s_ease-in-out_infinite]"></div>
+      {/* Daha Canlı Aurora */}
+      <div className="fixed inset-0 bg-[radial-gradient(at_top,#4b0082_0%,#a855f7_30%,#c026d3_55%,#000000_90%)] opacity-75 pointer-events-none animate-pulse"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(at_bottom,#ec4899_0%,transparent_65%)] opacity-60 pointer-events-none animate-[pulse_8s_ease-in-out_infinite]"></div>
 
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-cyan-500/40">
+      {/* Navbar - Daha Canlı */}
+      <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-purple-500/60">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="text-4xl drop-shadow-[0_0_20px_#22f0ff]">🐧</div>
+            <div className="text-4xl drop-shadow-[0_0_25px_#c026d3]">🐧</div>
             <div>
               <h1 className="text-2xl font-bold tracking-tighter">$LOSTPENGU</h1>
-              <p className="text-cyan-400 text-sm -mt-1">SELF-CODING AI AGENT</p>
+              <p className="text-purple-400 text-sm -mt-1">SELF-CODING AI AGENT</p>
             </div>
           </div>
           
           <div className="hidden md:flex items-center gap-8 text-sm">
-            <a href="#story" className="hover:text-cyan-400 transition">Story</a>
-            <a href="#play" className="hover:text-cyan-400 transition">Play</a>
-            <a href="#token" className="hover:text-cyan-400 transition">Token</a>
+            <a href="#story" className="hover:text-purple-400 transition">Story</a>
+            <a href="#play" className="hover:text-purple-400 transition">Play</a>
+            <a href="#token" className="hover:text-purple-400 transition">Token</a>
           </div>
 
-          <a href="#token" className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 px-6 py-3 rounded-full font-medium hover:scale-105 transition">
+          <a href="#token" className="bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 px-6 py-3 rounded-full font-medium hover:scale-105 transition shadow-lg shadow-purple-500/50">
             Buy $LOSTPENGU
           </a>
         </div>
@@ -115,12 +115,12 @@ export default function LostPengu() {
       {/* HERO */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <img src="/hero.jpg" alt="LostPengu" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90"></div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
             The First Self-Coding<br />
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
               AI Penguin Agent
             </span>
           </h1>
@@ -129,10 +129,10 @@ export default function LostPengu() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <a href="#token" className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 px-10 py-5 rounded-3xl text-xl font-bold hover:scale-105 transition">
+            <a href="#token" className="bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 px-10 py-5 rounded-3xl text-xl font-bold hover:scale-105 transition">
               Buy $LOSTPENGU
             </a>
-            <a href="#play" className="border-2 border-cyan-400 px-10 py-5 rounded-3xl text-xl font-bold hover:bg-white/10 transition">
+            <a href="#play" className="border-2 border-purple-400 px-10 py-5 rounded-3xl text-xl font-bold hover:bg-white/10 transition">
               Play Mini Games
             </a>
           </div>
@@ -147,7 +147,7 @@ export default function LostPengu() {
 
           {!showGame ? (
             <div className="max-w-md mx-auto">
-              <div onClick={() => setShowGame(true)} className="bg-zinc-900 rounded-3xl p-12 hover:scale-105 cursor-pointer transition border border-transparent hover:border-cyan-400">
+              <div onClick={() => setShowGame(true)} className="bg-zinc-900 rounded-3xl p-12 hover:scale-105 cursor-pointer transition border border-transparent hover:border-purple-400">
                 <div className="text-8xl mb-6">🐧</div>
                 <h3 className="text-3xl font-bold mb-3">Penguin Jump</h3>
                 <p className="text-gray-400">Jump as high as you can!</p>
@@ -155,7 +155,7 @@ export default function LostPengu() {
             </div>
           ) : (
             <div className="max-w-4xl mx-auto">
-              <button onClick={() => setShowGame(false)} className="mb-6 text-cyan-400 hover:text-white">
+              <button onClick={() => setShowGame(false)} className="mb-6 text-purple-400 hover:text-white">
                 ← Back to Games
               </button>
               <PenguinJumpGame score={score} setScore={setScore} setShowSaveForm={setShowSaveForm} />
@@ -169,10 +169,10 @@ export default function LostPengu() {
               {leaderboard.map((entry, index) => (
                 <div key={index} className="flex justify-between items-center py-3 border-b border-gray-700 last:border-0">
                   <div className="flex items-center gap-4">
-                    <span className="text-cyan-400 font-mono w-8">{index + 1}</span>
+                    <span className="text-purple-400 font-mono w-8">{index + 1}</span>
                     <span>{entry.name}</span>
                   </div>
-                  <span className="font-bold text-cyan-300">{entry.score}</span>
+                  <span className="font-bold text-purple-300">{entry.score}</span>
                 </div>
               ))}
             </div>
@@ -193,30 +193,30 @@ export default function LostPengu() {
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">$LOSTPENGU</h2>
           <p className="text-2xl text-gray-300 mb-12">The heart of the self-coding AI ecosystem</p>
-          <div className="bg-zinc-950 border border-cyan-500/40 rounded-3xl p-12 max-w-lg mx-auto">
-            <p className="text-cyan-400 text-sm mb-3">LAUNCHING SOON</p>
+          <div className="bg-zinc-950 border border-purple-500/40 rounded-3xl p-12 max-w-lg mx-auto">
+            <p className="text-purple-400 text-sm mb-3">LAUNCHING SOON</p>
             <div className="text-5xl font-mono mb-8">Pump.fun</div>
-            <a href="#" className="block bg-gradient-to-r from-cyan-400 to-purple-500 text-black py-6 rounded-2xl text-2xl font-bold hover:scale-105 transition">
+            <a href="#" className="block bg-gradient-to-r from-purple-500 to-pink-500 text-black py-6 rounded-2xl text-2xl font-bold hover:scale-105 transition">
               Buy $LOSTPENGU →
             </a>
           </div>
         </div>
       </section>
 
-      {/* SOCIAL MEDIA BUTTONS - EN ALTA */}
-      <footer className="bg-black py-16 border-t border-cyan-500/30">
+      {/* SOCIAL MEDIA BUTTONS */}
+      <footer className="bg-black py-16 border-t border-purple-500/30">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="https://x.com/lostpengusup" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+            <a href="https://x.com/lostpengu0" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-purple-500/30 hover:border-purple-400 transition">
               <span className="text-3xl">𝕏</span><span>X</span>
             </a>
-            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+            <a href="https://t.me/LostPengu0" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-purple-500/30 hover:border-purple-400 transition">
               <span className="text-3xl">📢</span><span>Telegram</span>
             </a>
-            <a href="https://github.com/lostpengu0-crypto/lostpengu-ai-agent" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+            <a href="https://github.com/lostpengu0-crypto" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-purple-500/30 hover:border-purple-400 transition">
               <span className="text-3xl">🐙</span><span>GitHub</span>
             </a>
-            <a href="#" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 transition">
+            <a href="https://www.reddit.com/u/lostpengu01/s/piPat6VW8Z" target="_blank" className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 px-8 py-5 rounded-2xl border border-purple-500/30 hover:border-purple-400 transition">
               <span className="text-3xl">🔴</span><span>Reddit</span>
             </a>
           </div>
@@ -232,21 +232,21 @@ export default function LostPengu() {
         <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
           <div className="bg-zinc-900 rounded-3xl p-10 max-w-md w-full mx-4">
             <h3 className="text-3xl font-bold mb-6 text-center">Save Your Score</h3>
-            <p className="text-center mb-6">Final Score: <span className="text-cyan-400 font-bold text-2xl">{score}</span></p>
+            <p className="text-center mb-6">Final Score: <span className="text-purple-400 font-bold text-2xl">{score}</span></p>
             
             <input
               type="text"
               placeholder="Enter your name"
               value={playerName}
               onChange={(e) => setPlayerName(e.target.value)}
-              className="w-full bg-black border border-cyan-500 rounded-2xl px-6 py-4 text-center text-xl mb-6 outline-none"
+              className="w-full bg-black border border-purple-500 rounded-2xl px-6 py-4 text-center text-xl mb-6 outline-none"
             />
             
             <div className="flex gap-4">
               <button onClick={() => setShowSaveForm(false)} className="flex-1 py-4 rounded-2xl border border-gray-600">
                 Cancel
               </button>
-              <button onClick={saveScore} className="flex-1 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-500 font-bold">
+              <button onClick={saveScore} className="flex-1 py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 font-bold">
                 Save Score
               </button>
             </div>
@@ -272,24 +272,24 @@ function PenguinJumpGame({ score, setScore, setShowSaveForm }: any) {
     <div className="bg-zinc-900 rounded-3xl p-12 text-center">
       <h3 className="text-3xl font-bold mb-8">🐧 Penguin Jump</h3>
       
-      <div className="relative h-80 bg-gradient-to-b from-sky-950 to-slate-900 rounded-2xl overflow-hidden mb-8 border border-cyan-500/30 flex items-center justify-center">
+      <div className="relative h-80 bg-gradient-to-b from-sky-950 to-slate-900 rounded-2xl overflow-hidden mb-8 border border-purple-500/30 flex items-center justify-center">
         <div className={`text-8xl transition-all duration-700 ${isJumping ? '-translate-y-52' : 'translate-y-0'}`}>
           🐧
         </div>
       </div>
 
-      <p className="text-4xl mb-8">Score: <span className="text-cyan-400 font-bold">{score}</span></p>
+      <p className="text-4xl mb-8">Score: <span className="text-purple-400 font-bold">{score}</span></p>
 
       <button 
         onClick={jump}
-        className="bg-gradient-to-r from-cyan-500 to-purple-500 px-16 py-6 rounded-3xl text-2xl font-bold hover:scale-110 transition w-full"
+        className="bg-gradient-to-r from-purple-500 to-pink-500 px-16 py-6 rounded-3xl text-2xl font-bold hover:scale-110 transition w-full"
       >
         JUMP
       </button>
 
       <button 
         onClick={() => setShowSaveForm(true)}
-        className="mt-6 text-cyan-400 hover:text-white underline"
+        className="mt-6 text-purple-400 hover:text-white underline"
       >
         Save My Score
       </button>
