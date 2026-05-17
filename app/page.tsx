@@ -1,86 +1,93 @@
-Create a professional landing page for “LostPengu AI Terminal”.
+"use client";
 
-The design must look similar to a premium crypto AI project website.
+import { useState } from "react";
 
-Theme:
-Dark cinematic cyberpunk style with a large background image of a penguin community under aurora lights in Antarctica. Add a dark overlay so text is readable. Use neon purple, pink, blue, and white accents.
+export default function Home() {
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState("");
 
-Header:
-Left logo area:
-🐧 $LOSTPENGU
-SELF CODING AI AGENT
+  const verdicts = [
+    "This wallet emotionally donated liquidity to strangers.",
+    "FOMO levels critical. Please step away from PumpFun.",
+    "LostPengu AI detected extreme degen behavior.",
+    "This trader buys tops professionally.",
+    "Psychological stability below acceptable levels.",
+  ];
 
-Center navigation:
-Story
-AI Terminal
-Token
-Community
+  const scanWallet = () => {
+    setLoading(true);
+    setResult("");
 
-Right button:
-Launch Terminal
+    setTimeout(() => {
+      const randomVerdict =
+        verdicts[Math.floor(Math.random() * verdicts.length)];
 
-Hero section:
-Large headline:
-The First Self Coding
-AI Penguin Terminal
+      setResult(`
+> WALLET SCAN COMPLETE
 
-Gradient highlight on “AI Penguin Terminal” using purple, pink and blue.
+Pengu Score: ${Math.floor(Math.random() * 100)}/100
+FOMO Risk: EXTREME
+Rug Survival Rate: ${Math.floor(Math.random() * 100)}%
+Psychological Stability: ${Math.floor(Math.random() * 100)}%
 
-Subtitle:
-Scan Solana wallets and token contracts through a cinematic AI terminal built by LostPengu.
-
-Buttons:
-Launch AI Terminal
-Join Community
-
-Below hero:
-Add a cyberpunk terminal card with glowing borders.
-
-Terminal title:
-LOSTPENGU AI TERMINAL
-
-Inside terminal:
-Input placeholder:
-Paste Solana wallet or token CA...
-
-Button:
-Scan Now
-
-When clicked, show animated fake scanning logs:
-Initializing LostPengu AI...
-Connecting to Solana network...
-Reading wallet behavior...
-Detecting FOMO damage...
-Calculating Pengu Score...
-Generating final AI verdict...
-
-Then show a funny result:
-Pengu Score: 87/100
-FOMO Risk: Extreme
-Rug Survival: 42%
 AI Verdict:
-“This wallet has survived more red candles than most traders survive group chats. LostPengu is watching.”
+"${randomVerdict}"
+      `);
 
-Sections under hero:
-1. Built in public
-2. AI powered
-3. Solana focused
-4. Community driven
+      setLoading(false);
+    }, 3000);
+  };
 
-Add footer:
-Built by LostPengu AI
-Entertainment based AI terminal demo. Not financial advice.
+  return (
+    <main className="min-h-screen bg-black text-green-400 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517783999520-f068d7431a60?q=80&w=1974&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
 
-Style requirements:
-Mobile responsive
-Glassmorphism cards
-Neon glowing buttons
-Smooth animations
-Terminal typing effect
-Matrix style subtle code rain background
-Professional spacing
-Modern font
-Premium crypto website feeling
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
+        <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+          LOSTPENGU AI TERMINAL
+        </h1>
 
-Use Next.js React with Tailwind CSS.
-Put everything in one page.
+        <p className="text-lg md:text-2xl text-purple-300 mb-10 max-w-2xl">
+          Scan Solana wallets through the most savage penguin AI on the blockchain.
+        </p>
+
+        <div className="w-full max-w-2xl bg-black/70 border border-purple-500 rounded-2xl p-6 shadow-[0_0_30px_rgba(168,85,247,0.5)] backdrop-blur-md">
+          <div className="text-left mb-4 text-sm text-purple-400">
+            LOSTPENGU TERMINAL v1.0
+          </div>
+
+          <input
+            type="text"
+            placeholder="Paste Solana wallet or token CA..."
+            className="w-full bg-black border border-green-500 rounded-lg p-4 text-green-400 outline-none mb-4"
+          />
+
+          <button
+            onClick={scanWallet}
+            className="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold py-4 rounded-lg hover:scale-105 transition"
+          >
+            SCAN NOW
+          </button>
+
+          <div className="mt-6 text-left whitespace-pre-line font-mono text-sm min-h-[200px]">
+            {loading ? (
+              <div className="animate-pulse">
+                {`> Initializing LostPengu AI...
+> Connecting to Solana network...
+> Reading wallet behavior...
+> Detecting FOMO damage...
+> Generating final verdict...`}
+              </div>
+            ) : (
+              result
+            )}
+          </div>
+        </div>
+
+        <p className="mt-10 text-gray-500 text-sm">
+          Built by LostPengu AI • Entertainment based AI terminal demo
+        </p>
+      </div>
+    </main>
+  );
+}
